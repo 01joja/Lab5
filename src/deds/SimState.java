@@ -1,7 +1,7 @@
 package deds;
 
 public class SimState {
-	private int time = 0;
+	private int simTime = 0;
 	private boolean runSim = true;
 	
 	void simEnd() {
