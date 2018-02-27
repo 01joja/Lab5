@@ -2,7 +2,17 @@ package deds;
 
 public class Event {
 	
-	public void eventer() {
+	private int time;
+	
+	public void perform() {
+		
+	}
+	
+	public void getTime() {
+		
+	}
+	
+	public void setTime() {
 		
 	}
 
