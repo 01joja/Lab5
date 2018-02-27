@@ -13,8 +13,14 @@ public class Event {
 
 	}
 	
+<<<<<<< HEAD
 	public int[] getTime() {
 		return {startTime, finishTime};
+=======
+	public  int getTime() {
+		time = 6;
+		return time;
+>>>>>>> ab78c84992a28c09d5771a2f9d615f7c80ebcc99
 	}
 	
 	public void setTime(int startTime, int finishTime) {
