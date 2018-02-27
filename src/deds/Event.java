@@ -2,7 +2,8 @@ package deds;
 
 public class Event {
 	
-	private int time;
+	private int startTime;
+	private int finishTime;
 	
 	public void perform() {
 
@@ -12,12 +13,12 @@ public class Event {
 
 	}
 	
-	public void getTime() {
-		time = 6;
+	public int[] getTime() {
+		return {startTime, finishTime};
 	}
 	
-	public void setTime() {
-		int p = 0;
+	public void setTime(int startTime, int finishTime) {
+		
 	}
 
 }
