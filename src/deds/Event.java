@@ -13,7 +13,7 @@ public class Event {
 	}
 	
 	public void getTime() {
-		
+		time = 6;
 	}
 	
 	public void setTime() {
