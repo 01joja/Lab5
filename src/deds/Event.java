@@ -12,8 +12,9 @@ public class Event {
 
 	}
 	
-	public void getTime() {
+	public  int getTime() {
 		time = 6;
+		return time;
 	}
 	
 	public void setTime() {
