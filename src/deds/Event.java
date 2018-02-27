@@ -17,7 +17,7 @@ public class Event {
 	}
 	
 	public void setTime() {
-		
+		int p = 0;
 	}
 
 }
