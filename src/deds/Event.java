@@ -1,29 +1,30 @@
 package deds;
+import storeSim;
 
 public class Event {
 	
-	private int startTime;
-	private int finishTime;
-	
+	private double startTime;
+	private double finishTime;
+//	private double time;
 	public void perform() {
-
-		System.out.println("Den här ska göra saker");
-
-		time = 5;
-
+		if (SimState.simTime == startTime) {
+			
+		}
 	}
 	
-<<<<<<< HEAD
-	public int[] getTime() {
-		return {startTime, finishTime};
-=======
-	public  int getTime() {
-		time = 6;
+
+	public double[] getTime() {
+		double[] time = {startTime, finishTime};
 		return time;
->>>>>>> ab78c84992a28c09d5771a2f9d615f7c80ebcc99
+
 	}
+//	public int getTime() {
+//		time = 6;
+//		return time;
+
+//	}
 	
-	public void setTime(int startTime, int finishTime) {
+	public void setTime(double startTime, double finishTime) {
 		
 	}
 
