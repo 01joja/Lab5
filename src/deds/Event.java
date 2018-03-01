@@ -3,8 +3,8 @@ import storeSim;
 
 public abstract class Event {
 	
-//	private double startTime;
-//	private double finishTime;
+	private double startTime;
+	private double finishTime;
 	private double time;
 	private int SIMSTART = 0;
 	private int ARRIVES = 1;
@@ -17,15 +17,11 @@ public abstract class Event {
 	}
 	
 
-//	public double[] getTime() {
-//		double[] time = {startTime, finishTime};
-//		return time;
-//
-//	}
-	public double getTime() {
+	public double[] getTime() {
+		double[] time = {startTime, finishTime};
 		return time;
+
 	}
-	
 	public void setTime(double time) {
 		
 	}
