@@ -8,9 +8,8 @@ public class Start extends Event{
 	private double time = 0;
 	
 	public void perform() {
-		if(getTime() == 0) {
-			
-		}
+		perform.Start;
+		
 	}
 	
 	public double getTime() {
