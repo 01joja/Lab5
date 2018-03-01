@@ -8,7 +8,7 @@ public class StoreState {
 	private int queued = 0;
 	private int curQueuing = 0;
 	private int cashQueue = 0;
-	private int empty
+	private int empty = null;
 	
 
 }
