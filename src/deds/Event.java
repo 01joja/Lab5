@@ -1,30 +1,32 @@
 package deds;
 import storeSim;
 
-public class Event {
+public abstract class Event {
 	
-	private double startTime;
-	private double finishTime;
-//	private double time;
+//	private double startTime;
+//	private double finishTime;
+	private double time;
+	private int SIMSTART = 0;
+	private int ARRIVES = 1;
+	private int PICKGOODS = 2;
+	private int PAYING = 3;
+	private int SIMSTOP = 4;
+	
 	public void perform() {
-		if (SimState.simTime == startTime) {
-			perform();
-		}
+		
 	}
 	
 
-	public double[] getTime() {
-		double[] time = {startTime, finishTime};
-		return time;
-
-	}
-//	public int getTime() {
-//		time = 6;
+//	public double[] getTime() {
+//		double[] time = {startTime, finishTime};
 //		return time;
-
+//
 //	}
+	public double getTime() {
+		return time;
+	}
 	
-	public void setTime(double startTime, double finishTime) {
+	public void setTime(double time) {
 		
 	}
 

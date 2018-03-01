@@ -1,6 +1,6 @@
 package store.sim;
 
-public class Custumer {
+public class Customer {
 	
 	private int customerID = 0;
 	
