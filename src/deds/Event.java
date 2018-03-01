@@ -8,7 +8,7 @@ public class Event {
 //	private double time;
 	public void perform() {
 		if (SimState.simTime == startTime) {
-			
+			perform();
 		}
 	}
 	
