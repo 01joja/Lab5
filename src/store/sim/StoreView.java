@@ -1,5 +1,7 @@
 package store.sim;
 
-public class StoreView {
+import deds.SimView;
+
+public class StoreView extends SimView {
 
 }
