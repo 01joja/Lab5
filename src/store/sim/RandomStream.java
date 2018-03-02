@@ -21,7 +21,6 @@ public class RandomStream {
 	    this.width = upper-lower;
 	}
 	
-	  
 	public ExponentialRandomStream(double lambda, long seed) {
 	  	rand = new Random(seed);
 	  	this.lambda = lambda;
