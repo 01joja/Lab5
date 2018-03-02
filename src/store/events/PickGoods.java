@@ -1,5 +1,7 @@
 package store.events;
 
-public class PickGoods {
+import deds.Event;
+
+public class PickGoods extends Event {
 
 }
