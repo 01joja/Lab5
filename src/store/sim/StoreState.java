@@ -11,6 +11,7 @@ public class StoreState extends SimState {
 	private int queued = 0;
 	private int currentlyQueuing = 0;
 	private int registerQueue = 0;
+<<<<<<< HEAD
 	private int registersUsed = 0;
 	private int customersInStore = 0;
 	
@@ -21,6 +22,13 @@ public class StoreState extends SimState {
 	
 	public int customersInStore() {
 		return this.customersInStore;
+=======
+	private int emptyRegisters = 0;
+	private  int customersInStore = 0;
+	
+	public  int customersInStore() {
+		return customersInStore;
+>>>>>>> 85a13b228e13303177018cef7f38826f19f0e586
 	}
 	
 	public void addCustomer() {

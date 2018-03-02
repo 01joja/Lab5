@@ -24,6 +24,6 @@ public class StoreView extends SimView {
 	public void update(Observable o, Object arg) {
 		System.out.println(String.format("Registerss: ",theStateAdmin.registers()));
 		System.out.println(String.format("Max costumers: ",	theStateAdmin.maxCustomers()));
-		System.out.println(String.format("addign costumer:", theStateStore.customersInStore() ));
+		System.out.println(String.format("costumers in store:", theStateStore.customersInStore() ));
 	}
 }
