@@ -11,9 +11,9 @@ public class StoreState extends SimState {
 	private int currentlyQueuing = 0;
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
-	private static int customersInStore = 0;
+	private  int customersInStore = 0;
 	
-	public static int customersInStore() {
+	public  int customersInStore() {
 		return customersInStore;
 	}
 	
