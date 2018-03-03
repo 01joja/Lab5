@@ -13,10 +13,19 @@ public class StoreState extends SimState {
 	private int registerQueue = 0;
 	private int registersUsed = 0;
 	private int customersInStore = 0;
+	private int OPEN = 0;
+	private int CLOSED = 1;
 	
 	private StoreState(Customer c, Event e) {
 		c.customerID();
 		e.getTime();
+	}
+	
+	public int openOrClosed(store.events.Start s) {
+		if (true) {
+			return OPEN;
+		}
+		return CLOSED;
 	}
 	
 	public int customersInStore() {
