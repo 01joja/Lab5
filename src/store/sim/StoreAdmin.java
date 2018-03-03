@@ -4,9 +4,9 @@ public class StoreAdmin {
 private int register = 4;
 private  int maxcustomers = 25;
 public int registers() {
-	return register;
+	return this.register;
 }
 public  int maxCustomers(){
-	return maxcustomers;
+	return this.maxcustomers;
 }
 }

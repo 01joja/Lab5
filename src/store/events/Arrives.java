@@ -11,15 +11,18 @@ public class Arrives extends Event{
 	private double startTime;
 	private double finishTime;
 	
+	StoreState s;
+	
 	
 	
 			
-	public void perform () {
-		if ( StoreState.customersInStore == 0) {
-			StoreState.angry();
+	public void perform (StoreState s, StoreAdmin a) {
+		if ( s.customersInStore() == a.maxCustomers()) {
+			s.angry();
+			
 		}
-		StoreSim.StoreState.addCustomer();
-		PickGoods.perform();
+		s.addCustomer();
+		
 			
 		
 	}
