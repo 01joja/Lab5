@@ -16,13 +16,13 @@ public class StoreState extends SimState {
 	private int OPEN = 0;
 	private int CLOSED = 1;
 	
-	private StoreState(Customer c, Event e) {
+	private StoreState(Customer c, Event e) { 
 		c.customerID();
 		e.getTime();
 	}
 	
-	public int openOrClosed(store.events.Start s) {
-		if (true) {
+	public int openOrClosed(store.events.Start s) { //this method is supposed to change the state of the store top open or closed
+		if (s == 1) {
 			return OPEN;
 		}
 		return CLOSED;
