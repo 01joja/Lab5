@@ -2,6 +2,7 @@ package store.sim;
 
 import deds.Event;
 import deds.SimState;
+import store.events.Open;
 import deds.EventStart;
 
 public class StoreState extends SimState {
@@ -16,11 +17,12 @@ public class StoreState extends SimState {
 	private int customersInStore = 0;
 	private int customersQueued = 0;
 	private int customersInLine[];
+	private StoreAdmin admin;
 
 	
-	private StoreState(Customer c, Event e, FIFO f, StoreAdmin a) { 
-		EventStart simStart = new EventStart(0, 999);
-		StoreAdmin admin = new StoreAdmin();
+	private StoreState(Customer c, Event e, int maxCustomers, int registers, int openTime) { 
+		Open simStart = new Open(0, 999);
+		admin = new StoreAdmin(registers, maxCustomers, openTime);
 		c.customerID();
 		e.getTime();
 	}
