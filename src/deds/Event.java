@@ -1,28 +1,21 @@
 package deds;
 
+import deds.SimState;
+
 public class Event {
 	
-	private double startTime;
 	private double finishTime;
 	private String nameOfEvent;
 	
 	
-	public void perform() {
-		
-	}
-	
-
-	public double[] getTime() {
-		double[] time = {startTime, finishTime};
-		return time;
+	public void perform() {	
 	}
 	
 	public double getEventFinishTime(){
 		return finishTime;
 	}
 	
-	public void setTime(double startTime, double finishTime) {
-		this.startTime = startTime;
+	public void setTime(double finishTime) {
 		this.finishTime = finishTime;
 		
 	}
