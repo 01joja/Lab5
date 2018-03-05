@@ -11,7 +11,7 @@ public class Start extends Event{
 	private double finishTime;
 	
 	public void perform(StoreState s) {
-		s.openOrClosed(0);
+		s.open();
 		
 	}
 	
