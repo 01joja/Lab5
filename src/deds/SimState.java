@@ -2,13 +2,16 @@ package deds;
 
 public class SimState {
 	private double simTime = 0;
-	private boolean runSim = true;
+	private boolean stopSim = false;
 	
 	void simEnd() {
-		runSim = false;
+		this.stopSim = true;
 	}
 	
 	boolean getRunSim(){
-		return runSim;
+		if (stopSim){
+			return false;
+		}
+		return true;
 	}
 }
