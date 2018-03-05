@@ -1,14 +1,13 @@
 package deds;
 
 import deds.Event;
+import deds.EventStop;
 
 public class EventStart extends Event {
 	
+	Event eventStop;
 	
-	
-	public EventStart(double startTime, double finishTime){
-		super.setNameOfEvent("Start");
-		super.setTime(startTime, finishTime);
+	public EventStart(double simStopTime, SimState simState){
+		eventStop = new EventStop(simStopTime, simState);
 	}
-	
 }
