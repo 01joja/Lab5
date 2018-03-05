@@ -1,15 +1,11 @@
 package deds;
 
-public abstract class Event {
+public class Event {
 	
 	private double startTime;
 	private double finishTime;
-	private double time;
-	private int SIMSTART = 0;
-	private int ARRIVES = 1;
-	private int PICKGOODS = 2;
-	private int PAYING = 3;
-	private int SIMSTOP = 4;
+	private String nameOfEvent;
+	
 	
 	public void perform() {
 		
@@ -19,10 +15,24 @@ public abstract class Event {
 	public double[] getTime() {
 		double[] time = {startTime, finishTime};
 		return time;
-
 	}
+	
+	public double getEventFinishTime(){
+		return finishTime;
+	}
+	
 	public void setTime(double startTime, double finishTime) {
+		this.startTime = startTime;
+		this.finishTime = finishTime;
 		
+	}
+	
+	public void setNameOfEvent(String name){
+		this.nameOfEvent = name;
+	}
+	
+	public String getNameOfEvent(){
+		return nameOfEvent;
 	}
 
 }
