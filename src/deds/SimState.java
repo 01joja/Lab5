@@ -1,6 +1,8 @@
 package deds;
+import java.util.Observable;
 
-public class SimState {
+public class SimState extends Observable{
+	
 	private double simTime = 0;
 	private boolean stopSim = false;
 	
