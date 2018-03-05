@@ -4,7 +4,7 @@ import deds.Event;
 import deds.SimState;
 import store.sim.StoreState;
 
-public class Start extends Event{
+public class Open extends Event{
 	
 	private double time = 0;
 	private double startTime;
@@ -23,6 +23,6 @@ public class Start extends Event{
 
 	public void setTime() {
 		startTime = 0;
-		finishTime = 999;
+		finishTime = 10;
 	}
 }
