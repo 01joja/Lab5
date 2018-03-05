@@ -2,6 +2,8 @@ package store.sim;
 
 import deds.Event;
 import deds.SimState;
+import store.events.Open;
+import deds.EventStart;
 
 public class StoreState extends SimState {
 	
@@ -15,19 +17,16 @@ public class StoreState extends SimState {
 	private int customersInStore = 0;
 	private int customersQueued = 0;
 	private int customersInLine[];
-	private int OPEN = 0;
-	private int CLOSED = 1;
+	private StoreAdmin admin;
+
 	
-	private StoreState(Customer c, Event e, FIFO f) { 
+	private StoreState(Customer c, Event e, int maxCustomers, int registers, int openTime) { 
+		Open simStart = new Open(0, 999);
+		admin = new StoreAdmin(registers, maxCustomers, openTime);
 		c.customerID();
 		e.getTime();
 	}
-	
-	public int open() { //this method is supposed to change the state of the store top open or closed
-			return OPEN;
-		}
 
-	
 	public int customersInStore() {
 		return this.customersInStore;
 	}

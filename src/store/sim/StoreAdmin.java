@@ -1,12 +1,25 @@
 package store.sim;
 
 public class StoreAdmin {
-	private int register = 4;
-	private  int maxcustomers = 25;
-	public int registers() {
+	private int register;
+	private int maxCustomers;
+	private int openTime;
+	
+	StoreAdmin (int register, int maxCustomers, int openTime){
+		this.register = register;
+		this.maxCustomers = maxCustomers;
+		this.openTime = openTime;
+	}
+	
+	public int getRegisters() {
 		return this.register;
 	}
-	public  int maxCustomers(){
-		return this.maxcustomers;
+	
+	public  int getMaxCustomers(){
+		return this.maxCustomers;
+	}
+	
+	public int getOpenTime(){
+		return this.openTime;
 	}
 }
