@@ -16,11 +16,11 @@ public class StoreState extends SimState {
 	private int customersInStore = 0;
 	private int customersQueued = 0;
 	private int customersInLine[];
-	private int OPEN = 0;
-	private int CLOSED = 1;
+
 	
-	private StoreState(Customer c, Event e, FIFO f) { 
+	private StoreState(Customer c, Event e, FIFO f, StoreAdmin a) { 
 		EventStart simStart = new EventStart(0, 999);
+		StoreAdmin admin = new StoreAdmin();
 		c.customerID();
 		e.getTime();
 	}
