@@ -3,18 +3,46 @@ package deds;
 import java.util.ArrayList;
 import deds.Event;
 
+/*
+ * This class keeps track of the queue for the events
+ */
 public class EventQueue<object> {
-	ArrayList EventsInQueue = new ArrayList();
-	int EventsInQueueLength = EventsInQueue.size();
+	ArrayList<Event> eventQueue = new ArrayList<Event>();
+	int EventsInQueueLength = eventQueue.size();
 
-}
 	/*
-	 * public ArrayList SortEvent() { for(int i=0; i >EventQueue.size();i ++ ) {
-	 * //if(EventsInQueue.get(i).Event.getTime > EventsInQueue.get(i).Event.getTime)
-	 * }
+	 * Adds event to queue
+	 * 
+	 * @param event
 	 */
+	public void AddEvent(Event event) {
+		eventQueue.add(event);
+	}
 
-	public void AddEvent(Object e) {
+	/*
+	 * Clears the queue
+	 */
+	public void ClearQueue() {
+		eventQueue.clear();
+		/*
+		 * Size of queue
+		 * @returns the size of the queue
+		 */
+	}
+	public int queueSize() {
+		return eventQueue.size();
+	}
 
+	/*
+	 * Return the first event in the queue
+	 */
+	public Event getFirst() {
+		Event FirstElement = eventQueue.get(0);
+		eventQueue.remove(0);
+		return FirstElement;
+	}
+	public Event prepareFirst() {
+			
+		}
 	}
 }
