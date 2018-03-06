@@ -30,9 +30,15 @@ public class StoreView extends SimView {
 	}
 
 	public void update(Observable o, Object arg) {
+		double starttid = theStateStore.getStart();
+		
 		String händelse = theStateStore.getCurrentEvent();
 		int tempCustomer = theStateStore.getCurrentCustomer();
-		
+		if(theStateStore.getCurrentEvent().equals("Start") ) {
+			 tempCustomer = 0;
+		}else if (theStateStore.getCurrentEvent().equals("Stop")) {
+			tempCustomer = 0;
+		}
 
 		int led = theStateStore.emptyRegisters();
 		double ledT = theStateStore.getTimeRegistersNotUsed();
@@ -42,8 +48,9 @@ public class StoreView extends SimView {
 		int köat = theStateStore.getCustumersQueued();
 		double köT = theStateStore.getQueueTime();
 		int köar = theStateStore.getCurrentlyQueuing();
+		int[] kassakö = theStateStore.getQueue();
 		System.out.println("Starttime" + " " + händelse + "\t" + tempCustomer + "  " + theStateStore + "\t" + led + "\t"
-				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + köat + "\t" + köT + "\t" + köar + "  " + );
+				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + köat + "\t" + köT + "\t" + köar + "  " + kassakö);
 
 	}
 
