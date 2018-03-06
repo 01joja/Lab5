@@ -57,6 +57,12 @@ public class StoreState extends SimState {
 		new Arrivals(this);
 	}
 	
+	public void updateStore(Event e){
+		this.currentEvnet = e.getNameOfEvent();
+		setChanged();
+		notifyObservers();
+	}
+	
 	public void updateStore(Event e , Customer c){
 		this.currentEvnet = e.getNameOfEvent();
 		this.currentCustomer = c.getCustomerID();

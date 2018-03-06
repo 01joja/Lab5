@@ -5,7 +5,7 @@ import deds.EventQueue;
 import deds.SimState;
 import store.sim.Customer;
 import store.sim.StoreState;
-
+import store.events.PickGoods;
 
 public class Arrivals extends Event{
 	
