@@ -23,12 +23,8 @@ public class StoreState extends SimState {
 	
 	public StoreState(int maxCustomers, int registers, double openTime) { 
 		Open simStart = new Open(0, 999);
-<<<<<<< HEAD
 		admin = new StoreAdmin(registers, maxCustomers, openTime);
-		
-=======
 		admin = new StoreAdmin(registers, maxCustomers);
->>>>>>> 758f2816177bfcc80f03cf1884f3799b3cd1f79f
 	}
 	
 	
