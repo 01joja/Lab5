@@ -13,16 +13,18 @@ public class Arrivals extends Event{
 	private double finishTime;
 	private Event Arrivals;
 		
-	Arrivals(EventQueue e) {
-		setname
+	public Arrivals() {
+		setTime;
+		super.setNameOfEvent("Arrivals");
 		Customer customer = new Customer();
-		e.addEvent(Arrivals);
+		EventQueue.getEventQueue(Arrivals);
 	}
 	
-	public void perform (StoreState s, StoreAdmin a, Customer c) {
-		Customer customer = new Customer();
-		customer.isStoreFull();
-		
+	public void perform (StoreState s) {
+		s.update;
+		s.isStoreFull();
+		PickGoods pickgoods = new PickGoods();
+		Arrivals arrivals = new Arrivals(EventQueue);
 		}
 		
 		

@@ -35,7 +35,7 @@ public class StoreState extends SimState {
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		arivalRandom = new ExponentialRandomStream(LAMBDA);
-		new Arivals();
+		new Arrivals();
 	}
 	
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
