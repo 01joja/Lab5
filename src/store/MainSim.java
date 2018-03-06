@@ -1,10 +1,10 @@
 package store;
+import deds.Simulator;
+import store.sim.StoreState;
 
 public class MainSim {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		StoreState storeState = new StoreState(2,5,10.0);
 	}
-
 }

@@ -21,12 +21,13 @@ public class StoreState extends SimState {
 	private StoreAdmin admin;
 
 	
-	private StoreState(Customer c, Event e, int maxCustomers, int registers, int openTime) { 
+	public StoreState(int maxCustomers, int registers, double openTime) { 
 		Open simStart = new Open(0, 999);
-		admin = new StoreAdmin(registers, maxCustomers, openTime);
-		Customer customer = new Customer();
-		
+		admin = new StoreAdmin(registers, maxCustomers);
 	}
+	
+	
+	
 
 	public int customersInStore() {
 		return this.customersInStore;
