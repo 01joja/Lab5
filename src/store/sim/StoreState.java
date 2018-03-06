@@ -5,6 +5,7 @@ import deds.Event;
 import deds.SimState;
 import store.events.*;
 import store.sim.*;
+import java.util.ArrayList;
 
 
 public class StoreState extends SimState {
@@ -14,6 +15,7 @@ public class StoreState extends SimState {
 	private final double P_MAX = 0.9;
 	private final double K_MIN = 0.35;
 	private final double K_MAX = 0.6;
+	private final double START = 0;
 	
 	private final int MAXCOSTUMER;
 	private final int REGISTERS;
@@ -26,6 +28,7 @@ public class StoreState extends SimState {
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
+	private ArrayList
 	private String currentEvnet;
 	private int currentCustomer;
 	private boolean storeIsOpen = false;
@@ -37,7 +40,7 @@ public class StoreState extends SimState {
 	
 
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
-		new Open(0, timeStoreIsOpen, 999, this);
+		new Open(this.START, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		arivalRandom = new ExponentialRandomStream(LAMBDA);
@@ -46,7 +49,7 @@ public class StoreState extends SimState {
 	}
 	
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
-		new Open(0, timeStoreIsOpen, 999, this);
+		new Open(this.START, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		arivalRandom = new ExponentialRandomStream(LAMBDA, seed);
@@ -107,6 +110,14 @@ public class StoreState extends SimState {
 	
 	public int getCurrentlyQueuing(){
 		return this.currentlyQueuing;
+	}
+	
+	public int[] getQueue(){
+		return nothing;
+	}
+	
+	public double getStart(){
+		return this.START;
 	}
 	
 	public int emptyRegisters(){
