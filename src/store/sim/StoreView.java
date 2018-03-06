@@ -35,8 +35,9 @@ public class StoreView extends SimView {
 	public void getvariables() {
 		int tempCust = theCustomer.getCustomerID();
 		Boolean StoreOpen = theStateStore.isStoreOpen();
-		led = theStateStore.getEmptyRegisters();
-		ledT = 
+		int led = theStateStore.emptyRegisters();
+		double ledT = theStateStore.timeRegistersNotUsed();
+		
 		
 	}
 	public void printCurrent() {

@@ -51,13 +51,21 @@ public class StoreState extends SimState {
 		new Arrivals();
 	}
 	
-	void updateStore(){
+	public void updateStore(){
 		setChanged();
 		notifyObservers();
 	}
 	
+	public EventQueue getEventQueue(){
+		return this.eventQueue;
+	}
+	
 	public void addPay(){
 		paid++;
+	}
+	
+	public int getPaid(){
+		return paid;
 	}
 	
 	public int customersInStore() {
@@ -72,7 +80,17 @@ public class StoreState extends SimState {
 		return this.REGISTERS;
 	}
 	
+	public int emptyRegisters(){
+		return this.emptyRegisters;
+	}
+	
 	public boolean isRegisterEmpty(){
+		if (this.emptyRegisters == 0){
+			return false;
+		}else{
+			emptyRegisters--;
+			return true;
+		}
 		
 	}
 		
