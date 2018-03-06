@@ -72,7 +72,9 @@ public class StoreState extends SimState {
 		return this.REGISTERS;
 	}
 	
-	
+	public boolean isRegisterEmpty(){
+		
+	}
 		
 	public double getQueueTime() {
 		if (fifo.isEmpty() == true) {
