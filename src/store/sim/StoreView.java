@@ -7,6 +7,17 @@ import store.sim.StoreAdmin;
 public class StoreView extends SimView {
        private  StoreState theStateStore;
        private Customer theCustomer;
+       private int tempCust = theCustomer.getCustomerID();
+       
+       
+		private int led = theStateStore.emptyRegisters();
+		private double ledT = theStateStore.getTimeRegistersNotUsed();
+		private int i = theStateStore.customersInStore();
+		private int customersPayed = theStateStore.getPaid();
+		private int sad = theStateStore.getSad();
+		private int köat = theStateStore.getCustumersQueued();
+		private double köT = theStateStore.getQueueTime();
+		private int köar = theStateStore.getCurrentlyQueuing();
        public StoreView(StoreState theStateStore) {
     	   stateOfStore(theStateStore);
    		System.out.println("PARAMETRAR");
@@ -29,24 +40,10 @@ public class StoreView extends SimView {
 	}
     
 	public void update(Observable o, Object arg) {
+		System.out.println(tempCust  + "\t" + led + "\t"+ ledT + "\t" + "\t" + i + "\t" + customersPayed + "\t" +sad + "\t" +köat +"\t" + köT + "\t" +köar);
 
 		
 	}
-	public void getvariables() {
-		int tempCust = theCustomer.getCustomerID();
-		Boolean StoreOpen = theStateStore.isStoreOpen();
-		int led = theStateStore.emptyRegisters();
-		double ledT = theStateStore.getTimeRegistersNotUsed();
-		int i = theStateStore.customersInStore();
-		int customersPayed = theStateStore.getPaid();
-		int sad = theStateStore.getSad();
-		int köat = theStateStore.getCustomersQueued();
-		double köT = theStateStore.getQueuedTime();
-		int köar = theStateStore.getCurrentlyQueuing();
-		
-		
-	}
-	public void printCurrent() 
-	{
-	}
+	
+	
 }
