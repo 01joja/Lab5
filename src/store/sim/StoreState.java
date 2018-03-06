@@ -28,7 +28,7 @@ public class StoreState extends SimState {
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
-	private ArrayList
+	private ArrayList;
 	private String currentEvnet;
 	private int currentCustomer;
 	private boolean storeIsOpen = false;
