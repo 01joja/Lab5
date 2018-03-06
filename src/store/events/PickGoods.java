@@ -1,14 +1,16 @@
 package store.events;
 
 import deds.Event;
+import deds.EventQueue;
 
 	public class PickGoods extends Event {	
 		private Event PickGoods;
+		private EventQueue eventQueue;
 		public  PickGoods() {
 		setTime;
 		super.setNameOfEvent("PickGoods");
 		Arrivals arrival = new Arrivals();
-		EventQueue.getEventQueue(PickGoods);
+		eventQueue.getEventQueue(PickGoods);
 	}
 
 	public void perform (StoreState s) {
