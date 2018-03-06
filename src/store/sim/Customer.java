@@ -5,7 +5,7 @@ public class Customer {
 	private int customerID = 0;
 	private static int numberOfCustomers;
 	
-	Customer() {
+	public Customer() {
 		customerID = numberOfCustomers;
 		numberOfCustomers += 1;
 	}
