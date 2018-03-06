@@ -17,13 +17,12 @@ public class StoreState extends SimState {
 	private int customersInStore = 0;
 	private int customersQueued = 0;
 	private int customersInLine[];
-	private boolean OPEN = true;
+	private boolean storeIsOpen = false;
 	private StoreAdmin admin;
 
 	
 	public StoreState(int maxCustomers, int registers, double openTime) { 
-		Open simStart = new Open(0, 999);
-		admin = new StoreAdmin(registers, maxCustomers, openTime);
+		Open openStore = new Open(0, openTime, 999, this);
 		admin = new StoreAdmin(registers, maxCustomers);
 	}
 	
@@ -42,11 +41,11 @@ public class StoreState extends SimState {
 	}
 	
 	public void openStore() {
-		OPEN = true;
+		storeIsOpen = true;
 	}
 	
 	public void closeStore() {
-		OPEN = false;
+		storeIsOpen = false;
 	}
 
 }
