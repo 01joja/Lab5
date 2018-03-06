@@ -2,7 +2,6 @@ package store.events;
 
 import deds.Event;
 
-public class PickGoods extends Event {
 	public class PickGoods extends Event {	
 		private Event PickGoods;
 		public  PickGoods() {
@@ -20,4 +19,4 @@ public class PickGoods extends Event {
 		}
 	}
 
-}
+
