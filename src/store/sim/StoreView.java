@@ -36,7 +36,13 @@ public class StoreView extends SimView {
 		int tempCust = theCustomer.getCustomerID();
 		Boolean StoreOpen = theStateStore.isStoreOpen();
 		int led = theStateStore.emptyRegisters();
-		double ledT = theStateStore.timeRegistersNotUsed();
+		double ledT = theStateStore.getTimeRegistersNotUsed();
+		int i = theStateStore.customersInStore();
+		int customersPayed = theStateStore.getPaid();
+		int sad = theStateStore.getSad();
+		int köat = theStateStore.getCustomersQueued();
+		double köT = theStateStore.getQueuedTime();
+		int köar = theStateStore.getCurrentlyQueuing();
 		
 		
 	}

@@ -21,6 +21,7 @@ public class StoreState extends SimState {
 	private int paid = 0;
 	private int sad = 0;
 	private int currentlyQueuing = 0;
+	private int costumersQueued = 0;
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
@@ -78,6 +79,22 @@ public class StoreState extends SimState {
 	
 	public int getRegisters(){
 		return this.REGISTERS;
+	}
+	
+	public double getTimeRegistersNotUsed(){
+		return this.timeRegistersNotUsed;
+	}
+	
+	public int getSad(){
+		return this.sad;
+	}
+	
+	public int getCostumersQueued(){
+		return this.costumersQueued;
+	}
+	
+	public int getCurrentlyQueuing(){
+		return this.currentlyQueuing;
 	}
 	
 	public int emptyRegisters(){
