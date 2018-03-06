@@ -3,13 +3,15 @@ package store.sim;
 public class Customer {
 	
 	private int customerID = 0;
+	private static int numberOfCustomers;
 	
-	public void customer() {
-		customerID += 1;
+	Customer() {
+		customerID = numberOfCustomers;
+		numberOfCustomers += 1;
 	}
 	
-	public int customerID() {
-		return customerID;
+	public int getCustomerID() {
+		return this.customerID;
 	}
 
 }
