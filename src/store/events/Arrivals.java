@@ -28,9 +28,16 @@ public class Arrivals extends Event{
 	}
 	
 	public void perform () {
+<<<<<<< HEAD
 		storeState.updateStore(this, customer);
 		storeState.isStoreFull();
 //		PickGoods pickgoods = new PickGoods();
 		Arrivals arrivals = new Arrivals(storeState,exponentialRandomStream);
+=======
+<<<<<<< HEAD
+=======
+//		PickGoods pickgoods = new PickGoods();
+>>>>>>> 38ad77fac4e7bd7a33151db88864de99ff63c777
+>>>>>>> cc1e894f44f211436d72c3d6bd509ebbe3c837d3
 		}
 }
