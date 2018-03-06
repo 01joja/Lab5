@@ -72,8 +72,12 @@ public class StoreState extends SimState {
 		return this.REGISTERS;
 	}
 	
+	public int emptyRegisters(){
+		return this.emptyRegisters;
+	}
+	
 	public boolean isRegisterEmpty(){
-		
+		if ()
 	}
 		
 	public double getQueueTime() {
