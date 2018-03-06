@@ -1,5 +1,6 @@
 package deds;
 import java.util.Observable;
+import deds.*;
 
 public class SimState extends Observable{
 	
@@ -14,6 +15,7 @@ public class SimState extends Observable{
 		if (stopSim = true){
 			return false;
 		}
+		
 		return true;
 	}
 }
