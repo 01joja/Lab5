@@ -7,7 +7,7 @@ import deds.Event;
 		public  PickGoods() {
 		setTime;
 		super.setNameOfEvent("PickGoods");
-		Customer customer = new Customer();
+		Arrivals arrival = new Arrivals();
 		EventQueue.getEventQueue(PickGoods);
 	}
 

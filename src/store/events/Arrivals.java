@@ -21,7 +21,7 @@ public class Arrivals extends Event{
 	}
 	
 	public void perform (StoreState s) {
-		s.update;
+		s.update();
 		s.isStoreFull();
 		PickGoods pickgoods = new PickGoods();
 		Arrivals arrivals = new Arrivals();
