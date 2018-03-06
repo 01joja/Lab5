@@ -22,8 +22,8 @@ public class StoreState extends SimState {
 	private FIFO fifo;
 
 	
-	public StoreState(int maxCustomers, int registers, double openTime) { 
-		new Open(0, openTime, 999, this);
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
+		new Open(0, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 	}
