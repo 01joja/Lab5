@@ -1,6 +1,7 @@
 package store.sim;
 
 import deds.EventQueue;
+import deds.Event;
 import deds.SimState;
 import store.events.*;
 import store.sim.*;
@@ -25,6 +26,8 @@ public class StoreState extends SimState {
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
+	private String currentEvnet;
+	private int currentCustomer;
 	private boolean storeIsOpen = false;
 	
 	private FIFO fifo;
@@ -51,9 +54,19 @@ public class StoreState extends SimState {
 		new Arrivals();
 	}
 	
-	public void updateStore(){
+	public void updateStore(Event e , Customer c){
+		this.currentEvnet = e.getNameOfEvent();
+		this.currentCustomer = c.getCustomerID();
 		setChanged();
 		notifyObservers();
+	}
+	
+	public String getCurrentEvent(){
+		return this.currentEvnet;
+	}
+	
+	public int getCurrentCustomer(){
+		return this.currentCustomer;
 	}
 	
 	public EventQueue getEventQueue(){
