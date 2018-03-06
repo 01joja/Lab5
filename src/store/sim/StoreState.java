@@ -34,7 +34,7 @@ public class StoreState extends SimState {
 		new Open(0, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
-		arivalRandom = new ExponentialRandomStream(lambda);
+		arivalRandom = new ExponentialRandomStream(LAMBDA);
 		new Arivals();
 	}
 	
@@ -42,7 +42,7 @@ public class StoreState extends SimState {
 		new Open(0, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
-		arivalRandom = new ExponentialRandomStream(lambda, seed);
+		arivalRandom = new ExponentialRandomStream(LAMBDA, seed);
 	}
 
 	public int customersInStore() {
