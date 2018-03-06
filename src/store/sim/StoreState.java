@@ -27,9 +27,6 @@ public class StoreState extends SimState {
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 	}
-	
-	
-	
 
 	public int customersInStore() {
 		return this.customersInStore;
