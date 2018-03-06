@@ -14,19 +14,17 @@ import store.sim.StoreState;
 		private Customer customer;
 		
 		public  PickGoods(StoreState s) {
-		setTime;
+		//setTime;
 		this.s=s;
 		this.eventQueue = s.getEventQueue();
 		super.setNameOfEvent("PickGoods");
-		this.arrival = new Arrivals();
 		this.customer = new Customer();
-		eventQueue.addEvent(this);;
+		this.eventQueue.addEvent(this);;
 	}
 
 	public void perform () {
-		s.update;
+		s.updateStore(this,customer);
 		Pay pay = new Pay();
 		PickGoods pickgoods = new PickGoods(s);
 		}
 	}
-
