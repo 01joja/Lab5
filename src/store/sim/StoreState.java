@@ -20,21 +20,22 @@ public class StoreState extends SimState {
 	private int customersQueued = 0;
 	private boolean storeIsOpen = false;
 	private FIFO fifo;
-	private double lambda = 2;
-	private long seed = 1234;
-	private ExponentialRandomStream eRandomStream;
-	
-	public void ExponentialArrivalTime(double lambda, long seed) {
-		this.lambda = lambda;
-		this.seed = seed;
-		eRandomStream = new ExponentialRandomStream(lambda, seed);
-	}
-
+	private double lambda = 4;
+	private ExponentialRandomStream arivalRandom;
 	
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
 		new Open(0, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
+		arivalRandom = new ExponentialRandomStream(lambda);
+		new Arivals();
+	}
+	
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
+		new Open(0, timeStoreIsOpen, 999, this);
+		this.REGISTERS = registers;
+		this.MAXCOSTUMER = maxCustomers;
+		arivalRandom = new ExponentialRandomStream(lambda, seed);
 	}
 
 	public int customersInStore() {
