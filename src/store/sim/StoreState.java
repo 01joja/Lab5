@@ -24,18 +24,14 @@ public class StoreState extends SimState {
 	private long seed = 1234;
 	private ExponentialRandomStream eRandomStream;
 	
-<<<<<<< HEAD
 	public StoreState(int maxCustomers, int registers, double openTime) { 
 		Open simStart = new Open(0, 999);
-		
-		admin = new StoreAdmin(registers, maxCustomers);
 
-=======
 	public void ExponentialArrivalTime(double lambda, long seed) {
 		this.lambda = lambda;
 		this.seed = seed;
 		eRandomStream = new ExponentialRandomStream(lambda, seed);
->>>>>>> c16baa05d09de3c8c0ed738ddf5fa318886f31e8
+
 	}
 
 	
