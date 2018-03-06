@@ -35,14 +35,14 @@ public class StoreState extends SimState {
 	
 	private FIFO fifo;
 	private ExponentialRandomStream arrivalRandom;
-	private EventQueue eventQueue;
 
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
 		new Open(this.START, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		arrivalRandom = new ExponentialRandomStream(LAMBDA);
-		eventQueue = new EventQueue();
+		super.eventQueue = new EventQueue();
+		new StoreView(this);
 		new Arrivals(this, arrivalRandom);
 	}
 	
@@ -51,7 +51,8 @@ public class StoreState extends SimState {
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		arrivalRandom = new ExponentialRandomStream(LAMBDA, seed);
-		eventQueue = new EventQueue();
+		super.eventQueue = new EventQueue();
+		new StoreView(this);
 		new Arrivals(this, arrivalRandom);
 	}
 	
@@ -77,7 +78,7 @@ public class StoreState extends SimState {
 	}
 	
 	public EventQueue getEventQueue(){
-		return this.eventQueue;
+		return super.eventQueue;
 	}
 	
 	public void addPay(){

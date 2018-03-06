@@ -24,7 +24,7 @@ public class Arrivals extends Event{
 		this.eventQueue = s.getEventQueue();
 		super.setNameOfEvent("Arrivals");
 		this.customer = new Customer();
-		eventQueue.addEvent(this);;
+		eventQueue.addEvent(this);
 	}
 	
 	public void perform () {

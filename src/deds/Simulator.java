@@ -1,5 +1,6 @@
 package deds;
 import deds.SimState;
+import store.sim.StoreView;
 
 public class Simulator {
 	
@@ -10,8 +11,8 @@ public class Simulator {
 	}
 	
 	public void mainLoop(){
-		
-		while(this.theSimulator.getRunSim()){			
+		System.out.print("hej");
+		while(this.theSimulator.getRunSim()){
 		}
 	}
 }
