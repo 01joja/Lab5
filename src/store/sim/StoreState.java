@@ -25,8 +25,10 @@ public class StoreState extends SimState {
 	private int customersInStore = 0;
 	private int customersQueued = 0;
 	private boolean storeIsOpen = false;
+	
 	private FIFO fifo;
 	private ExponentialRandomStream arivalRandom;
+	private 
 	
 	
 
@@ -47,6 +49,14 @@ public class StoreState extends SimState {
 
 	public int customersInStore() {
 		return this.customersInStore;
+	}
+	
+	public int getMaxCustomers(){
+		return this.MAXCOSTUMER;
+	}
+	
+	public int getRegisters(){
+		return this.REGISTERS;
 	}
 		
 	public double queuedTime() {
