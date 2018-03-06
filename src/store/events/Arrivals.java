@@ -24,22 +24,6 @@ public class Arrivals extends Event{
 		s.update;
 		s.isStoreFull();
 		PickGoods pickgoods = new PickGoods();
-		Arrivals arrivals = new Arrivals(EventQueue);
+		Arrivals arrivals = new Arrivals();
 		}
-		
-		
-			
-		
-	
-	
-	public double[] getTime() {
-		double[] time = {startTime, finishTime};
-		return time;
-	}
-	
-	public void setTime(double startTime, double finishTime) {
-		
-	}
-
-
 }
