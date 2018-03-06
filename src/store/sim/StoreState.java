@@ -24,7 +24,6 @@ public class StoreState extends SimState {
 	private StoreState(Customer c, Event e, int maxCustomers, int registers, int openTime) { 
 		Open simStart = new Open(0, 999);
 		admin = new StoreAdmin(registers, maxCustomers, openTime);
-		Customer customer = new Customer();
 		
 	}
 

@@ -13,15 +13,14 @@ public class Arrives extends Event{
 		
 			
 	public void perform (StoreState s, StoreAdmin a) {
-		if ( s.customersInStore() == a.maxCustomers()) {
-			s.angry();
+		
 			
 		}
-		s.addCustomer();
+		
 		
 			
 		
-	}
+	
 	
 	public double[] getTime() {
 		double[] time = {startTime, finishTime};
