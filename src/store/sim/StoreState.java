@@ -42,7 +42,7 @@ public class StoreState extends SimState {
 		this.MAXCOSTUMER = maxCustomers;
 		arivalRandom = new ExponentialRandomStream(LAMBDA);
 		eventQueue = new EventQueue();
-		new Arrivals();
+		new Arrivals(this);
 	}
 	
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
@@ -51,7 +51,7 @@ public class StoreState extends SimState {
 		this.MAXCOSTUMER = maxCustomers;
 		arivalRandom = new ExponentialRandomStream(LAMBDA, seed);
 		eventQueue = new EventQueue();
-		new Arrivals();
+		new Arrivals(this);
 	}
 	
 	public void updateStore(Event e , Customer c){
