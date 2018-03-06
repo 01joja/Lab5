@@ -3,10 +3,15 @@ import deds.SimState;
 
 public class Simulator {
 	
-	public void mainLoop(SimState SimState){
+	SimState theSimulator;
+	
+	public Simulator(SimState theSimulator){
+		this.theSimulator = theSimulator;
+	}
+	
+	public void mainLoop(){
 		
-		while(SimState.getRunSim()){
-			
+		while(this.theSimulator.getRunSim()){			
 		}
 	}
 }
