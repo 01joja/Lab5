@@ -1,12 +1,14 @@
 package store.sim;
 
-import deds.Event;
 import deds.SimState;
-import store.events.Open;
-import deds.EventStart;
+import store.events.*;
+import store.sim.*;
+
 
 public class StoreState extends SimState {
 	
+	private final int MAXCOSTUMER;
+	private final int REGISTERS;
 	private double queuedTime = 0;
 	private double timeRegistersNotUsed = 0;
 	private int paid = 0;
@@ -16,14 +18,14 @@ public class StoreState extends SimState {
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
 	private int customersQueued = 0;
-	private int customersInLine[];
 	private boolean storeIsOpen = false;
-	private StoreAdmin admin;
+	private FIFO fifo;
 
 	
 	public StoreState(int maxCustomers, int registers, double openTime) { 
-		Open openStore = new Open(0, openTime, 999, this);
-		admin = new StoreAdmin(registers, maxCustomers);
+		new Open(0, openTime, 999, this);
+		this.REGISTERS = registers;
+		this.MAXCOSTUMER = maxCustomers;
 	}
 	
 	
@@ -33,11 +35,11 @@ public class StoreState extends SimState {
 		return this.customersInStore;
 	}
 		
-	public double queuedTime(FIFO f) {
-		if (f.isEmpty() == true) {
+	public double queuedTime() {
+		if (fifo.isEmpty() == true) {
 			return 0;
 		}
-		
+		return 0.5;
 	}
 	
 	public void openStore() {
@@ -46,6 +48,10 @@ public class StoreState extends SimState {
 	
 	public void closeStore() {
 		storeIsOpen = false;
+	}
+	
+	public FIFO getFIFO(){
+		return fifo;
 	}
 
 }
