@@ -6,7 +6,12 @@ import deds.Event;
 /*
  * This class keeps track of the queue for the events
  */
-public class EventQueue<object> {
+public class EventQueue {
+	
+	void addStopEvent(Event e){
+		eventQueue.add(e);
+	}
+	
 	ArrayList<Event> eventQueue = new ArrayList<Event>();
 
 	/*
@@ -16,13 +21,9 @@ public class EventQueue<object> {
 	 */
 	public void addEvent(Event event) {
 		double runTime = event.getEventFinishTime();
-		if (eventQueue.size() == 0){
-			eventQueue.add(event);
-		}else{
-			for (int i = 0; i < eventQueue.size(); i++){
-				if (eventQueue.get(i).getEventFinishTime() > runTime){
-					eventQueue.add(event);
-				}
+		for (int i = 0; i < eventQueue.size(); i++){
+			if (eventQueue.get(i).getEventFinishTime() > runTime){
+				eventQueue.add(i, event);
 			}
 		}
 	}

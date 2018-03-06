@@ -17,9 +17,18 @@ public class SimState extends Observable{
 		if (this.stopSim == true){
 			return false;
 		}
-		System.out.print("vill köra");
 		Event event = eventQueue.getFirst();
+//		System.out.println(event.getEventFinishTime() + " " + event.getNameOfEvent());
 		event.perform();
 		return true;
 	}
+	
+	public void setTime(double time){
+		this.simTime = time;
+	}
+	
+	public double getTime(){
+		return this.simTime;
+	}
+	
 }

@@ -9,6 +9,7 @@ public class StoreView extends SimView {
 
 	public StoreView(StoreState theStateStore) {
 		stateOfStore(theStateStore);
+		this.theStateStore.addObserver(this);
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
 		System.out.println(String.format("Antal kassor, N..........: ", theStateStore.getRegisters()));
@@ -29,7 +30,7 @@ public class StoreView extends SimView {
 	}
 
 	public void update(Observable o, Object arg) {
-		double starttid = theStateStore.getStart();
+		double starttid = theStateStore.getTime();
 
 		String event = theStateStore.getCurrentEvent();
 		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
@@ -46,7 +47,7 @@ public class StoreView extends SimView {
 		double queuedTime = theStateStore.getQueueTime();
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
 		int[] cashiersQueue = theStateStore.getQueue();
-		System.out.println(starttid + " " + event + "\t" + event + "  " + theStateStore + "\t" + led + "\t"
+		System.out.println(starttid + " " + event + "\t" + customerID + "\t" + led + "\t"
 				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + queuedTime + "\t" + currentlyQueueing + "  "
 				+ cashiersQueue);
 

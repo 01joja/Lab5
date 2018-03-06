@@ -11,8 +11,10 @@ public class Simulator {
 	}
 	
 	public void mainLoop(){
-		System.out.print("hej");
+		int i = 0;
 		while(this.theSimulator.getRunSim()){
+			i++;
 		}
+		System.out.println(i);
 	}
 }
