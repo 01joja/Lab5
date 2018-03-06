@@ -2,11 +2,9 @@ package store.sim;
 
 import java.util.Observable;
 import deds.SimView;
-import store.sim.StoreAdmin;
 
 public class StoreView extends SimView {
 	private StoreState theStateStore;
-	private Customer theCustomer;
 	private double ledT = 0;
 
 	public StoreView(StoreState theStateStore) {
@@ -33,10 +31,10 @@ public class StoreView extends SimView {
 	public void update(Observable o, Object arg) {
 		double starttid = theStateStore.getStart();
 
-		String händelse = theStateStore.getCurrentEvent();
-		String tempCustomer = Integer.toString(theStateStore.getCurrentCustomer());
+		String event = theStateStore.getCurrentEvent();
+		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
 		if (theStateStore.getCurrentEvent().equals("Stop")) {
-			tempCustomer = "---";
+			customerID = "---";
 		}
 
 		int led = theStateStore.emptyRegisters();
@@ -44,13 +42,13 @@ public class StoreView extends SimView {
 		int i = theStateStore.customersInStore();
 		int customersPayed = theStateStore.getPaid();
 		int sad = theStateStore.getSad();
-		int köat = theStateStore.getCustumersQueued();
-		double köT = theStateStore.getQueueTime();
-		int köar = theStateStore.getCurrentlyQueuing();
-		int[] kassakö = theStateStore.getQueue();
-		System.out.println(starttid + " " + händelse + "\t" + tempCustomer + "  " + theStateStore + "\t" + led + "\t"
-				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + köat + "\t" + köT + "\t" + köar + "  "
-				+ kassakö);
+		int customerQueued = theStateStore.getCustumersQueued();
+		double queuedTime = theStateStore.getQueueTime();
+		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
+		int[] cashiersQueue = theStateStore.getQueue();
+		System.out.println(starttid + " " + event + "\t" + event + "  " + theStateStore + "\t" + led + "\t"
+				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + queuedTime + "\t" + currentlyQueueing + "  "
+				+ cashiersQueue);
 
 	}
 	public void results() {
