@@ -11,7 +11,7 @@ public class SimState extends Observable{
 	}
 	
 	boolean getRunSim(){
-		if (stopSim){
+		if (stopSim = true){
 			return false;
 		}
 		return true;
