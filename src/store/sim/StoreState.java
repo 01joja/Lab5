@@ -31,14 +31,11 @@ public class StoreState extends SimState {
 	}
 
 	
-	public StoreState(int maxCustomers, int registers, double openTime) { 
-		new Open(0, openTime, 999, this);
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
+		new Open(0, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 	}
-	
-	
-	
 
 	public int customersInStore() {
 		return this.customersInStore;

@@ -15,12 +15,12 @@ public class Event {
 		return finishTime;
 	}
 	
-	public void setTime(double finishTime) {
+	protected void setTime(double finishTime) {
 		this.finishTime = finishTime;
 		
 	}
 	
-	public void setNameOfEvent(String name){
+	protected void setNameOfEvent(String name){
 		this.nameOfEvent = name;
 	}
 	
