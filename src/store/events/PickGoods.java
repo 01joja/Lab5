@@ -2,13 +2,12 @@ package store.events;
 
 import deds.Event;
 
-public class PickGoods extends Event {
 	public class PickGoods extends Event {	
 		private Event PickGoods;
 		public  PickGoods() {
 		setTime;
 		super.setNameOfEvent("PickGoods");
-		Customer customer = new Customer();
+		Arrivals arrival = new Arrivals();
 		EventQueue.getEventQueue(PickGoods);
 	}
 
@@ -20,4 +19,4 @@ public class PickGoods extends Event {
 		}
 	}
 
-}
+
