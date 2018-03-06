@@ -28,7 +28,7 @@ public class StoreState extends SimState {
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
-	private ArrayList;
+	private ArrayList<Integer> queue = new ArrayList<Integer>();
 	private String currentEvnet;
 	private int currentCustomer;
 	private boolean storeIsOpen = false;
@@ -36,8 +36,6 @@ public class StoreState extends SimState {
 	private FIFO fifo;
 	private ExponentialRandomStream arivalRandom;
 	private EventQueue eventQueue;
-	
-	
 
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
 		new Open(this.START, timeStoreIsOpen, 999, this);
@@ -119,7 +117,8 @@ public class StoreState extends SimState {
 	}
 	
 	public int[] getQueue(){
-		return nothing;
+		int[] temp = new int[0];
+		return temp;
 	}
 	
 	public double getStart(){

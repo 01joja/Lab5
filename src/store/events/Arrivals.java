@@ -4,6 +4,7 @@ import deds.Event;
 import deds.EventQueue;
 import deds.SimState;
 import store.sim.Customer;
+import store.sim.ExponentialRandomStream;
 import store.sim.StoreState;
 import store.events.PickGoods;
 
@@ -11,14 +12,15 @@ public class Arrivals extends Event{
 	
 	private double startTime;
 	private double finishTime;
+	private ExponentialRandomStream exponentialRandomStream;
 	private Event Arrivals;
 	private Customer customer;
-	private StoreState s;
+	private StoreState storeState;
 	private EventQueue eventQueue;
 		
-	public Arrivals(StoreState s) {
-		this.s=s;
-		setTime;
+	public Arrivals(StoreState s, ExponentialRandomStream time) {
+		this.storeState=s;
+		this.exponentialRandomStream = time;
 		this.eventQueue = s.getEventQueue();
 		super.setNameOfEvent("Arrivals");
 		this.customer = new Customer();
@@ -26,9 +28,9 @@ public class Arrivals extends Event{
 	}
 	
 	public void perform () {
-		s.update();
-		s.isStoreFull();
+		storeState.updateStore(this, customer);
+		storeState.isStoreFull();
 //		PickGoods pickgoods = new PickGoods();
-		Arrivals arrivals = new Arrivals(s);
+		Arrivals arrivals = new Arrivals(storeState,exponentialRandomStream);
 		}
 }
