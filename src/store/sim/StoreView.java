@@ -46,7 +46,7 @@ public class StoreView extends SimView {
 		
 		
 	}
-	public void printCurrent() {
-		
+	public void printCurrent() 
+	{
 	}
 }

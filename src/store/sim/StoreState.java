@@ -21,11 +21,10 @@ public class StoreState extends SimState {
 	private int paid = 0;
 	private int sad = 0;
 	private int currentlyQueuing = 0;
-	private int costumersQueued = 0;
+	private int customersQueued = 0;
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
-	private int customersQueued = 0;
 	private boolean storeIsOpen = false;
 	
 	private FIFO fifo;
@@ -89,8 +88,8 @@ public class StoreState extends SimState {
 		return this.sad;
 	}
 	
-	public int getCostumersQueued(){
-		return this.costumersQueued;
+	public int getCustumersQueued(){
+		return this.customersQueued;
 	}
 	
 	public int getCurrentlyQueuing(){

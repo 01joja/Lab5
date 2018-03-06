@@ -12,15 +12,20 @@ public class Arrivals extends Event{
 	private double startTime;
 	private double finishTime;
 	private Event Arrivals;
+	private Customer customer;
+	private StoreState s;
+	private EventQueue eventQueue;
 		
-	public Arrivals() {
+	public Arrivals(StoreState s) {
+		this.s=s;
 		setTime;
+		this.eventQueue = s.getEventQueue();
 		super.setNameOfEvent("Arrivals");
-		Customer customer = new Customer();
-		EventQueue.getEventQueue(Arrivals);
+		this.customer = new Customer();
+		eventQueue.addEvent(this);;
 	}
 	
-	public void perform (StoreState s) {
+	public void perform () {
 		s.update();
 		s.isStoreFull();
 		PickGoods pickgoods = new PickGoods();
