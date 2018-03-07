@@ -15,9 +15,9 @@ public class StoreView extends SimView {
 		System.out.println("==========");
 		System.out.println("Antal kassor, N..........:" + theStateStore.getRegisters());
 		System.out.println("Max som ryms, M..........:" + theStateStore.getMaxCustomers());
-		System.out.println("Plocktider, [P_min..Pmax]:" + theStateStore.customersInStore());
-		System.out.println("Betaltider, [K_min..Kmax]:" + theStateStore.customersInStore());
-		System.out.println("Fröt, f..................:" + theStateStore.customersInStore());
+		System.out.println("Plocktider, [P_min..Pmax]:" + "[" + theStateStore.getP_MIN() +".." +  theStateStore.getP_MAX() + "]");
+		System.out.println("Betaltider, [K_min..Kmax]:" + "[" + theStateStore.getK_MIN() +".." +  theStateStore.getK_MAX() + "]");
+		System.out.println("Fröt, f..................:" + theStateStore.getSeed());
 		System.out.println("FÖRLOPP");
 		System.out.println("=======");
 		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tI\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");

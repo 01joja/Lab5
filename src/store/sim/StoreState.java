@@ -33,6 +33,7 @@ public class StoreState extends SimState {
 	private String currentEvnet;
 	private int currentCustomer;
 	private boolean storeIsOpen = false;
+	private long seed;
 	
 	private FIFO fifo;
 	private ExponentialRandomStream arrivalRandom;
@@ -226,5 +227,9 @@ public class StoreState extends SimState {
 	//Skickar tillbaka det som specificeras.
 	public double getK_MAX() {
 		return this.K_MAX;
+	}
+	public long getSeed() {
+		
+		return this.seed;
 	}
 }
