@@ -11,7 +11,7 @@ import store.sim.StoreState;
 		private StoreState s;
 		private Customer customer;
 		
-		PickGoods(customer customer, storestate s) {
+		PickGoods(customer, storeState) {
 		//setTime;
 		this.s=s;
 		this.eventQueue = s.getEventQueue();
@@ -20,13 +20,10 @@ import store.sim.StoreState;
 	}
 
 	public void perform () {
-<<<<<<< HEAD
 		s.updateStore(this, customer);
 		Pay pay = new Pay(customer, s);
-=======
 		s.updateStore(this,customer);
 //		Pay pay = new Pay();
 		PickGoods pickgoods = new PickGoods(s);
->>>>>>> 044deca5007869b50c541d2f585544ab21f65f5d
 		}
 	}
