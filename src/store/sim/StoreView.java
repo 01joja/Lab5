@@ -53,18 +53,20 @@ public class StoreView extends SimView {
 		int customerQueued = theStateStore.getCustumersQueued();
 		queuedTime = theStateStore.getQueueTime() + queuedTime;
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
-		int[] cashiersQueue = theStateStore.getQueue();
-		//String currentCashiersQueue = Arrays.toString(cashiersQueue);
+		int [] currentlyInQueue = theStateStore.getQueue(); 
+			
+			
+		
 		System.out.printf("%3.2f", starttid);
 		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
-				+ " \t " + cashiersQueue + "\n");
+				+ " \t " + Arrays.toString(currentlyInQueue) + "\n");
 
 	}
 
 	public void results() {
 		double averageCashiertime = ledT / 2;
-		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued()  ;
+		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued();
 		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
 		System.out.print("\nRESULTAT\n========\n\n");
 		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missades.\n\n");

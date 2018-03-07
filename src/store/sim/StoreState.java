@@ -229,11 +229,18 @@ public class StoreState extends SimState {
 		return 0.5;
 	}
 
+	public boolean isFIFOempty() {
+		if (fifo.isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
 	// Om affären är full så ökar antalet ledsna kunder, annars läggs det till
 	// en kund i affären.
 	public boolean isStoreFull() {
 		if (this.customersInStore == this.MAXCOSTUMER) {
-			if (this.storeIsOpen){
+			if (this.storeIsOpen) {
 				this.sad++;
 			}
 			return true;
@@ -291,11 +298,16 @@ public class StoreState extends SimState {
 		return this.K_MAX;
 	}
 
-	//Skickar tillbaka det som specificeras.
+	// Skickar tillbaka det som specificeras.
 	public long getSeed() {
 		return this.SEED;
 	}
 
+	/**
+	 * Returnerar aff�rens �ppningstid
+	 * 
+	 * @return
+	 */
 	public double getOpenTime() {
 		return this.OpenTime;
 	}
@@ -303,7 +315,7 @@ public class StoreState extends SimState {
 	public void setOpenTime(double time) {
 		this.OpenTime = time;
 	}
-	
+
 	public double getLAMBDA() {
 		return this.LAMBDA;
 	}
