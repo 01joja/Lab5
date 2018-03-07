@@ -11,10 +11,7 @@ public class Simulator {
 	}
 	
 	public void mainLoop(){
-		int i = 0;
 		while(this.theSimulator.getRunSim()){
-			i++;
 		}
-		System.out.println(i);
 	}
 }
