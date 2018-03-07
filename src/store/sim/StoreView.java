@@ -25,9 +25,7 @@ public class StoreView extends SimView {
 		System.out.println("Fr�t, f..................: " + this.theStateStore.getSeed());
 		System.out.println("F�RLOPP");
 		System.out.println("=======");
-		System.out.println("0,00\tStart\n");
 		System.out.println("Tid\tH�ndelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tk�at\tk�T\tk�ar\t[Kassak�..]\n");
-		//System.out.println("0,00\tStart\n");
 
 	}
 
