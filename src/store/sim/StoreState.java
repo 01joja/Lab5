@@ -19,6 +19,8 @@ public class StoreState extends SimState {
 	private final double K_MIN = 0.35;
 	private final double K_MAX = 0.6;
 	private final double START = 0;
+	private final boolean HASSEED;
+	private final long SEED;
 	
 	private final int MAXCOSTUMER;
 	private final int REGISTERS;
@@ -39,6 +41,8 @@ public class StoreState extends SimState {
 	
 	private FIFO fifo;
 	private ExponentialRandomStream arrivalRandom;
+	private UniformRandomStream pickGoodsRandom;
+	private UniformRandomStream	payRandom;
 	
 	
 	/**
@@ -46,8 +50,12 @@ public class StoreState extends SimState {
 	 * @param registers Antalet öppna kassor
 	 * @param timeStoreIsOpen Tiden affären är öppen.
 	 */
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) {
+		this.HASSEED = false;
+		this.SEED = 0;
 		arrivalRandom = new ExponentialRandomStream(LAMBDA);
+		this.pickGoodsRandom = new UniformRandomStream(P_MIN, P_MAX);
+		this.payRandom = new UniformRandomStream(K_MIN, K_MAX);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		startSequens(maxCustomers, registers, timeStoreIsOpen);
@@ -60,8 +68,12 @@ public class StoreState extends SimState {
 	 * @param timeStoreIsOpen Tiden affären är öppen.
 	 * @param seed Är tiden hur ofta kunder kommer till affären.
 	 */
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
-		arrivalRandom = new ExponentialRandomStream(LAMBDA, seed);
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) {
+		this.HASSEED = true;
+		this.SEED = seed;
+		this.arrivalRandom = new ExponentialRandomStream(LAMBDA, this.SEED);
+		this.pickGoodsRandom = new UniformRandomStream(P_MIN, P_MAX,this.SEED);
+		this.payRandom = new UniformRandomStream(K_MIN, K_MAX,this.SEED);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		startSequens(maxCustomers, registers, timeStoreIsOpen);
