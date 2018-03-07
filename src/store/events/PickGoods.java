@@ -6,8 +6,7 @@ import deds.SimState;
 import store.sim.Customer;
 import store.sim.StoreState;
 
-	public class PickGoods extends Event {	
-		private Event PickGoods;
+	public class PickGoods extends Event {
 		private EventQueue eventQueue;
 		private StoreState s;
 		private Customer customer;
@@ -21,7 +20,13 @@ import store.sim.StoreState;
 	}
 
 	public void perform () {
+<<<<<<< HEAD
 		s.updateStore(this, customer);
 		Pay pay = new Pay(customer, s);
+=======
+		s.updateStore(this,customer);
+//		Pay pay = new Pay();
+		PickGoods pickgoods = new PickGoods(s);
+>>>>>>> 044deca5007869b50c541d2f585544ab21f65f5d
 		}
 	}

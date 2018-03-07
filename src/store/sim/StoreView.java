@@ -2,14 +2,14 @@ package store.sim;
 
 import java.util.Observable;
 import deds.SimView;
-import store.sim.StoreAdmin;
 
 public class StoreView extends SimView {
 	private StoreState theStateStore;
-	private Customer theCustomer;
+	private double ledT = 0;
 
 	public StoreView(StoreState theStateStore) {
 		stateOfStore(theStateStore);
+		this.theStateStore.addObserver(this);
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
 		System.out.println(String.format("Antal kassor, N..........: ", theStateStore.getRegisters()));
@@ -30,28 +30,32 @@ public class StoreView extends SimView {
 	}
 
 	public void update(Observable o, Object arg) {
-		double starttid = theStateStore.getStart();
-		
-		String händelse = theStateStore.getCurrentEvent();
-		int tempCustomer = theStateStore.getCurrentCustomer();
-		if(theStateStore.getCurrentEvent().equals("Start") ) {
-			 tempCustomer = 0;
-		}else if (theStateStore.getCurrentEvent().equals("Stop")) {
-			tempCustomer = 0;
+		double starttid = theStateStore.getTime();
+
+		String event = theStateStore.getCurrentEvent();
+		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
+		if (theStateStore.getCurrentEvent().equals("Stop")) {
+			customerID = "---";
 		}
 
 		int led = theStateStore.emptyRegisters();
-		double ledT = theStateStore.getTimeRegistersNotUsed();
+		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
 		int i = theStateStore.customersInStore();
 		int customersPayed = theStateStore.getPaid();
 		int sad = theStateStore.getSad();
-		int köat = theStateStore.getCustumersQueued();
-		double köT = theStateStore.getQueueTime();
-		int köar = theStateStore.getCurrentlyQueuing();
-		int[] kassakö = theStateStore.getQueue();
-		System.out.println("Starttime" + " " + händelse + "\t" + tempCustomer + "  " + theStateStore + "\t" + led + "\t"
-				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + köat + "\t" + köT + "\t" + köar + "  " + kassakö);
+		int customerQueued = theStateStore.getCustumersQueued();
+		double queuedTime = theStateStore.getQueueTime();
+		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
+		int[] cashiersQueue = theStateStore.getQueue();
+		System.out.println(starttid + " " + event + "\t" + customerID + "\t" + led + "\t"
+				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + queuedTime + "\t" + currentlyQueueing + "  "
+				+ cashiersQueue);
 
+	}
+	public void results() {
+		 System.out.print("RESULTAT\n + ========");
+		 int customerNotPaying = theStateStore.getMaxCustomers() - theStateStore.getPaid();
+		 
 	}
 
 }

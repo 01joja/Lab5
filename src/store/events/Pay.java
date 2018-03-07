@@ -5,6 +5,7 @@ import deds.EventQueue;
 import store.sim.Customer;
 import store.sim.StoreState;
 
+<<<<<<< HEAD
 public class Pay extends Event {
 	
 	private Event Pay;
@@ -27,3 +28,18 @@ public class Pay extends Event {
 		StoreState.
 	}
 }
+=======
+//public class Pay {
+//	
+//	Pay() {
+//		setTime;
+//		super.setNameOfEvent("Pay");
+//		EventQueue.addEvent(Pay);
+//		
+//	}
+//	
+//	public void perform() {
+//		StoreState.
+//	}
+//}
+>>>>>>> 044deca5007869b50c541d2f585544ab21f65f5d
