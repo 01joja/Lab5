@@ -13,11 +13,11 @@ public class StoreView extends SimView {
 		this.theStateStore.addObserver(this);
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
-		System.out.println("Antal kassor, N..........:" + theStateStore.getRegisters());
-		System.out.println("Max som ryms, M..........:" + theStateStore.getMaxCustomers());
-		System.out.println("Plocktider, [P_min..Pmax]:" + "[" + theStateStore.getP_MIN() +".." +  theStateStore.getP_MAX() + "]");
-		System.out.println("Betaltider, [K_min..Kmax]:" + "[" + theStateStore.getK_MIN() +".." +  theStateStore.getK_MAX() + "]");
-		System.out.println("Fröt, f..................:" + this.theStateStore.getSeed());
+		System.out.println("Antal kassor, N..........: " + theStateStore.getRegisters());
+		System.out.println("Max som ryms, M..........: " + theStateStore.getMaxCustomers());
+		System.out.println("Plocktider, [P_min..Pmax]: " + "[" + theStateStore.getP_MIN() +".." +  theStateStore.getP_MAX() + "]");
+		System.out.println("Betaltider, [K_min..Kmax]: " + "[" + theStateStore.getK_MIN() +".." +  theStateStore.getK_MAX() + "]");
+		System.out.println("Fröt, f..................: " + this.theStateStore.getSeed());
 		System.out.println("FÖRLOPP");
 		System.out.println("=======");
 		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");
@@ -58,13 +58,20 @@ public class StoreView extends SimView {
 
 	public void results() {
 		double averageCashiertime = ledT / 2;
+		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued()  ;
+		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
 		System.out.print("\nRESULTAT\n========\n\n");
 		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missade.\n\n");
 		System.out.print("2) Total tid 2 kassor har varit lediga: " );
 		System.out.printf("%3.2f", ledT);
-		System.out.print(" te.\n   Genomsnittlig ledig kassatid: " + averageCashiertime);
-		System.out.print(" te (dvs tid/ktid av tiden från öppning tills sista kunden betalat\n\n" );
-		System.out.print("3) Total tid "+ theStateStore.getCustumersQueued() +" kunder tvingats köa: 13,60 te.   Genomsnittlig kötid: 2,72 te.");
+		System.out.print(" te.\n   Genomsnittlig ledig kassatid: " + averageCashiertime + " te (dvs ");
+		System.out.printf("%3.2f", percentOpenTime);
+		System.out.print(" % av tiden från öppning tills sista kunden betalat\n\n" );
+		System.out.print("3) Total tid "+ theStateStore.getCustumersQueued() +" kunder tvingats köa: " + queuedTime +" te.\n   Genomsnittlig kötid: ");
+		
+		System.out.printf("%3.2f",averageQueueTime);
+		System.out.print(" te." );
+		
 	}
 
 }
