@@ -12,20 +12,20 @@ public class Event {
 	
 	public void perform() {	
 	}
-	
+	//returnerar finishTime
 	public double getEventFinishTime(){
 		return finishTime;
 	}
-	
+	//ger finishTime ett värde
 	protected void setTime(double finishTime) {
 		this.finishTime = finishTime;
 		
 	}
-	
+	//ger eventet ett namn
 	protected void setNameOfEvent(String name){
 		this.nameOfEvent = name;
 	}
-	
+	//returnerar nameOfEvent.
 	public String getNameOfEvent(){
 		return nameOfEvent;
 	}
