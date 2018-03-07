@@ -15,7 +15,6 @@ public class Arrivals extends Event{
 	private Customer customer;
 	private StoreState storeState;
 	private EventQueue eventQueue;
-<<<<<<< HEAD
 
 	/**
 	 * 
@@ -24,12 +23,10 @@ public class Arrivals extends Event{
 	 * @parem time 
 	 * När ett nytt Arrivalobjekt skapas så får den en tid, läggs till i EvenQueue, döper eventet till Arrival och lägger till en ny kund.
 	 */
-	public Arrivals(StoreState s, ExponentialRandomStream getTime, double time) {
-=======
+	
 	
 	//När ett nytt Arrivalobjekt skapas så får den en tid, läggs till i EvenQueue, döps till Arrival och lägger till en ny kund.
 	public Arrivals(StoreState s, ExponentialRandomStream getTime) {
->>>>>>> 53b748c08858d3346efdab74ef86c9b51c5964ca
 		this.storeState=s;
 		this.exponentialRandomStream = getTime;
 		this.setTime(this.exponentialRandomStream.next() + storeState.getTime());
@@ -52,5 +49,5 @@ public class Arrivals extends Event{
 		if (this.storeState.getOpenState()){
 			new Arrivals(storeState,exponentialRandomStream);
 		}
-		}
+	}
 }

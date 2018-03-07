@@ -9,7 +9,13 @@ public class PickGoods extends Event {
 	private StoreState storeState;
 	private Customer customer;
 	private UniformRandomStream randomTime;
-		
+	
+	/**
+	 * 	
+	 * @param customer Skickar med samma kund som skapades i Arrival.
+	 * @param storeState Skickar med ändringar till StoreState.
+	 * Lägger till Eventet i eventQueue, sätter namnet på eventet till PickGoods, skickar med tiden kunden vart i affären.
+	 */
 	PickGoods(Customer customer, StoreState storeState) {
 		this.storeState = storeState;
 		this.customer = customer;
@@ -19,7 +25,10 @@ public class PickGoods extends Event {
 		setNameOfEvent("PickGoods");
 		this.eventQueue.addEvent(this);
 	}
-
+	
+	/**
+	 * Uppdaterar i storestate och sätter sluttid på eventet.
+	 */
 	public void perform () {
 		storeState.updateStore(this, customer);
 		storeState.setTime(getEventFinishTime());
