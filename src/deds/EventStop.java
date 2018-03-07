@@ -14,7 +14,7 @@ public class EventStop extends Event {
 		setTime(stopSim);
 		//
 		this.simState = simState;
-		//
+		//Stoppar in det stoppade eventet längst back i eventQueue
 		simState.eventQueue.addStopEvent(this);
 	}
     
