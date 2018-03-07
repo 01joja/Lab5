@@ -7,7 +7,10 @@ public class StoreView extends SimView {
 	private StoreState theStateStore;
 	private double ledT = 0;
 	private double queuedTime = 0;
-
+/**
+ * printar ut mallen för simulationen 
+ * @param theStateStore
+ */
 	public StoreView(StoreState theStateStore) {
 		stateOfStore(theStateStore);
 		this.theStateStore.addObserver(this);
@@ -34,7 +37,7 @@ public class StoreView extends SimView {
 
 		String event = theStateStore.getCurrentEvent();
 		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
-		if (theStateStore.getCurrentEvent().equals("STOP")) {
+		if (customerID.equals("STOP")) {
 			customerID = "---";
 		}
 
