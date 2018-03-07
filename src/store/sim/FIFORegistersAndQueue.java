@@ -20,60 +20,62 @@ public class FIFORegistersAndQueue {
 		this.REGISTERS = this.storeState.getRegisters();
 	}
 	
-	public boolean goAndPay(Pay pay, double time){
-		
-		if (this.registerWhithCustomers == this.REGISTERS){
+	public boolean tryToPay(Pay pay){
+		if (hasQueue()){
 			this.addToQueue(pay);
 			return false;
-		}else{
-			this.registerWhithCustomers++;
-			this.storeState.emptyRegisters--;
+		} else if (isRegisterFull()){
+			this.addToQueue(pay);
+			return false;
+		}
+		this.registerWhithCustomers++;
+		return true;
+	}
+	
+	public boolean hasPaid(){
+		if (hasQueue()){
 			return true;
 		}
-		
+		return false;
 	}
 	
-	public void addToQueue(Pay newPay){
-		this.totalQueued++;
-		if (queue.size() == 0){
-			queue.add(newPay);
-			this.hasQueue = true;
-		}else{
-			queue.add(queue.size(), newPay);
+	public boolean isRegisterFull(){
+		if (this.REGISTERS <= this.registerWhithCustomers){
+			return true;
 		}
+		return false;
 	}
 	
-	public Pay[] getQueue(){
+	public boolean hasQueue(){
+		if (queue.size() == 0){
+			return false;
+		}
+		return true;
+	}
+	
+	public void addToQueue(Pay pay){
+		queue.add(pay);
+	}
+	
+	public Pay getFirstQueue(){
+		Pay temp = queue.get(0);
+		queue.remove(0);
+		return temp;
+	}
+
+	public Pay[] getQueue() {
 		Pay[] temp = new Pay[queue.size()];
-		for (int i = 0; i < queue.size(); i++){
+		for (int i = 0; i < this.queue.size(); i++){
 			temp[i] = queue.get(i);
 		}
 		return temp;
 	}
-	
-	public int getSize(){
+
+	public int getSize() {
 		return queue.size();
 	}
-	
-	public boolean hasQueue(){
-		return this.hasQueue;
-	}
-	
-	public Pay getNextInQueue(){
-		Pay pay = queue.get(0);
-		queue.remove(0);
-		pay.setNewPayTime(this.storeState.getTime());
-		if (queue.size() == 0){
-			this.hasQueue = false;
-		}
-		return pay;
-	}
 
-	public void oneFreeRegister() {
-		
-		if (this.registerWhithCustomers != 0){
-			this.registerWhithCustomers--;
-			this.storeState.emptyRegisters++;
-		}
+	public void removeOneInRegister() {
+		this.registerWhithCustomers--;
 	}
 }

@@ -8,7 +8,6 @@ import store.sim.StoreState;
 
 public class Pay extends Event {
 	
-	private Pay nextPay;
 	private FIFORegistersAndQueue payQueue;
 	private EventQueue eventQueue;
 	private StoreState storeState;
@@ -30,22 +29,29 @@ public class Pay extends Event {
 		this.customer = customer;
 		super.setNameOfEvent("Pay      ");
 		this.payQueue = this.storeState.getFIFO();
-		if (this.payQueue.goAndPay(this, this.getEventFinishTime())){
+		if (payQueue.tryToPay(this)){
+//			System.out.println("               " + this.customer.getCustomerID());
 			this.eventQueue.addEvent(this);
 		}
 	}
 	
 	public void perform() {
 		
+		this.storeState.setTime(getEventFinishTime());
+		
 		this.storeState.updateStore(this, customer);
-		if (this.payQueue.hasQueue()){
-			this.eventQueue.addEvent(this.payQueue.getNextInQueue());
+		if (payQueue.hasPaid()){
+			Pay tempPay = this.payQueue.getFirstQueue();
+			if (tempPay != this){ //Ibland lade ett event till sig självt.
+				this.eventQueue.addEvent(tempPay);
+			}
+			this.storeState.removeCustomer();
 		}else{
-			this.payQueue.oneFreeRegister();
+			payQueue.removeOneInRegister();
+			this.storeState.removeCustomer();
 		}
 		this.storeState.addPay();
-		this.storeState.setTime(getEventFinishTime());
-		this.storeState.removeCustomer();
+		
 		
 	}
 	
