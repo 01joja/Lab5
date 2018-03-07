@@ -29,8 +29,7 @@ public class StoreState extends SimState {
 	private int sad = 0;
 	private int currentlyQueuing = 0;
 	private int customersQueued = 0;
-	private int registerQueue = 0;
-	private int emptyRegisters = 0;
+	int emptyRegisters = 0;
 	private int customersInStore = 0;
 	private ArrayList<Integer> queue = new ArrayList<Integer>();
 	private String currentEvent;
@@ -98,6 +97,7 @@ public class StoreState extends SimState {
 		fifo = new FIFORegistersAndQueue(this);
 		new Open(this.START, timeStoreIsOpen, 99, this);
 		this.storeView = new StoreView(this);
+		this.emptyRegisters = registers;
 		new Arrivals(this, arrivalRandom);
 	}
 
@@ -186,7 +186,7 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public int getCustumersQueued() {
-		return this.customersQueued;
+		return this.fifo.getSize();
 	}
 
 	// Skickar tillbaka det som specificeras.
