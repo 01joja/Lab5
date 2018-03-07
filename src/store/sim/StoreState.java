@@ -28,33 +28,34 @@ public class StoreState extends SimState {
 	private int registerQueue = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
-	private ArrayList;
+	private ArrayList<Integer> queue = new ArrayList<Integer>();
 	private String currentEvnet;
 	private int currentCustomer;
 	private boolean storeIsOpen = false;
 	
 	private FIFO fifo;
-	private ExponentialRandomStream arivalRandom;
-	private EventQueue eventQueue;
-	
-	
+	private ExponentialRandomStream arrivalRandom;
 
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
+		super.eventQueue = new EventQueue();
+		fifo = new FIFO();
 		new Open(this.START, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
-		arivalRandom = new ExponentialRandomStream(LAMBDA);
-		eventQueue = new EventQueue();
-		new Arrivals(this);
+		arrivalRandom = new ExponentialRandomStream(LAMBDA);
+		new StoreView(this);
+		new Arrivals(this, arrivalRandom, 0);
 	}
 	
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
+		super.eventQueue = new EventQueue();
+		fifo = new FIFO();
 		new Open(this.START, timeStoreIsOpen, 999, this);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
-		arivalRandom = new ExponentialRandomStream(LAMBDA, seed);
-		eventQueue = new EventQueue();
-		new Arrivals(this);
+		arrivalRandom = new ExponentialRandomStream(LAMBDA, seed);
+		new StoreView(this);
+		new Arrivals(this, arrivalRandom, 0);
 	}
 	
 	public void updateStore(Event e){
@@ -79,7 +80,7 @@ public class StoreState extends SimState {
 	}
 	
 	public EventQueue getEventQueue(){
-		return this.eventQueue;
+		return super.eventQueue;
 	}
 	
 	public void addPay(){
@@ -119,7 +120,8 @@ public class StoreState extends SimState {
 	}
 	
 	public int[] getQueue(){
-		return nothing;
+		int[] temp = new int[0];
+		return temp;
 	}
 	
 	public double getStart(){
