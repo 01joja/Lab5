@@ -197,7 +197,7 @@ public class StoreState extends SimState {
 	
 	//Om affären är öppen returnerar den Ö annars S.
 	public String isStoreOpenString(){
-		if (true) {
+		if (this.storeIsOpen) {
 			return "Ö";
 		}
 		return "S";
