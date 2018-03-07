@@ -43,11 +43,16 @@ public class Arrivals extends Event{
 	public void perform () {
 		storeState.updateStore(this, customer);
 		storeState.setTime(this.getEventFinishTime());
-		if (!storeState.isStoreFull()){
-			//new PickGoods(customer, storeState);
-		}
 		if (this.storeState.getOpenState()){
+			if (!storeState.isStoreFull()){
+				new PickGoods(customer, storeState);
+				}
 			new Arrivals(storeState,exponentialRandomStream);
+<<<<<<< HEAD
 		}
 	}
+=======
+			}
+		}
+>>>>>>> f8d2bd0ad9e1d40a28a036a737548ee589818460
 }
