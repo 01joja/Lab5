@@ -52,7 +52,6 @@ public class StoreView extends SimView {
 		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
 				+ " \t " + cashiersQueue + "\n");
-		results();
 
 	}
 
