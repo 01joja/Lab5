@@ -13,6 +13,8 @@ public class FIFORegistersAndQueue {
 	private int registerWhithCustomers = 0;
 	private double totalTimeInQueue = 0;
 	
+	int totalQueued = 0;
+	
 	FIFORegistersAndQueue(StoreState storeState){
 		this.storeState = storeState;
 		this.REGISTERS = this.storeState.getRegisters();
@@ -31,6 +33,7 @@ public class FIFORegistersAndQueue {
 	}
 	
 	public void addToQueue(Pay newPay){
+		this.totalQueued++;
 		if (queue.size() == 0){
 			queue.add(newPay);
 			this.hasQueue = true;
