@@ -37,23 +37,23 @@ public class StoreState extends SimState {
 	private ExponentialRandomStream arrivalRandom;
 
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
-		super.eventQueue = new EventQueue();
-		fifo = new FIFO();
-		new Open(this.START, timeStoreIsOpen, 999, this);
+		arrivalRandom = new ExponentialRandomStream(LAMBDA);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
-		arrivalRandom = new ExponentialRandomStream(LAMBDA);
-		new StoreView(this);
-		new Arrivals(this, arrivalRandom, 0);
+		startSequens(maxCustomers, registers, timeStoreIsOpen);
 	}
 	
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
-		super.eventQueue = new EventQueue();
-		fifo = new FIFO();
-		new Open(this.START, timeStoreIsOpen, 999, this);
+		arrivalRandom = new ExponentialRandomStream(LAMBDA, seed);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
-		arrivalRandom = new ExponentialRandomStream(LAMBDA, seed);
+		startSequens(maxCustomers, registers, timeStoreIsOpen);
+	}
+	
+	private void startSequens(int maxCustomers, int registers, double timeStoreIsOpen){
+		super.eventQueue = new EventQueue();
+		fifo = new FIFO();
+		new Open(this.START, timeStoreIsOpen, 99, this);
 		new StoreView(this);
 		new Arrivals(this, arrivalRandom, 0);
 	}
