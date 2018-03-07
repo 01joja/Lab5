@@ -48,11 +48,6 @@ public class Arrivals extends Event{
 				new PickGoods(customer, storeState);
 				}
 			new Arrivals(storeState,exponentialRandomStream);
-<<<<<<< HEAD
 		}
 	}
-=======
-			}
-		}
->>>>>>> f8d2bd0ad9e1d40a28a036a737548ee589818460
 }
