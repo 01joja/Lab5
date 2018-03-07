@@ -38,7 +38,7 @@ public class StoreState extends SimState {
 	private boolean storeIsOpen = false;
 	private double OpenTime;
 
-	private FIFO fifo;
+	private FIFORegistersAndQueue fifo;
 	private ExponentialRandomStream arrivalRandom;
 	private UniformRandomStream pickGoodsRandom;
 	private UniformRandomStream payRandom;
@@ -95,7 +95,7 @@ public class StoreState extends SimState {
 	 */
 	private void startSequens(int maxCustomers, int registers, double timeStoreIsOpen) {
 		super.eventQueue = new EventQueue();
-		fifo = new FIFO();
+		fifo = new FIFORegistersAndQueue(this);
 		new Open(this.START, timeStoreIsOpen, 99, this);
 		this.storeView = new StoreView(this);
 		new Arrivals(this, arrivalRandom);
@@ -223,17 +223,18 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public double getQueueTime() {
-		if (fifo.isEmpty() == true) {
-			return 0;
-		}
 		return 0.5;
+	}
+
+	public boolean isFIFOempty() {
+		return fifo.hasQueue();
 	}
 
 	// Om affären är full så ökar antalet ledsna kunder, annars läggs det till
 	// en kund i affären.
 	public boolean isStoreFull() {
 		if (this.customersInStore == this.MAXCOSTUMER) {
-			if (this.storeIsOpen){
+			if (this.storeIsOpen) {
 				this.sad++;
 			}
 			return true;
@@ -267,7 +268,7 @@ public class StoreState extends SimState {
 	}
 
 	// Skickar tillbaka det som specificeras.
-	public FIFO getFIFO() {
+	public FIFORegistersAndQueue getFIFO() {
 		return fifo;
 	}
 
@@ -291,11 +292,16 @@ public class StoreState extends SimState {
 		return this.K_MAX;
 	}
 
-	//Skickar tillbaka det som specificeras.
+	// Skickar tillbaka det som specificeras.
 	public long getSeed() {
 		return this.SEED;
 	}
 
+	/**
+	 * Returnerar aff�rens �ppningstid
+	 * 
+	 * @return
+	 */
 	public double getOpenTime() {
 		return this.OpenTime;
 	}
@@ -303,7 +309,7 @@ public class StoreState extends SimState {
 	public void setOpenTime(double time) {
 		this.OpenTime = time;
 	}
-	
+
 	public double getLAMBDA() {
 		return this.LAMBDA;
 	}

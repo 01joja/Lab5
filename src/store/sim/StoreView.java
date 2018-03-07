@@ -25,9 +25,7 @@ public class StoreView extends SimView {
 		System.out.println("Fr�t, f..................: " + this.theStateStore.getSeed());
 		System.out.println("F�RLOPP");
 		System.out.println("=======");
-		System.out.println("0,00\tStart\n");
 		System.out.println("Tid\tH�ndelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tk�at\tk�T\tk�ar\t[Kassak�..]\n");
-		//System.out.println("0,00\tStart\n");
 
 	}
 
@@ -53,12 +51,14 @@ public class StoreView extends SimView {
 		int customerQueued = theStateStore.getCustumersQueued();
 		queuedTime = theStateStore.getQueueTime() + queuedTime;
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
-		int[] cashiersQueue = theStateStore.getQueue();
-		//String currentCashiersQueue = Arrays.toString(cashiersQueue);
+		int [] currentlyInQueue = theStateStore.getQueue(); 
+			
+			
+		
 		System.out.printf("%3.2f", starttid);
 		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
-				+ " \t " + cashiersQueue + "\n");
+				+ " \t " + Arrays.toString(currentlyInQueue) + "\n");
 
 	}
 
@@ -66,7 +66,7 @@ public class StoreView extends SimView {
 		System.out.printf("%3.2f", theStateStore.getTime());
 		System.out.print("\tSTOP \n");
 		double averageCashiertime = ledT / 2;
-		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued()  ;
+		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued();
 		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
 		System.out.print("\nRESULTAT\n========\n\n");
 		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missades.\n\n");
