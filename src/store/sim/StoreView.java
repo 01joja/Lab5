@@ -58,7 +58,8 @@ public class StoreView extends SimView {
 	public void results() {
 		System.out.print("RESULTAT\n + ========");
 		int customerNotPaying = theStateStore.getMaxCustomers() - theStateStore.getPaid();
-
+		System.out.print("Total tid 2 kassor har varit lediga: ");
+		System.out.printf("%3.2f", ledT + " te.");
 	}
 
 }
