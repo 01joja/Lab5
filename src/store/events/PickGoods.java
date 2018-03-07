@@ -29,9 +29,6 @@ public class PickGoods extends Event {
 	/**
 	 * Uppdaterar i storestate och sätter sluttid på eventet.
 	 */
-	//Uppdaterar storestate, sätter en tid och planerar en 
-	// ny Ett nytt pay event  //när exprandomstream 
-	//tycker att det är dags.
 	public void perform () {
 		storeState.setTime(getEventFinishTime());
 		storeState.updateStore(this, customer);

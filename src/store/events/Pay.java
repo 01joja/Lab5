@@ -38,7 +38,6 @@ public class Pay extends Event {
 	public void perform() {
 		
 		this.storeState.updateStore(this, customer);
-		
 		if (this.payQueue.hasQueue()){
 			this.eventQueue.addEvent(this.payQueue.getNextInQueue());
 		}else{
