@@ -54,6 +54,7 @@ public class FIFORegistersAndQueue {
 	}
 	
 	public void addToQueue(Pay pay){
+		this.totalQueued++;
 		queue.add(pay);
 	}
 	

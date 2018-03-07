@@ -23,7 +23,7 @@ public class Pay extends Event {
 	Pay(Customer customer, StoreState storeState) {
 		this.storeState = storeState;
 		this.eventQueue = this.storeState.getEventQueue();
-		this.timeTaken = this.storeState.getPayRandom().next();
+		timeTaken = ((double)this.storeState.getPayRandom().next());
 		this.setTime(timeTaken + this.storeState.getTime());
 		eventQueue.addEvent(this);
 		this.customer = customer;
@@ -43,6 +43,7 @@ public class Pay extends Event {
 		if (payQueue.hasPaid()){
 			Pay tempPay = this.payQueue.getFirstQueue();
 			if (tempPay != this){ //Ibland lade ett event till sig självt.
+				tempPay.setNewPayTime(this.getEventFinishTime());
 				this.eventQueue.addEvent(tempPay);
 			}
 			this.storeState.removeCustomer();
@@ -55,8 +56,8 @@ public class Pay extends Event {
 		
 	}
 	
-	public void setNewPayTime(double simTime){
-		this.setTime(simTime + this.timeTaken);
+	public void setNewPayTime(double time){
+		this.setTime(time + this.timeTaken);
 	}
 	
 	public int getCustomer(){

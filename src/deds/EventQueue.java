@@ -8,11 +8,14 @@ import deds.Event;
  */
 public class EventQueue {
 	
+	ArrayList<Event> eventQueue = new ArrayList<Event>();
+	double lowesTime = 0;
+	
 	void addStopEvent(Event e){
 		eventQueue.add(e);
 	}
 	
-	ArrayList<Event> eventQueue = new ArrayList<Event>();
+	
 
 	/*
 	 * Adds event to queue
@@ -20,17 +23,10 @@ public class EventQueue {
 	 * @param event
 	 */
 	public void addEvent(Event event) {
-		
-		if (event.getEventFinishTime() < this.eventQueue.get(0).getEventFinishTime()){
-			this.eventQueue.add(0,event);
-		}else if (event.getEventFinishTime() > this.eventQueue.get(this.eventQueue.size()-1).getEventFinishTime()){
-			//Do nothing
-		}else{
-			for (int i = 0; i < this.eventQueue.size(); i++){
-				if ((event.getEventFinishTime() > this.eventQueue.get(i).getEventFinishTime())
-						&&(event.getEventFinishTime() < this.eventQueue.get(i+1).getEventFinishTime())){
-					this.eventQueue.add(i+1,event);
-				}
+		for (int i = 0; i < eventQueue.size(); i++){
+			if (eventQueue.get(i).getEventFinishTime() > event.getEventFinishTime()){
+				eventQueue.add(i, event);
+				return;
 			}
 		}
 	}
