@@ -5,7 +5,6 @@ import deds.EventQueue;
 import store.sim.Customer;
 import store.sim.StoreState;
 
-<<<<<<< HEAD
 public class Pay extends Event {
 	
 	private Event Pay;
@@ -25,10 +24,10 @@ public class Pay extends Event {
 	}
 	
 	public void perform() {
-		StoreState.
+		
 	}
 }
-=======
+
 //public class Pay {
 //	
 //	Pay() {
@@ -42,4 +41,4 @@ public class Pay extends Event {
 //		StoreState.
 //	}
 //}
->>>>>>> 044deca5007869b50c541d2f585544ab21f65f5d
+
