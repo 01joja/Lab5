@@ -20,11 +20,10 @@ public class EventQueue {
 	 * @param event
 	 */
 	public void addEvent(Event event) {
-		double runTime = event.getEventFinishTime();
-		for (int i = 0; i < eventQueue.size(); i++){
-			if (eventQueue.get(i).getEventFinishTime() > runTime){
-				eventQueue.add(i, event);
-			}
+		if (("STOP".equals(eventQueue.get(0).getNameOfEvent()))
+				&& (event.getEventFinishTime() < eventQueue.get(0).getEventFinishTime())){
+			eventQueue.add(0, event);
+		}else{
 		}
 	}
 
