@@ -190,9 +190,17 @@ public class StoreState extends SimState {
 		storeIsOpen = false;
 	}
 	
-	//Tittar om affären är öppne.
-	public boolean isStoreOpen(){
-		return storeIsOpen;
+	//Tittar om affären är öppen.
+	public boolean getOpenState() {
+		return this.storeIsOpen;
+	}
+	
+	//Om affären är öppen returnerar den Ö annars S.
+	public String isStoreOpenString(){
+		if (true) {
+			return "Ö";
+		}
+		return "S";
 	}
 	
 	//Skickar tillbaka det som specificeras.
