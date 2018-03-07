@@ -6,7 +6,7 @@ import deds.SimState;
 import store.sim.Customer;
 import store.sim.ExponentialRandomStream;
 import store.sim.StoreState;
-import store.events.PickGoods;
+import store.events.*;
 
 public class Arrivals extends Event{
 	
@@ -15,7 +15,7 @@ public class Arrivals extends Event{
 	private Customer customer;
 	private StoreState storeState;
 	private EventQueue eventQueue;
-		
+	
 	//När ett nytt Arrivalobjekt skapas så får den en tid, läggs till i EvenQueue, döps till Arrival och lägger till en ny kund.
 	public Arrivals(StoreState s, ExponentialRandomStream getTime, double time) {
 		this.storeState=s;
@@ -30,9 +30,12 @@ public class Arrivals extends Event{
 	//Uppdaterar storestate, tittar om affären är full, sätter en tid och planerar en ny Arrival när exprandomstream tycker att det är dags.
 	public void perform () {
 		storeState.updateStore(this, customer);
-		storeState.isStoreFull();
 		storeState.setTime(this.getEventFinishTime());
-//		new PickGoods(storeState, customer);
-		new Arrivals(storeState,exponentialRandomStream, this.getEventFinishTime());
+		if (!storeState.isStoreFull()){
+			new PickGoods(customer, storeState);
+		}
+		if (this.storeState.getOpenState()){
+			new Arrivals(storeState,exponentialRandomStream, this.getEventFinishTime());
+		}
 		}
 }
