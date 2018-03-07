@@ -12,15 +12,14 @@ public class StoreView extends SimView {
 		this.theStateStore.addObserver(this);
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
-		System.out.println(String.format("Antal kassor, N..........: ", theStateStore.getRegisters()));
-		System.out.println(String.format("Max som ryms, M..........: ", theStateStore.getMaxCustomers()));
-		System.out.println(String.format("Plocktider, [P_min..Pmax]:", theStateStore.customersInStore()));
-		System.out.println(String.format("Betaltider, [K_min..Kmax]:", theStateStore.customersInStore()));
-		System.out.println(String.format("Frö, f...................:", theStateStore.customersInStore()));
+		System.out.println("Antal kassor, N..........:" + theStateStore.getRegisters());
+		System.out.println("Max som ryms, M..........:"+ theStateStore.getMaxCustomers());
+		System.out.println("Plocktider, [P_min..Pmax]:" + theStateStore.customersInStore());
+		System.out.println("Betaltider, [K_min..Kmax]:"+ theStateStore.customersInStore());
+		System.out.println("Frö, f...................:"+ theStateStore.customersInStore());
 		System.out.println("FÃ–RLOPP");
 		System.out.println("=======");
-		System.out
-				.println("Tid Händelse  Kund  ?  led    ledT    I     $    :-(   köat    kö   köar  [Kassakö..]");
+		System.out.println("Tid Händelse  Kund  ?  led    ledT    I     $    :-(   köat    kö   köar  [Kassakö..]");
 		System.out.println("0,00 Start\n");
 
 	}
