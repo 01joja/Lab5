@@ -31,11 +31,11 @@ public class Arrivals extends Event{
 	public void perform () {
 		storeState.updateStore(this, customer);
 		storeState.setTime(this.getEventFinishTime());
-		if (!storeState.isStoreFull()){
-			//new PickGoods(customer, storeState);
-		}
 		if (this.storeState.getOpenState()){
+			if (!storeState.isStoreFull()){
+				new PickGoods(customer, storeState);
+				}
 			new Arrivals(storeState,exponentialRandomStream);
-		}
+			}
 		}
 }
