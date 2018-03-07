@@ -9,7 +9,7 @@ public class Simulator {
 	public Simulator(SimState theSimulator){
 		this.theSimulator = theSimulator;
 	}
-	
+	//loopar medans funktionen getRunSim returnerar true.
 	public void mainLoop(){
 		while(this.theSimulator.getRunSim())
 		{
