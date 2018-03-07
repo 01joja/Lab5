@@ -5,6 +5,12 @@ import deds.EventQueue;
 import store.sim.*;
 import store.events.*;
 
+/**
+ * Innehåller en konstruktor som öppnar butiken
+ * Ger en öppnings tid, en stängings tid
+ * och själva simulatorns stängningstid
+ *
+ */
 public class Open extends EventStart {
 	
 	private double closeTime;
