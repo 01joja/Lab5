@@ -8,11 +8,13 @@ public class SimState extends Observable{
 	private boolean stopSim = false;
 	protected EventQueue eventQueue;
 	
-	
+	//stänger av simulator när det har gått en viss tid
 	void simEnd() {
 		this.stopSim = true;
 	}
-	
+	//kollar ifall simulatorn är igång 
+	//är simulatorn igång så tar den den första instansen från
+	//klassen  EventQueue
 	boolean getRunSim(){
 		if (this.stopSim == true){
 			return false;
@@ -22,11 +24,11 @@ public class SimState extends Observable{
 		event.perform();
 		return true;
 	}
-	
+	//sätter simulations tid
 	public void setTime(double time){
 		this.simTime = time;
 	}
-	
+	// returnerar simTime 
 	public double getTime(){
 		return this.simTime;
 	}
