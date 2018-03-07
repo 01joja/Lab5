@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 public class StoreState extends SimState {
 	
-	//Olika typer av variabler som används under körningen.
+	/*
+	 * Olika typer av variabler som används under körningen.
+	 */
 	private final double LAMBDA = 4;
 	private final double P_MIN = 0.6;
 	private final double P_MAX = 0.9;
@@ -36,7 +38,13 @@ public class StoreState extends SimState {
 	
 	private FIFO fifo;
 	private ExponentialRandomStream arrivalRandom;
-
+	
+	
+	/**
+	 * @param maxCustomers Antalet kunder som max får vara i butiken samtidigt.
+	 * @param registers Antalet öppna kassor
+	 * @param timeStoreIsOpen Tiden affären är öppen.
+	 */
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
 		arrivalRandom = new ExponentialRandomStream(LAMBDA);
 		this.REGISTERS = registers;
@@ -44,13 +52,25 @@ public class StoreState extends SimState {
 		startSequens(maxCustomers, registers, timeStoreIsOpen);
 	}
 	
+	/**
+	 * 
+	 * @param maxCustomers Antalet kunder som max får vara i butiken samtidigt.
+	 * @param registers Antalet öppna kassor.
+	 * @param timeStoreIsOpen Tiden affären är öppen.
+	 * @param seed Är tiden hur ofta kunder kommer till affären.
+	 */
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
 		arrivalRandom = new ExponentialRandomStream(LAMBDA, seed);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		startSequens(maxCustomers, registers, timeStoreIsOpen);
 	}
-	
+	/**
+	 * 
+	 * @param maxCustomers Antalet kunder som max får vara i butiken samtidigt.
+	 * @param registers Antalet öppna kassor.
+	 * @param timeStoreIsOpen Hur länge affären är öppen.
+	 */
 	private void startSequens(int maxCustomers, int registers, double timeStoreIsOpen){
 		super.eventQueue = new EventQueue();
 		fifo = new FIFO();
@@ -59,14 +79,21 @@ public class StoreState extends SimState {
 		new Arrivals(this, arrivalRandom, 0);
 	}
 	
-	//Uppdaterar vad som händer i affären.
+	/**
+	 * 
+	 * @param e Skickar med Event klassen för att uppdatera affären.
+	 */
 	public void updateStore(Event e){
 		this.currentEvnet = e.getNameOfEvent();
 		setChanged();
 		notifyObservers();
 	}
 	
-	//Uppdaterar vad som händer i affären.
+	/**
+	 * 
+	 * @param e Skickar med Event klassen för att uppdatera affären.
+	 * @param c Skickar med Customer klassen för att uppdatera affären.
+	 */
 	public void updateStore(Event e , Customer c){
 		this.currentEvnet = e.getNameOfEvent();
 		this.currentCustomer = c.getCustomerID();
