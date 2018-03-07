@@ -18,7 +18,7 @@ public class SimState extends Observable{
 			return false;
 		}
 		Event event = eventQueue.getFirst();
-		System.out.println(event.getEventFinishTime() + " " + event.getNameOfEvent());
+//		System.out.println(event.getEventFinishTime() + " " + event.getNameOfEvent());
 		event.perform();
 		return true;
 	}

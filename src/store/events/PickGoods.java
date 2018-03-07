@@ -9,10 +9,9 @@ import store.sim.StoreState;
 	public class PickGoods extends Event {
 		private EventQueue eventQueue;
 		private StoreState s;
-		private Arrivals  arrival;
 		private Customer customer;
 		
-		public  PickGoods(StoreState s) {
+		PickGoods(customer, storeState) {
 		//setTime;
 		// 
 		this.s=s;
@@ -20,6 +19,7 @@ import store.sim.StoreState;
 		this.eventQueue = s.getEventQueue();
 		//ändrar namnet på det nuvarande eventet
 		super.setNameOfEvent("PickGoods");
+<<<<<<< HEAD
 		//Sätter ID på kunden som går in i PickGoods eventet
 		this.customer = new Customer();
 		//Adderar eventet till classen EventQueue
@@ -28,6 +28,14 @@ import store.sim.StoreState;
 
 	public void perform () {
 		//uppdaterar StoreState
+=======
+		this.eventQueue.addEvent(this);
+	}
+
+	public void perform () {
+		s.updateStore(this, customer);
+		Pay pay = new Pay(customer, s);
+>>>>>>> 372dd9e38da518e16799944b540e7969993d6c66
 		s.updateStore(this,customer);
 //		Pay pay = new Pay();
 		PickGoods pickgoods = new PickGoods(s);

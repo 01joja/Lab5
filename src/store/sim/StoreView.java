@@ -6,6 +6,7 @@ import deds.SimView;
 public class StoreView extends SimView {
 	private StoreState theStateStore;
 	private double ledT = 0;
+	private double queuedTime = 0;
 
 	public StoreView(StoreState theStateStore) {
 		stateOfStore(theStateStore);
@@ -13,14 +14,14 @@ public class StoreView extends SimView {
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
 		System.out.println("Antal kassor, N..........:" + theStateStore.getRegisters());
-		System.out.println("Max som ryms, M..........:"+ theStateStore.getMaxCustomers());
+		System.out.println("Max som ryms, M..........:" + theStateStore.getMaxCustomers());
 		System.out.println("Plocktider, [P_min..Pmax]:" + theStateStore.customersInStore());
-		System.out.println("Betaltider, [K_min..Kmax]:"+ theStateStore.customersInStore());
-		System.out.println("FrÃ¶, f...................:"+ theStateStore.customersInStore());
-		System.out.println("FÃƒâ€“RLOPP");
+		System.out.println("Betaltider, [K_min..Kmax]:" + theStateStore.customersInStore());
+		System.out.println("Fröt, f..................:" + theStateStore.customersInStore());
+		System.out.println("FÖRLOPP");
 		System.out.println("=======");
-		System.out.println("Tid HÃ¤ndelse  Kund  ?  led    ledT    I     $    :-(   kÃ¶at    kÃ¶   kÃ¶ar  [KassakÃ¶..]");
-		System.out.println("0,00 Start\n");
+		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tI\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");
+		System.out.println("0,00\tStart\n");
 
 	}
 
@@ -33,28 +34,31 @@ public class StoreView extends SimView {
 
 		String event = theStateStore.getCurrentEvent();
 		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
-		if (theStateStore.getCurrentEvent().equals("Stop")) {
+		if (theStateStore.getCurrentEvent().equals("STOP")) {
 			customerID = "---";
 		}
 
 		int led = theStateStore.emptyRegisters();
 		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
 		int i = theStateStore.customersInStore();
+		String openOrNot = "x";
 		int customersPayed = theStateStore.getPaid();
 		int sad = theStateStore.getSad();
 		int customerQueued = theStateStore.getCustumersQueued();
-		double queuedTime = theStateStore.getQueueTime();
+		queuedTime = theStateStore.getQueueTime() + queuedTime;
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
 		int[] cashiersQueue = theStateStore.getQueue();
-		System.out.println(starttid + " " + event + "\t" + customerID + "\t" + led + "\t"
-				+ ledT + "\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + queuedTime + "\t" + currentlyQueueing + "  "
-				+ cashiersQueue);
+		System.out.printf("%3.2f", starttid);
+		System.out.print("\t" + event + "\t" + customerID + "\t---" + "\t" + led + "\t" + ledT + "\t" + i + "\t"
+				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
+				+ " \t " + cashiersQueue + "\n");
 
 	}
+
 	public void results() {
-		 System.out.print("RESULTAT\n + ========");
-		 int customerNotPaying = theStateStore.getMaxCustomers() - theStateStore.getPaid();
-		 
+		System.out.print("RESULTAT\n + ========");
+		int customerNotPaying = theStateStore.getMaxCustomers() - theStateStore.getPaid();
+
 	}
 
 }
