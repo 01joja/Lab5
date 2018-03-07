@@ -290,14 +290,8 @@ public class StoreState extends SimState {
 	public double getK_MAX() {
 		return this.K_MAX;
 	}
-<<<<<<< HEAD
-	
-	//Skickar tillbaka det som specificeras.
-
-=======
 
 	//Skickar tillbaka det som specificeras.
->>>>>>> 32b7f0ec38fbfc5d2a572d673313db896447c545
 	public long getSeed() {
 		return this.SEED;
 	}

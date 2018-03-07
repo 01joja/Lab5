@@ -25,13 +25,9 @@ public class StoreView extends SimView {
 		System.out.println("Frï¿½t, f..................: " + this.theStateStore.getSeed());
 		System.out.println("Fï¿½RLOPP");
 		System.out.println("=======");
-<<<<<<< HEAD
-		System.out.println("Tid\tHï¿½ndelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tkï¿½at\tkï¿½T\tkï¿½ar\t[Kassakï¿½..]");
 		System.out.println("0,00\tStart\n");
-=======
-		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]\n");
+		System.out.println("Tid\tHï¿½ndelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tkï¿½at\tkï¿½T\tkï¿½ar\t[Kassakï¿½..]\n");
 		//System.out.println("0,00\tStart\n");
->>>>>>> 32b7f0ec38fbfc5d2a572d673313db896447c545
 
 	}
 
@@ -44,15 +40,8 @@ public class StoreView extends SimView {
 
 		String event = theStateStore.getCurrentEvent();
 		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
-<<<<<<< HEAD
-		if (theStateStore.isStoreOpenString().equals("Close")) {
-			customerID = "---";
-=======
 		if (event.equals("Close")) {
 			customerID = "-";
-		}else if (event.equals("Open")) {
-			customerID = "-";
->>>>>>> 32b7f0ec38fbfc5d2a572d673313db896447c545
 		}
 
 		int led = theStateStore.emptyRegisters();

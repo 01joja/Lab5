@@ -16,11 +16,7 @@ public class Open extends EventStart {
 	private double closeTime;
 	private StoreState storeState;
 	private EventQueue eventQueue;
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 32b7f0ec38fbfc5d2a572d673313db896447c545
 	/**
 	 * 
 	 * @param openTime Tiden som affären är öppen.
