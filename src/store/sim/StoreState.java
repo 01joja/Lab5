@@ -101,6 +101,7 @@ public class StoreState extends SimState {
 		notifyObservers();
 	}
 	
+	
 	/**
 	 * 
 	 * @param e Skickar med Event klassen för att uppdatera affären.
@@ -111,6 +112,14 @@ public class StoreState extends SimState {
 		this.currentCustomer = c.getCustomerID();
 		setChanged();
 		notifyObservers();
+	}
+	
+	public UniformRandomStream getPayRandom(){
+		return this.payRandom;
+	}
+	
+	public UniformRandomStream getPickGoodsRandom(){
+		return this.pickGoodsRandom;
 	}
 	
 	//Skickar tillbaka det som specificeras.
