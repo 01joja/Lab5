@@ -35,7 +35,7 @@ public class Arrivals extends Event{
 			//new PickGoods(customer, storeState);
 		}
 		if (this.storeState.getOpenState()){
-			new Arrivals(storeState,exponentialRandomStream, this.getEventFinishTime());
+			new Arrivals(storeState,exponentialRandomStream);
 		}
 		}
 }
