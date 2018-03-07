@@ -15,9 +15,9 @@ public class StoreView extends SimView {
 		System.out.println("==========");
 		System.out.println("Antal kassor, N..........:" + theStateStore.getRegisters());
 		System.out.println("Max som ryms, M..........:" + theStateStore.getMaxCustomers());
-		System.out.println("Plocktider, [P_min..Pmax]:" + theStateStore.customersInStore());
-		System.out.println("Betaltider, [K_min..Kmax]:" + theStateStore.customersInStore());
-		System.out.println("Fröt, f..................:" + theStateStore.customersInStore());
+		System.out.println("Plocktider, [P_min..Pmax]:" + "[" + theStateStore.getP_MIN() +".." +  theStateStore.getP_MAX() + "]");
+		System.out.println("Betaltider, [K_min..Kmax]:" + "[" + theStateStore.getK_MIN() +".." +  theStateStore.getK_MAX() + "]");
+		System.out.println("Fröt, f..................:" + theStateStore.getSeed());
 		System.out.println("FÖRLOPP");
 		System.out.println("=======");
 		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tI\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");
@@ -41,7 +41,7 @@ public class StoreView extends SimView {
 		int led = theStateStore.emptyRegisters();
 		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
 		int i = theStateStore.customersInStore();
-		String openOrNot = "x";
+		String openOrNot = theStateStore.isStoreOpenString();
 		int customersPayed = theStateStore.getPaid();
 		int sad = theStateStore.getSad();
 		int customerQueued = theStateStore.getCustumersQueued();
@@ -49,7 +49,7 @@ public class StoreView extends SimView {
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
 		int[] cashiersQueue = theStateStore.getQueue();
 		System.out.printf("%3.2f", starttid);
-		System.out.print("\t" + event + "\t" + customerID + "\t---" + "\t" + led + "\t" + ledT + "\t" + i + "\t"
+		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
 				+ " \t " + cashiersQueue + "\n");
 
