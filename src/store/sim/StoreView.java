@@ -60,7 +60,7 @@ public class StoreView extends SimView {
 		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued()  ;
 		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
 		System.out.print("\nRESULTAT\n========\n\n");
-		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missade.\n\n");
+		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missades.\n\n");
 		System.out.print("2) Total tid 2 kassor har varit lediga: " );
 		System.out.printf("%3.2f", ledT);
 		System.out.print(" te.\n   Genomsnittlig ledig kassatid: " + averageCashiertime + " te (dvs ");
