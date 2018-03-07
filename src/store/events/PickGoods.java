@@ -16,11 +16,6 @@ public class PickGoods extends Event {
 	 * @param storeState Skickar med ändringar till StoreState.
 	 * Lägger till Eventet i eventQueue, sätter namnet på eventet till PickGoods, skickar med tiden kunden vart i affären.
 	 */
-	//Skapar ett pickgood objects ger objected en tid slumpmässigt
-	//läggs till i EvenQueue,döps till PickGoods och lägger till 
-	
-	//Skapar ett pickgood objects ger objected en tid slumpmässigt
-	//läggs till i EvenQueue,döps till PickGoods och lägger till 
 	PickGoods(Customer customer, StoreState storeState) {
 		this.storeState = storeState;
 		this.customer = customer;

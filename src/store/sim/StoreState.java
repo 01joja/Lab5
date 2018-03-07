@@ -125,6 +125,10 @@ public class StoreState extends SimState {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public void removeCustomer(){
+		this.customersInStore--;
+	}
 
 	public UniformRandomStream getPayRandom() {
 		return this.payRandom;
@@ -196,7 +200,11 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public int[] getQueue() {
-		int[] temp = new int[0];
+		Pay[] pay = fifo.getQueue();
+		int[] temp = new int[pay.length];
+		for (int i = 0; i < pay.length; i++){
+			temp[i] = pay[i].getCustomer();
+		}
 		return temp;
 	}
 

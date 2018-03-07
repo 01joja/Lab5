@@ -28,8 +28,9 @@ public class FIFORegistersAndQueue {
 		}else{
 			this.registerWhithCustomers++;
 			this.storeState.emptyRegisters--;
+			return true;
 		}
-		return true;
+		
 	}
 	
 	public void addToQueue(Pay newPay){
@@ -38,12 +39,15 @@ public class FIFORegistersAndQueue {
 			queue.add(newPay);
 			this.hasQueue = true;
 		}else{
-			queue.add(queue.size()-1, newPay);
+			queue.add(queue.size(), newPay);
 		}
 	}
 	
 	public Pay[] getQueue(){
-		Pay[] temp = (Pay[]) queue.toArray();
+		Pay[] temp = new Pay[queue.size()];
+		for (int i = 0; i < queue.size(); i++){
+			temp[i] = queue.get(i);
+		}
 		return temp;
 	}
 	

@@ -38,16 +38,24 @@ public class Pay extends Event {
 	public void perform() {
 		
 		this.storeState.updateStore(this, customer);
-		this.storeState.addPay();
+		
 		if (this.payQueue.hasQueue()){
 			this.eventQueue.addEvent(this.payQueue.getNextInQueue());
 		}else{
 			this.payQueue.oneFreeRegister();
 		}
+		this.storeState.addPay();
+		this.storeState.setTime(getEventFinishTime());
+		this.storeState.removeCustomer();
+		
 	}
 	
 	public void setNewPayTime(double simTime){
 		this.setTime(simTime + this.timeTaken);
+	}
+	
+	public int getCustomer(){
+		return this.customer.getCustomerID();
 	}
 }
 
