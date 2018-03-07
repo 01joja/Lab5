@@ -6,12 +6,12 @@ import deds.SimState;
 import store.sim.Customer;
 import store.sim.StoreState;
 
-	public class PickGoods extends Event {
-		private EventQueue eventQueue;
-		private StoreState s;
-		private Customer customer;
+public class PickGoods extends Event {
+	private EventQueue eventQueue;
+	private StoreState s;
+	private Customer customer;
 		
-		PickGoods(customer, storeState) {
+	PickGoods(Customer customer, StoreState storeState) {
 		//setTime;
 		// 
 		this.s=s;

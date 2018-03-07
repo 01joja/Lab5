@@ -10,13 +10,17 @@ import java.util.ArrayList;
 
 public class StoreState extends SimState {
 	
-	//Olika typer av variabler som används under körningen.
+	/*
+	 * Olika typer av variabler som används under körningen.
+	 */
 	private final double LAMBDA = 4;
 	private final double P_MIN = 0.6;
 	private final double P_MAX = 0.9;
 	private final double K_MIN = 0.35;
 	private final double K_MAX = 0.6;
 	private final double START = 0;
+	private final boolean HASSEED;
+	private final long SEED;
 	
 	private final int MAXCOSTUMER;
 	private final int REGISTERS;
@@ -37,21 +41,49 @@ public class StoreState extends SimState {
 	
 	private FIFO fifo;
 	private ExponentialRandomStream arrivalRandom;
-
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) { 
+	private UniformRandomStream pickGoodsRandom;
+	private UniformRandomStream	payRandom;
+	
+	
+	/**
+	 * @param maxCustomers Antalet kunder som max får vara i butiken samtidigt.
+	 * @param registers Antalet öppna kassor
+	 * @param timeStoreIsOpen Tiden affären är öppen.
+	 */
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen) {
+		this.HASSEED = false;
+		this.SEED = 0;
 		arrivalRandom = new ExponentialRandomStream(LAMBDA);
+		this.pickGoodsRandom = new UniformRandomStream(P_MIN, P_MAX);
+		this.payRandom = new UniformRandomStream(K_MIN, K_MAX);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		startSequens(maxCustomers, registers, timeStoreIsOpen);
 	}
 	
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) { 
-		arrivalRandom = new ExponentialRandomStream(LAMBDA, seed);
+	/**
+	 * 
+	 * @param maxCustomers Antalet kunder som max får vara i butiken samtidigt.
+	 * @param registers Antalet öppna kassor.
+	 * @param timeStoreIsOpen Tiden affären är öppen.
+	 * @param seed Är tiden hur ofta kunder kommer till affären.
+	 */
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) {
+		this.HASSEED = true;
+		this.SEED = seed;
+		this.arrivalRandom = new ExponentialRandomStream(LAMBDA, this.SEED);
+		this.pickGoodsRandom = new UniformRandomStream(P_MIN, P_MAX,this.SEED);
+		this.payRandom = new UniformRandomStream(K_MIN, K_MAX,this.SEED);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
 		startSequens(maxCustomers, registers, timeStoreIsOpen);
 	}
-	
+	/**
+	 * 
+	 * @param maxCustomers Antalet kunder som max får vara i butiken samtidigt.
+	 * @param registers Antalet öppna kassor.
+	 * @param timeStoreIsOpen Hur länge affären är öppen.
+	 */
 	private void startSequens(int maxCustomers, int registers, double timeStoreIsOpen){
 		super.eventQueue = new EventQueue();
 		fifo = new FIFO();
@@ -60,14 +92,21 @@ public class StoreState extends SimState {
 		new Arrivals(this, arrivalRandom, 0);
 	}
 	
-	//Uppdaterar vad som händer i affären.
+	/**
+	 * 
+	 * @param e Skickar med Event klassen för att uppdatera affären.
+	 */
 	public void updateStore(Event e){
 		this.currentEvnet = e.getNameOfEvent();
 		setChanged();
 		notifyObservers();
 	}
 	
-	//Uppdaterar vad som händer i affären.
+	/**
+	 * 
+	 * @param e Skickar med Event klassen för att uppdatera affären.
+	 * @param c Skickar med Customer klassen för att uppdatera affären.
+	 */
 	public void updateStore(Event e , Customer c){
 		this.currentEvnet = e.getNameOfEvent();
 		this.currentCustomer = c.getCustomerID();
