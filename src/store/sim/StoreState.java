@@ -227,7 +227,11 @@ public class StoreState extends SimState {
 	}
 
 	public boolean isFIFOempty() {
-		return fifo.hasQueue();
+		if (fifo.hasQueue()){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 	// Om affären är full så ökar antalet ledsna kunder, annars läggs det till
