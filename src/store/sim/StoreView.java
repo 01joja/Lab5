@@ -41,7 +41,7 @@ public class StoreView extends SimView {
 		int led = theStateStore.emptyRegisters();
 		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
 		int i = theStateStore.customersInStore();
-		String openOrNot = "x";
+		String openOrNot = theStateStore.isStoreOpenString();
 		int customersPayed = theStateStore.getPaid();
 		int sad = theStateStore.getSad();
 		int customerQueued = theStateStore.getCustumersQueued();
@@ -49,7 +49,7 @@ public class StoreView extends SimView {
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
 		int[] cashiersQueue = theStateStore.getQueue();
 		System.out.printf("%3.2f", starttid);
-		System.out.print("\t" + event + "\t" + customerID + "\t---" + "\t" + led + "\t" + ledT + "\t" + i + "\t"
+		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
 				+ " \t " + cashiersQueue + "\n");
 
