@@ -25,7 +25,7 @@ public class Arrivals extends Event{
 	 */
 	
 	
-	//När ett nytt Arrivalobjekt skapas så får den en tid, läggs till i EvenQueue, döps till Arrival och lägger till en ny kund.
+	
 	public Arrivals(StoreState s, ExponentialRandomStream getTime) {
 		this.storeState=s;
 		this.exponentialRandomStream = getTime;

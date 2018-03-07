@@ -19,13 +19,16 @@ public class Close extends Event {
 		this.storeState = storeState;
 		this.eventQueue = this.storeState.getEventQueue();
 		this.setTime(timeToClose);
-		this.setNameOfEvent("Close");
+		this.setNameOfEvent("Close   ");
 		this.eventQueue.addEvent(this);
 	}
 	
 	public void perform(){
 		this.storeState.setTime(this.getEventFinishTime());
-		this.storeState.closeStore();
 		this.storeState.updateStore(this);
+		this.storeState.closeStore();
+
+
+		
 	}
 }

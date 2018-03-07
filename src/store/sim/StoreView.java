@@ -2,13 +2,14 @@ package store.sim;
 
 import java.util.Observable;
 import deds.SimView;
+import java.util.Arrays;
 
 public class StoreView extends SimView {
 	private StoreState theStateStore;
 	private double ledT = 0;
 	private double queuedTime = 0;
 /**
- * printar ut mallen för simulationen 
+ * printar ut mallen fï¿½r simulationen 
  * @param theStateStore
  */
 	public StoreView(StoreState theStateStore) {
@@ -17,14 +18,16 @@ public class StoreView extends SimView {
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
 		System.out.println("Antal kassor, N..........: " + theStateStore.getRegisters());
-		System.out.println("Max som ryms, M..........: " + theStateStore.getMaxCustomers());
+		System.out.println("Max som ryms, M..........: " + theStateStore.getMaxCustomers());		
+		System.out.println("Ankomsthastighet, lambda..:" + theStateStore.getLAMBDA());
 		System.out.println("Plocktider, [P_min..Pmax]: " + "[" + theStateStore.getP_MIN() +".." +  theStateStore.getP_MAX() + "]");
 		System.out.println("Betaltider, [K_min..Kmax]: " + "[" + theStateStore.getK_MIN() +".." +  theStateStore.getK_MAX() + "]");
-		System.out.println("Fröt, f..................: " + this.theStateStore.getSeed());
-		System.out.println("FÖRLOPP");
+		System.out.println("Frï¿½t, f..................: " + this.theStateStore.getSeed());
+		System.out.println("Fï¿½RLOPP");
 		System.out.println("=======");
-		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");
 		System.out.println("0,00\tStart\n");
+		System.out.println("Tid\tHï¿½ndelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tkï¿½at\tkï¿½T\tkï¿½ar\t[Kassakï¿½..]\n");
+		//System.out.println("0,00\tStart\n");
 
 	}
 
@@ -37,8 +40,8 @@ public class StoreView extends SimView {
 
 		String event = theStateStore.getCurrentEvent();
 		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
-		if (customerID.equals("STOP")) {
-			customerID = "---";
+		if (event.equals("Close   ")) {
+			customerID = "-";
 		}
 
 		int led = theStateStore.emptyRegisters();
@@ -50,17 +53,20 @@ public class StoreView extends SimView {
 		int customerQueued = theStateStore.getCustumersQueued();
 		queuedTime = theStateStore.getQueueTime() + queuedTime;
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
-		int[] cashiersQueue = theStateStore.getQueue();
+		int [] currentlyInQueue = theStateStore.getQueue(); 
+			
+			
+		
 		System.out.printf("%3.2f", starttid);
 		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
-				+ " \t " + cashiersQueue + "\n");
+				+ " \t " + Arrays.toString(currentlyInQueue) + "\n");
 
 	}
 
 	public void results() {
 		double averageCashiertime = ledT / 2;
-		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued()  ;
+		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued();
 		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
 		System.out.print("\nRESULTAT\n========\n\n");
 		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missades.\n\n");
@@ -68,8 +74,8 @@ public class StoreView extends SimView {
 		System.out.printf("%3.2f", ledT);
 		System.out.print(" te.\n   Genomsnittlig ledig kassatid: " + averageCashiertime + " te (dvs ");
 		System.out.printf("%3.2f", percentOpenTime);
-		System.out.print(" % av tiden från öppning tills sista kunden betalat\n\n" );
-		System.out.print("3) Total tid "+ theStateStore.getCustumersQueued() +" kunder tvingats köa: " + queuedTime +" te.\n   Genomsnittlig kötid: ");
+		System.out.print(" % av tiden frï¿½n ï¿½ppning tills sista kunden betalat\n\n" );
+		System.out.print("3) Total tid "+ theStateStore.getCustumersQueued() +" kunder tvingats kï¿½a: " + queuedTime +" te.\n   Genomsnittlig kï¿½tid: ");
 		
 		System.out.printf("%3.2f",averageQueueTime);
 		System.out.print(" te." );
