@@ -7,6 +7,12 @@ public class EventStop extends Event {
 	
 	SimState simState;
 	
+	/**
+	 * 
+	 * @param stopSim Är det som triggar att simulationen tar slut.
+	 * @param simState Den som håller igång simulationen.
+	 * Klassen som stoppar hela simulationen.
+	 */
 	public EventStop(double stopSim, SimState simState){
 		//sätter namnet på eventet till stop
 		this.setNameOfEvent("STOP");

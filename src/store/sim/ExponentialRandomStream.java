@@ -6,7 +6,12 @@ public class ExponentialRandomStream {
 	
 	private Random rand;
 	private double lambda;
-	  
+	
+	/**
+	 *   
+	 * @param lambda
+	 * @param seed
+	 */
 	public ExponentialRandomStream(double lambda, long seed) {
 	  	rand = new Random(seed);
 	  	this.lambda = lambda;

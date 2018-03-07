@@ -5,7 +5,7 @@ import store.sim.StoreState;
  * @author's 
  * Jonas Jacobsson 
  * Marcus Carlsson 
- * Tommy Andersson 
+ * Tommy Andersson anetom-6
  * Marcus Erisson amueri-6
  */
 public class MainSim {

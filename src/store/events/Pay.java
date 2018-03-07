@@ -13,6 +13,13 @@ public class Pay extends Event {
 	private Arrivals arrival;
 	private Customer customer;
 	
+	
+	/**
+	 * 
+	 * @param customer Skickas med som skapades under Arrival
+	 * @param s Skickar värden till StoreState som håller i allt.
+	 * Lägger till eventet i eventQueue, sätter namnet på eventet till pay.
+	 */
 	Pay(Customer customer, StoreState s) {
 //		setTime;
 		this.s=s;
