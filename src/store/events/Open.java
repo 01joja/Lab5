@@ -17,7 +17,6 @@ public class Open extends EventStart {
 	private StoreState storeState;
 	private EventQueue eventQueue;
 	
-<<<<<<< HEAD
 	/**
 	 * 
 	 * @param openTime Tiden som affären är öppen.
@@ -26,14 +25,10 @@ public class Open extends EventStart {
 	 * @param simState Skickar till SimState som håller igång simulationen.
 	 * Klassen som håller koll på när affären är öppen.
 	 */
-	public Open(double openTime, double closeTime, double simStopTime, SimState simState){
-		super(simStopTime, simState);
-=======
 	public Open(double openTime, double closeTime, double simStopTime, StoreState storeState){
 		super(simStopTime, storeState);
 		this.storeState = storeState;
 		this.eventQueue = this.storeState.getEventQueue();
->>>>>>> f8d2bd0ad9e1d40a28a036a737548ee589818460
 		this.setTime(openTime);
 		this.setNameOfEvent("Open");
 		this.closeTime = closeTime;

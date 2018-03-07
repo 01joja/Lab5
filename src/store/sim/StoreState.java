@@ -33,7 +33,7 @@ public class StoreState extends SimState {
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
 	private ArrayList<Integer> queue = new ArrayList<Integer>();
-	private String currentEvnet;
+	private String currentEvent;
 	private int currentCustomer;
 	private boolean storeIsOpen = false;
 	private double OpenTime;
@@ -107,7 +107,7 @@ public class StoreState extends SimState {
 	 *            Skickar med Event klassen för att uppdatera affären.
 	 */
 	public void updateStore(Event e) {
-		this.currentEvnet = e.getNameOfEvent();
+		this.currentEvent = e.getNameOfEvent();
 		setChanged();
 		notifyObservers();
 	}
@@ -120,7 +120,7 @@ public class StoreState extends SimState {
 	 *            Skickar med Customer klassen för att uppdatera affären.
 	 */
 	public void updateStore(Event e, Customer c) {
-		this.currentEvnet = e.getNameOfEvent();
+		this.currentEvent = e.getNameOfEvent();
 		this.currentCustomer = c.getCustomerID();
 		setChanged();
 		notifyObservers();
@@ -136,7 +136,7 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public String getCurrentEvent() {
-		return this.currentEvnet;
+		return this.currentEvent;
 	}
 
 	// Skickar tillbaka det som specificeras.
@@ -288,12 +288,9 @@ public class StoreState extends SimState {
 	public double getK_MAX() {
 		return this.K_MAX;
 	}
-<<<<<<< HEAD
 	
 	//Skickar tillbaka det som specificeras.
-=======
 
->>>>>>> f8d2bd0ad9e1d40a28a036a737548ee589818460
 	public long getSeed() {
 		return this.SEED;
 	}
