@@ -12,7 +12,7 @@ public class StoreState extends SimState {
 	/*
 	 * Olika typer av variabler som används under körningen.
 	 */
-	private final double LAMBDA = 4;
+	private final double LAMBDA = 2;
 	private final double P_MIN = 0.6;
 	private final double P_MAX = 0.9;
 	private final double K_MIN = 0.35;
@@ -233,7 +233,9 @@ public class StoreState extends SimState {
 	// en kund i affären.
 	public boolean isStoreFull() {
 		if (this.customersInStore == this.MAXCOSTUMER) {
-			this.sad++;
+			if (this.storeIsOpen){
+				this.sad++;
+			}
 			return true;
 		} else {
 			this.customersInStore++;
@@ -288,9 +290,14 @@ public class StoreState extends SimState {
 	public double getK_MAX() {
 		return this.K_MAX;
 	}
+<<<<<<< HEAD
 	
 	//Skickar tillbaka det som specificeras.
 
+=======
+
+	//Skickar tillbaka det som specificeras.
+>>>>>>> 32b7f0ec38fbfc5d2a572d673313db896447c545
 	public long getSeed() {
 		return this.SEED;
 	}
@@ -301,5 +308,9 @@ public class StoreState extends SimState {
 
 	public void setOpenTime(double time) {
 		this.OpenTime = time;
-	} 
+	}
+	
+	public double getLAMBDA() {
+		return this.LAMBDA;
+	}
 }
