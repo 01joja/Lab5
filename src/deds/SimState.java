@@ -1,12 +1,14 @@
 package deds;
 import java.util.Observable;
 import deds.*;
+import store.sim.StoreView;
 
 public class SimState extends Observable{
 	
 	private double simTime = 0;
 	private boolean stopSim = false;
 	protected EventQueue eventQueue;
+	protected StoreView storeView;
 	
 	//stänger av simulator när det har gått en viss tid
 	void simEnd() {
@@ -17,10 +19,10 @@ public class SimState extends Observable{
 	//en kö ifrån klassen  EventQueue.
 	boolean getRunSim(){
 		if (this.stopSim == true){
+			storeView.results();
 			return false;
 		}
 		Event event = eventQueue.getFirst();
-//		System.out.println(event.getEventFinishTime() + " " + event.getNameOfEvent());
 		event.perform();
 		return true;
 	}

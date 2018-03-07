@@ -5,8 +5,17 @@ import deds.SimState;
 
 public class Open extends EventStart {
 	
-	public Open(double OpenTime, double CloseTime, double simStopTime, SimState simState){
+	private double closeTime;
+	
+	public Open(double openTime, double closeTime, double simStopTime, SimState simState){
 		super(simStopTime, simState);
+		this.setTime(openTime);
+		this.setNameOfEvent("Open");
+		this.closeTime = closeTime;
+	}
+	
+	void preform(){
+		
 	}
 }
 
