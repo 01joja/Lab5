@@ -15,8 +15,14 @@ public class Arrivals extends Event{
 	private Customer customer;
 	private StoreState storeState;
 	private EventQueue eventQueue;
-	
-	//När ett nytt Arrivalobjekt skapas så får den en tid, läggs till i EvenQueue, döps till Arrival och lägger till en ny kund.
+
+	/**
+	 * 
+	 * @param s skickar med StoreState som parameter.
+	 * @param getTime Tiden det tar för en kund att komma till affären.
+	 * @parem time 
+	 * När ett nytt Arrivalobjekt skapas så får den en tid, läggs till i EvenQueue, döper eventet till Arrival och lägger till en ny kund.
+	 */
 	public Arrivals(StoreState s, ExponentialRandomStream getTime, double time) {
 		this.storeState=s;
 		this.exponentialRandomStream = getTime;
@@ -27,6 +33,9 @@ public class Arrivals extends Event{
 		eventQueue.addEvent(this);
 	}
 	
+	/**
+	 * 
+	 */
 	//Uppdaterar storestate, tittar om affären är full, sätter en tid och planerar en ny Arrival när exprandomstream tycker att det är dags.
 	public void perform () {
 		storeState.updateStore(this, customer);

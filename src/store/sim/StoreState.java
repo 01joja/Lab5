@@ -276,6 +276,7 @@ public class StoreState extends SimState {
 		return this.K_MAX;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public long getSeed() {
 		
 			return this.SEED;
