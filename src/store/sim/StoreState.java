@@ -37,7 +37,6 @@ public class StoreState extends SimState {
 	private String currentEvnet;
 	private int currentCustomer;
 	private boolean storeIsOpen = false;
-	private long seed;
 	
 	private FIFO fifo;
 	private ExponentialRandomStream arrivalRandom;
@@ -102,6 +101,7 @@ public class StoreState extends SimState {
 		notifyObservers();
 	}
 	
+	
 	/**
 	 * 
 	 * @param e Skickar med Event klassen för att uppdatera affären.
@@ -112,6 +112,14 @@ public class StoreState extends SimState {
 		this.currentCustomer = c.getCustomerID();
 		setChanged();
 		notifyObservers();
+	}
+	
+	public UniformRandomStream getPayRandom(){
+		return this.payRandom;
+	}
+	
+	public UniformRandomStream getPickGoodsRandom(){
+		return this.pickGoodsRandom;
 	}
 	
 	//Skickar tillbaka det som specificeras.
@@ -267,8 +275,5 @@ public class StoreState extends SimState {
 	public double getK_MAX() {
 		return this.K_MAX;
 	}
-	public long getSeed() {
-		
-		return this.seed;
-	}
+	
 }
