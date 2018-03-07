@@ -20,7 +20,7 @@ public class StoreView extends SimView {
 		System.out.println("Fröt, f..................:" + theStateStore.getSeed());
 		System.out.println("FÖRLOPP");
 		System.out.println("=======");
-		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tI\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");
+		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");
 		System.out.println("0,00\tStart\n");
 
 	}
@@ -52,14 +52,19 @@ public class StoreView extends SimView {
 		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
 				+ " \t " + cashiersQueue + "\n");
+		results();
 
 	}
 
 	public void results() {
-		System.out.print("RESULTAT\n + ========");
-		int customerNotPaying = theStateStore.getMaxCustomers() - theStateStore.getPaid();
-		System.out.print("Total tid 2 kassor har varit lediga: ");
-		System.out.printf("%3.2f", ledT + " te.");
+		double averageCashiertime = ledT / 2;
+		System.out.print("\nRESULTAT\n========\n\n");
+		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missade.\n\n");
+		System.out.print("2) Total tid 2 kassor har varit lediga: " );
+		System.out.printf("%3.2f", ledT);
+		System.out.print(" te.\n   Genomsnittlig ledig kassatid: " + averageCashiertime);
+		System.out.print(" te (dvs tid/ktid av tiden från öppning tills sista kunden betalat" );
+		System.out.print("3) Total tid "+ customerQueued+" kunder tvingats köa: 13,60 te.   Genomsnittlig kötid: 2,72 te.");
 	}
 
 }
