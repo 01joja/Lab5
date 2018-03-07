@@ -28,6 +28,6 @@ public class PickGoods extends Event {
 	public void perform () {
 		storeState.setTime(getEventFinishTime());
 		storeState.updateStore(this, customer);
-//		new Pay(customer, this.storeState);
+		new Pay(customer, this.storeState);
 		}
 }
