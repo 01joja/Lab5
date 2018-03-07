@@ -9,6 +9,12 @@ public class Close extends Event {
 	StoreState storeState;
 	EventQueue eventQueue;
 	
+	/**
+	 * 
+	 * @param timeToClose Tiden då affären stänger.
+	 * @param storeState Skickas till StoreState då den håller i allt.
+	 * Klassen som stänger affären.
+	 */
 	Close(double timeToClose, StoreState storeState){
 		this.storeState = storeState;
 		this.eventQueue = this.storeState.getEventQueue();
