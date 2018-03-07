@@ -299,5 +299,9 @@ public class StoreState extends SimState {
 
 	public void setOpenTime(double time) {
 		this.OpenTime = time;
-	} 
+	}
+	
+	public double getLAMBDA() {
+		return this.LAMBDA;
+	}
 }

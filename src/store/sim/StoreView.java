@@ -2,6 +2,7 @@ package store.sim;
 
 import java.util.Observable;
 import deds.SimView;
+import java.util.Arrays;
 
 public class StoreView extends SimView {
 	private StoreState theStateStore;
@@ -17,14 +18,15 @@ public class StoreView extends SimView {
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
 		System.out.println("Antal kassor, N..........: " + theStateStore.getRegisters());
-		System.out.println("Max som ryms, M..........: " + theStateStore.getMaxCustomers());
+		System.out.println("Max som ryms, M..........: " + theStateStore.getMaxCustomers());		
+		System.out.println("Ankomsthastighet, lambda..:" + theStateStore.getLAMBDA());
 		System.out.println("Plocktider, [P_min..Pmax]: " + "[" + theStateStore.getP_MIN() +".." +  theStateStore.getP_MAX() + "]");
 		System.out.println("Betaltider, [K_min..Kmax]: " + "[" + theStateStore.getK_MIN() +".." +  theStateStore.getK_MAX() + "]");
 		System.out.println("Fröt, f..................: " + this.theStateStore.getSeed());
 		System.out.println("FÖRLOPP");
 		System.out.println("=======");
-		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]");
-		System.out.println("0,00\tStart\n");
+		System.out.println("Tid\tHändelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]\n");
+		//System.out.println("0,00\tStart\n");
 
 	}
 
@@ -37,8 +39,10 @@ public class StoreView extends SimView {
 
 		String event = theStateStore.getCurrentEvent();
 		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
-		if (customerID.equals("STOP")) {
-			customerID = "---";
+		if (event.equals("Close")) {
+			customerID = "-";
+		}else if (event.equals("Open")) {
+			customerID = "-";
 		}
 
 		int led = theStateStore.emptyRegisters();
@@ -51,6 +55,7 @@ public class StoreView extends SimView {
 		queuedTime = theStateStore.getQueueTime() + queuedTime;
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
 		int[] cashiersQueue = theStateStore.getQueue();
+		//String currentCashiersQueue = Arrays.toString(cashiersQueue);
 		System.out.printf("%3.2f", starttid);
 		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +currentlyQueueing + "\t" + queuedTime
