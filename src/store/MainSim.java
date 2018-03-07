@@ -2,7 +2,6 @@ package store;
 import deds.Simulator;
 import store.sim.StoreState;
 /**
- * 
  * @author's 
  * Jonas Jacobsson 
  * Marcus Carlsson 

@@ -5,7 +5,7 @@ import store.sim.StoreView;
 public class Simulator {
 	
 	SimState theSimulator;
-	
+	//ger objected ett värde
 	public Simulator(SimState theSimulator){
 		this.theSimulator = theSimulator;
 	}

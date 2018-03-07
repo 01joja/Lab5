@@ -2,22 +2,26 @@ package store.events;
 
 import deds.Event;
 import store.sim.StoreState;
+import deds.EventQueue;
 
 public class Close extends Event {
 	
 	StoreState storeState;
+	EventQueue eventQueue;
 	
 	Close(double timeToClose, StoreState storeState){
-		//ändrar så att det är dags att stänga butiken
-		super.setTime(timeToClose);
-		//uppdaterar förändringar i storstate
 		this.storeState = storeState;
+		this.eventQueue = this.storeState.getEventQueue();
+		this.setTime(timeToClose);
+		this.setNameOfEvent("Close");
+		System.out.print("\nClose\n");
+		this.eventQueue.addEvent(this);
 	}
 	
-	void preform(){
-		//stänger butiken
+	public void perform(){
+		this.storeState.setTime(this.getEventFinishTime());
 		this.storeState.closeStore();
+		System.out.print("\nClose\n");
+		this.storeState.updateStore(this);
 	}
-	
-	
 }

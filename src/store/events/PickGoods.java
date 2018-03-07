@@ -9,7 +9,9 @@ public class PickGoods extends Event {
 	private StoreState storeState;
 	private Customer customer;
 	private UniformRandomStream randomTime;
-		
+	//Skapar ett pickgood objects ger objected en tid slumpmässigt
+	//läggs till i EvenQueue,döps till PickGoods och lägger till 
+	
 	PickGoods(Customer customer, StoreState storeState) {
 		this.storeState = storeState;
 		this.customer = customer;
@@ -19,7 +21,9 @@ public class PickGoods extends Event {
 		setNameOfEvent("PickGoods");
 		this.eventQueue.addEvent(this);
 	}
-
+	//Uppdaterar storestate, sätter en tid och planerar en 
+	// ny Ett nytt pay event  //när exprandomstream 
+	//tycker att det är dags.
 	public void perform () {
 		storeState.updateStore(this, customer);
 		storeState.setTime(getEventFinishTime());
