@@ -40,7 +40,7 @@ public class StoreView extends SimView {
 
 		String event = theStateStore.getCurrentEvent();
 		String customerID = Integer.toString(theStateStore.getCurrentCustomer());
-		if (event.equals("Close")) {
+		if (event.equals("Close   ")) {
 			customerID = "-";
 		}
 

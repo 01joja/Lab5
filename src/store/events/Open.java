@@ -30,7 +30,7 @@ public class Open extends EventStart {
 		this.storeState = storeState;
 		this.eventQueue = this.storeState.getEventQueue();
 		this.setTime(openTime);
-		this.setNameOfEvent("Open");
+		this.setNameOfEvent("Open    ");
 		this.closeTime = closeTime;
 		this.eventQueue.addEvent(this);
 	}
