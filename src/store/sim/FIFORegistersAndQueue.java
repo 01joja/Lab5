@@ -25,6 +25,7 @@ public class FIFORegistersAndQueue {
 			return false;
 		}else{
 			this.registerWhithCustomers++;
+			this.storeState.emptyRegisters--;
 		}
 		return true;
 	}
@@ -62,6 +63,10 @@ public class FIFORegistersAndQueue {
 	}
 
 	public void oneFreeRegister() {
-		this.registerWhithCustomers--;
+		
+		if (this.registerWhithCustomers != 0){
+			this.registerWhithCustomers--;
+			this.storeState.emptyRegisters++;
+		}
 	}
 }
