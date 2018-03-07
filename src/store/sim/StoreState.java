@@ -275,6 +275,7 @@ public class StoreState extends SimState {
 	public double getK_MAX() {
 		return this.K_MAX;
 	}
+	
 	public long getSeed() {
 		
 			return this.SEED;
