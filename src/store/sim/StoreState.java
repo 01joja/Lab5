@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class StoreState extends SimState {
 	
+	//Olika typer av variabler som används under körningen.
 	private final double LAMBDA = 4;
 	private final double P_MIN = 0.6;
 	private final double P_MAX = 0.9;
@@ -58,12 +59,14 @@ public class StoreState extends SimState {
 		new Arrivals(this, arrivalRandom, 0);
 	}
 	
+	//Uppdaterar vad som händer i affären.
 	public void updateStore(Event e){
 		this.currentEvnet = e.getNameOfEvent();
 		setChanged();
 		notifyObservers();
 	}
 	
+	//Uppdaterar vad som händer i affären.
 	public void updateStore(Event e , Customer c){
 		this.currentEvnet = e.getNameOfEvent();
 		this.currentCustomer = c.getCustomerID();
@@ -71,67 +74,83 @@ public class StoreState extends SimState {
 		notifyObservers();
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public String getCurrentEvent(){
 		return this.currentEvnet;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int getCurrentCustomer(){
 		return this.currentCustomer;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public EventQueue getEventQueue(){
 		return super.eventQueue;
 	}
 	
+	//Ökar kunder som betalt med 1.
 	public void addPay(){
 		paid++;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int getPaid(){
 		return paid;
 	}
 	
+	//Retunerar hur många kunder som är i affären.
 	public int customersInStore() {
 		return this.customersInStore;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int getMaxCustomers(){
 		return this.MAXCOSTUMER;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int getRegisters(){
 		return this.REGISTERS;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public double getTimeRegistersNotUsed(){
 		return this.timeRegistersNotUsed;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int getSad(){
 		return this.sad;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int getCustumersQueued(){
 		return this.customersQueued;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int getCurrentlyQueuing(){
 		return this.currentlyQueuing;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public int[] getQueue(){
 		int[] temp = new int[0];
 		return temp;
 	}
 	
+	//Skickar tillbaka det som specificeras.
 	public double getStart(){
 		return this.START;
 	}
 	
+	//Returnerar hur många kassor som är lediga.
 	public int emptyRegisters(){
 		return this.emptyRegisters;
 	}
 	
+	//Om det inte finns någon ledig kassa returnerar den false, annars true.
 	public boolean isRegisterEmpty(){
 		if (this.emptyRegisters == 0){
 			return false;
@@ -142,6 +161,7 @@ public class StoreState extends SimState {
 		
 	}
 		
+	//Skickar tillbaka det som specificeras.
 	public double getQueueTime() {
 		if (fifo.isEmpty() == true) {
 			return 0;
@@ -149,6 +169,7 @@ public class StoreState extends SimState {
 		return 0.5;
 	}
 	
+	//Om affären är full så ökar antalet ledsna kunder, annars läggs det till en kund i affären.
 	public boolean isStoreFull(){
 		if (this.customersInStore == this.MAXCOSTUMER){
 			this.sad++;
@@ -159,19 +180,51 @@ public class StoreState extends SimState {
 		}
 	}
 	
+	//Öppnar affären.
 	public void openStore() {
 		storeIsOpen = true;
 	}
 	
+	//Stänger affären.
 	public void closeStore() {
 		storeIsOpen = false;
 	}
 	
-	public boolean isStoreOpen(){
-		return storeIsOpen;
+	//Tittar om affären är öppen.
+	public boolean getOpenState() {
+		return this.storeIsOpen;
 	}
 	
+	//Om affären är öppen returnerar den Ö annars S.
+	public String isStoreOpenString(){
+		if (true) {
+			return "Ö";
+		}
+		return "S";
+	}
+	
+	//Skickar tillbaka det som specificeras.
 	public FIFO getFIFO(){
 		return fifo;
+	}
+	
+	//Skickar tillbaka det som specificeras.
+	public double getP_MIN() {
+		return this.P_MIN;
+	}
+	
+	//Skickar tillbaka det som specificeras.
+	public double getP_MAX() {
+		return this.P_MAX;
+	}
+	
+	//Skickar tillbaka det som specificeras.
+	public double getK_MIN() {
+		return this.K_MIN;
+	}
+	
+	//Skickar tillbaka det som specificeras.
+	public double getK_MAX() {
+		return this.K_MAX;
 	}
 }
