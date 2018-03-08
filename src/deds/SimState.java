@@ -8,7 +8,7 @@ public class SimState extends Observable{
 	private double simTime = 0;
 	private boolean stopSim = false;
 	protected EventQueue eventQueue;
-	protected StoreView storeView;
+	protected SimView storeView;
 	
 	//stänger av simulator när det har gått en viss tid
 	void simEnd() {
