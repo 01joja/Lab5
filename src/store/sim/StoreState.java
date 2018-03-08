@@ -12,11 +12,11 @@ public class StoreState extends SimState {
 	/*
 	 * Olika typer av variabler som används under körningen.
 	 */
-	private final double LAMBDA = 1.0;
-	private final double P_MIN = 0.5;
-	private final double P_MAX = 1.0;
-	private final double K_MIN = 2.0;
-	private final double K_MAX = 3.0;
+	private final double LAMBDA = 3.0;
+	private final double P_MIN = 0.6;
+	private final double P_MAX = 0.9;
+	private final double K_MIN = 0.35;
+	private final double K_MAX = 0.6;
 	private final double START = 0;
 	private final boolean HASSEED;
 	private final long SEED;
