@@ -16,7 +16,7 @@ public class SimState extends Observable{
 	//kollar ifall simulatorn är igång 
 	//är simulatorn igång så tar den den första instansen från
 	//en kö ifrån klassen  EventQueue.
-	protected boolean getRunSim(){
+	public boolean getRunSim(){
 		if (this.stopSim == true){
 			return false;
 		}
