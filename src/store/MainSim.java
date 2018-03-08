@@ -17,7 +17,6 @@ public class MainSim {
 		//Ger Storestate 4 parametrar med värden för Antalet kunder som ryms
 		// Antalet kassor,
 		StoreState storeState = new StoreState(5, 2, 10.0, 1234);
-		
 		Simulator StorSimulator = new Simulator(storeState);
 		StorSimulator.mainLoop();
 	}

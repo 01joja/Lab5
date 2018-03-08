@@ -77,11 +77,7 @@ public class StoreView extends SimView {
 		System.out.print("2) Total tid 2 kassor har varit lediga: ");
 		System.out.printf("%3.2f", ledT);
 		System.out.print(" te.\n   Genomsnittlig ledig kassatid: ");
-<<<<<<< HEAD
 		System.out.printf("%3.2f", averageCashiertime);
-=======
-		System.out.printf("%3.2f",averageCashiertime);
->>>>>>> d116c9eea7f3358a3f001401c1a41c5fb95e93b2
 		System.out.print(" te (dvs ");
 		System.out.printf("%3.2f", percentOpenTime);
 		System.out.print(" % av tiden fr�n �ppning tills sista kunden betalat\n\n");
