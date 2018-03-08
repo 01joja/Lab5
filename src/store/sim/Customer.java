@@ -4,13 +4,11 @@ public class Customer {
 	
 	private int customerID = 0;
 	private static int numberOfCustomers;
+	private boolean hasPayed = false; 
 	
 	/**
 	 * När en ny kund skapas får den ett kundnummer.
 	 */
-	// visar antalet kunder i butiken ifall en ny kund anländer
-	// får den helt enkelt det ID som är i den ordningen
-	// kunden gick in i butiken.
 	public Customer() {
 		customerID = numberOfCustomers;
 		numberOfCustomers += 1;
@@ -18,6 +16,14 @@ public class Customer {
 	//ger varje kund ett ID
 	public int getCustomerID() {
 		return this.customerID;
+	}
+	
+	public boolean hasPayed(){
+		if (!hasPayed){
+			hasPayed = true;
+			return false;
+		}
+		return true;
 	}
 
 }

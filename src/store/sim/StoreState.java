@@ -95,7 +95,7 @@ public class StoreState extends SimState {
 	private void startSequens(int maxCustomers, int registers, double timeStoreIsOpen) {
 		super.eventQueue = new EventQueue();
 		fifo = new FIFORegistersAndQueue(this);
-		new Open(this.START, timeStoreIsOpen, 99, this);
+		new Open(this.START, timeStoreIsOpen, 999, this);
 		this.storeView = new StoreView(this);
 		this.emptyRegisters = registers;
 		new Arrivals(this, arrivalRandom);

@@ -26,6 +26,7 @@ public class EventStop extends Event {
     
 	public void perform() {
 		//gör så att simulatorn avslutas
+		this.simState.setTime(getEventFinishTime());
 		this.simState.simEnd();
 	}
 }

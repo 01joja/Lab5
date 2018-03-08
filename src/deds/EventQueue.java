@@ -26,6 +26,7 @@ public class EventQueue {
 		for (int i = 0; i < eventQueue.size(); i++){
 			if (eventQueue.get(i).getEventFinishTime() > event.getEventFinishTime()){
 				eventQueue.add(i, event);
+//				this.errorFunktion();
 				return;
 			}
 		}
@@ -47,5 +48,13 @@ public class EventQueue {
 		Event FirstElement = eventQueue.get(0);
 		eventQueue.remove(0);
 		return FirstElement;
+	}
+	
+	private void errorFunktion(){
+		System.out.println("---------------");
+		for (int j = 0; j < eventQueue.size(); j++){
+			System.out.println(this.eventQueue.get(j).getNameOfEvent() + " " + this.eventQueue.get(j).getEventFinishTime());
+		}
+		System.out.println("---------------");
 	}
 }
