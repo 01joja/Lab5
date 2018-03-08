@@ -79,4 +79,8 @@ public class FIFORegistersAndQueue {
 	public void removeOneInRegister() {
 		this.registerWhithCustomers--;
 	}
+	
+	public int getRegisterWhithCoustomers(){
+		return registerWhithCustomers;
+	}
 }

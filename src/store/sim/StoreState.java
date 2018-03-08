@@ -126,6 +126,19 @@ public class StoreState extends SimState {
 		notifyObservers();
 	}
 	
+	
+	/**
+	 * Overrides SimState settime to make sure that the time for time queued and time registers not used are correct
+	 */
+	@Override
+	public void setTime(double time){
+		double timePassed = time - super.getTime();
+		this.emptyRegisters = this.REGISTERS-this.fifo.getRegisterWhithCoustomers();
+		this.timeRegistersNotUsed = timePassed*this.emptyRegisters;
+		this.queuedTime=timePassed*fifo.getSize();
+		super.setTime(time);
+	}
+	
 	public void removeCustomer(){
 		this.customersInStore--;
 	}
@@ -231,7 +244,7 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public double getQueueTime() {
-		return 0.5;
+		return this.queuedTime;
 	}
 
 	public boolean isFIFOempty() {
