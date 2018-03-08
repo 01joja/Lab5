@@ -1,11 +1,14 @@
 package store.sim;
 
 import java.util.Observable;
+
+import deds.EventQueue;
 import deds.SimView;
 import java.util.Arrays;
 
 public class StoreView extends SimView {
 	private StoreState theStateStore;
+	EventQueue eventQueue;
 	private double ledT = 0;
 	private double queuedTime = 0;
 	private double lastStretch = 0;
@@ -62,12 +65,18 @@ public class StoreView extends SimView {
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
 		int[] currentlyInQueue = theStateStore.getQueue();
 
-		System.out.printf("%3.2f", starttid);
-		System.out.print("\t" + event + "\t" + customerID + "\t" + openOrNot + "\t" + led + "\t");
-		System.out.printf("%3.2f", ledT);
-		System.out.print("\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t");
-		System.out.printf("%3.2f", queuedTime);
-		System.out.print("\t" + currentlyQueueing + " \t " + Arrays.toString(currentlyInQueue) + "\n");
+		
+		if ( this.theStateStore.getCurrentEvent().equals("STOP"))
+		{
+			results();
+		}else {
+			System.out.printf("%3.2f", starttid);
+			System.out.print("\t" + event + "\t" + customerID + "\t" + openOrNot + "\t" + led + "\t");
+			System.out.printf("%3.2f", ledT);
+			System.out.print("\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t");
+			System.out.printf("%3.2f", queuedTime);
+			System.out.print("\t" + currentlyQueueing + " \t " + Arrays.toString(currentlyInQueue) + "\n");
+		}
 
 	}
 
