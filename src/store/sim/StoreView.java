@@ -15,6 +15,7 @@ public class StoreView extends SimView {
 	 * @param theStateStore
 	 */
 	public StoreView(StoreState theStateStore) {
+		super(theStateStore);
 		stateOfStore(theStateStore);
 		this.theStateStore.addObserver(this);
 		System.out.println("PARAMETRAR");
