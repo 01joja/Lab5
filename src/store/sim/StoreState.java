@@ -133,8 +133,12 @@ public class StoreState extends SimState {
 	@Override
 	public void setTime(double time){
 		double timePassed = time - super.getTime();
-		this.emptyRegisters = this.REGISTERS-this.fifo.getRegisterWhithCoustomers();
-		this.timeRegistersNotUsed = timePassed*this.emptyRegisters;
+		if ((this.storeIsOpen) || (fifo.getRegisterWhithCoustomers()!=0)) {
+			this.emptyRegisters = this.REGISTERS-this.fifo.getRegisterWhithCoustomers();
+			this.timeRegistersNotUsed = timePassed*this.emptyRegisters;
+		}else{
+			this.timeRegistersNotUsed = 0;
+		}
 		this.queuedTime=timePassed*fifo.getSize();
 		super.setTime(time);
 	}

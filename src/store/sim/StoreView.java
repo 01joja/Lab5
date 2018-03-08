@@ -48,7 +48,7 @@ public class StoreView extends SimView {
 			customerID = "-";
 		}
 //		if (theStateStore.getTime() <= 999) {
-			if (theStateStore.getTime() <= )
+//			if (theStateStore.getTime() <= )
 //			lastStretch = theStateStore.getTime();
 //		}
 		int led = theStateStore.emptyRegisters();

@@ -24,7 +24,9 @@ public class Pay extends Event {
 		this.storeState = storeState;
 		this.eventQueue = this.storeState.getEventQueue();
 		timeTaken = ((double)this.storeState.getPayRandom().next());
+//		System.out.print(timeTaken);
 		this.setTime(timeTaken + this.storeState.getTime());
+//		System.out.print(timeTaken);
 		this.customer = customer;
 		super.setNameOfEvent("Pay      ");
 		this.payQueue = this.storeState.getFIFO();
@@ -39,7 +41,7 @@ public class Pay extends Event {
 			this.storeState.updateStore(this, customer);
 			if (payQueue.hasPaid()){
 				Pay tempPay = this.payQueue.getFirstQueue();
-				tempPay.setNewPayTime(this.getEventFinishTime());
+				tempPay.setNewPayTime(storeState.getTime());
 				this.eventQueue.addEvent(tempPay);
 				this.storeState.removeCustomer();
 			}else{
