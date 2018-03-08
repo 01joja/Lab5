@@ -2,12 +2,13 @@ package store.sim;
 
 import java.util.ArrayList;
 import store.events.Pay;
+import store.sim.*;
 import store.sim.StoreState;
 
 public class FIFORegistersAndQueue {
 	
 	private boolean hasQueue = false;
-	private ArrayList<Pay> queue = new ArrayList<Pay>();
+	private ArrayList<Customer> queue = new ArrayList<Customer>();
 	private StoreState storeState;
 	private final int REGISTERS;
 	private int registerWhithCustomers = 0;
@@ -20,12 +21,12 @@ public class FIFORegistersAndQueue {
 		this.REGISTERS = this.storeState.getRegisters();
 	}
 	
-	public boolean tryToPay(Pay pay){
+	public boolean tryToPay(Customer customer){
 		if (hasQueue()){
-			this.addToQueue(pay);
+			this.addToQueue(customer);
 			return false;
 		} else if (isRegisterFull()){
-			this.addToQueue(pay);
+			this.addToQueue(customer);
 			return false;
 		}
 		this.registerWhithCustomers++;
@@ -53,19 +54,19 @@ public class FIFORegistersAndQueue {
 		return true;
 	}
 	
-	public void addToQueue(Pay pay){
+	public void addToQueue(Customer customer){
 		this.totalQueued++;
-		queue.add(pay);
+		queue.add(customer);
 	}
 	
-	public Pay getFirstQueue(){
-		Pay temp = queue.get(0);
+	public Customer getFirstQueue(){
+		Customer temp = queue.get(0);
 		queue.remove(0);
 		return temp;
 	}
 
-	public Pay[] getQueue() {
-		Pay[] temp = new Pay[queue.size()];
+	public Customer[] getQueue() {
+		Customer[] temp = new Customer[queue.size()];
 		for (int i = 0; i < this.queue.size(); i++){
 			temp[i] = queue.get(i);
 		}

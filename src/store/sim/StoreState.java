@@ -12,12 +12,12 @@ public class StoreState extends SimState {
 	/*
 	 * Olika typer av variabler som används under körningen.
 	 */
-	private final double LAMBDA = 50.0;
-	private final double P_MIN = 0.45;
-	private final double P_MAX = 0.65;
-	private final double K_MIN = 0.2;
-	private final double K_MAX = 0.3;
-	private final double START = 0;
+	private final double LAMBDA;
+	private final double P_MIN;
+	private final double P_MAX;
+	private final double K_MIN;
+	private final double K_MAX;
+	private final double START;
 	private final boolean HASSEED;
 	private final long SEED;
 
@@ -50,13 +50,13 @@ public class StoreState extends SimState {
 	 * @param timeStoreIsOpen
 	 *            Tiden affären är öppen.
 	 */
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min, double p_max,) {
-		private final double LAMBDA = 50.0;
-		private final double P_MIN = 0.45;
-		private final double P_MAX = 0.65;
-		private final double K_MIN = 0.2;
-		private final double K_MAX = 0.3;
-		private final double START = 0;
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min, double p_max, double k_min, double k_max, double start) {
+		this.LAMBDA = lambda;
+		this.P_MIN = p_min;
+		this.P_MAX = p_max;
+		this.K_MIN = k_min;
+		this.K_MAX = k_max;
+		this.START = start;
 		this.HASSEED = false;
 		this.SEED = 0;
 		arrivalRandom = new ExponentialRandomStream(LAMBDA);
@@ -78,7 +78,13 @@ public class StoreState extends SimState {
 	 * @param seed
 	 *            Är tiden hur ofta kunder kommer till affären.
 	 */
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, long seed) {
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min, double p_max, double k_min, double k_max, double start, long seed) {
+		this.LAMBDA = lambda;
+		this.P_MIN = p_min;
+		this.P_MAX = p_max;
+		this.K_MIN = k_min;
+		this.K_MAX = k_max;
+		this.START = start;
 		this.HASSEED = true;
 		this.SEED = seed;
 		this.arrivalRandom = new ExponentialRandomStream(LAMBDA, this.SEED);
@@ -232,10 +238,10 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public int[] getQueue() {
-		Pay[] pay = fifo.getQueue();
-		int[] temp = new int[pay.length];
-		for (int i = 0; i < pay.length; i++){
-			temp[i] = pay[i].getCustomer();
+		Customer[] customer = fifo.getQueue();
+		int[] temp = new int[customer.length];
+		for (int i = 0; i < customer.length; i++){
+			temp[i] = customer[i].getCustomerID();
 		}
 		return temp;
 	}

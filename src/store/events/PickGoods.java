@@ -32,6 +32,9 @@ public class PickGoods extends Event {
 	public void perform () {
 		storeState.setTime(getEventFinishTime());
 		storeState.updateStore(this, customer);
-		new Pay(customer, this.storeState);
+		FIFORegistersAndQueue fifo = storeState.getFIFO();
+		if (fifo.tryToPay(customer)){
+			new Pay(customer, storeState);
+		}
 		}
 }
