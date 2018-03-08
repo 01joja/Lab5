@@ -9,9 +9,7 @@ import java.util.Arrays;
 public class StoreView extends SimView {
 	private StoreState theStateStore;
 	EventQueue eventQueue;
-	private double ledT = 0;
-	private double queuedTime = 0;
-	private double lastStretch = 0;
+	
 
 	/**
 	 * printar ut mallen f�r simulationen
@@ -55,13 +53,13 @@ public class StoreView extends SimView {
 //			lastStretch = theStateStore.getTime();
 //		}
 		int led = theStateStore.emptyRegisters();
-		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
+		double ledT = theStateStore.getTimeRegistersNotUsed();
 		int i = theStateStore.customersInStore();
 		String openOrNot = theStateStore.isStoreOpenString();
 		int customersPayed = theStateStore.getPaid();
 		int sad = theStateStore.getSad();
 		int customerQueued = theStateStore.getCustumersQueued();
-		queuedTime = theStateStore.getQueueTime() + queuedTime;
+		double queuedTime = theStateStore.getQueueTime();
 		int currentlyQueueing = theStateStore.getCurrentlyQueuing();
 		int[] currentlyInQueue = theStateStore.getQueue();
 
@@ -83,21 +81,21 @@ public class StoreView extends SimView {
 	public void results() {
 		System.out.printf("%3.2f", theStateStore.getTime());
 		System.out.print("\tSTOP \n");
-		double averageCashiertime = ledT / 2;
-		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued();
+		double averageCashiertime = theStateStore.getTimeRegistersNotUsed() / 2;
+		double averageQueueTime = theStateStore.getQueueTime() / theStateStore.getCustumersQueued();
 		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
 		System.out.print("\nRESULTAT\n========\n\n");
 		System.out.print("1) Av " + (theStateStore.getPaid() + theStateStore.getSad()) + " kunder handlade "
 				+ theStateStore.getPaid() + " medan " + theStateStore.getSad() + " missades.\n\n");
 		System.out.print("2) Total tid 2 kassor har varit lediga: ");
-		System.out.printf("%3.2f", ledT);
+		System.out.printf("%3.2f", theStateStore.getTimeRegistersNotUsed());
 		System.out.print(" te.\n   Genomsnittlig ledig kassatid: ");
 		System.out.printf("%3.2f", averageCashiertime);
 		System.out.print(" te (dvs ");
 		System.out.printf("%3.2f", percentOpenTime);
 		System.out.print(" % av tiden fr�n �ppning tills sista kunden betalat\n\n");
 		System.out.print("3) Total tid " + theStateStore.getCustumersQueued() + " kunder tvingats k�a: ");
-		System.out.printf("%3.2f", queuedTime);
+		System.out.printf("%3.2f", theStateStore.getQueueTime());
 		System.out.print(" te.\n   Genomsnittlig k�tid: ");
 
 		System.out.printf("%3.2f", averageQueueTime);
