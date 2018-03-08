@@ -100,6 +100,17 @@ public class StoreState extends SimState {
 		this.emptyRegisters = registers;
 		new Arrivals(this, arrivalRandom);
 	}
+	
+	@Override
+	public boolean getRunSim(){
+		boolean flag = super.getRunSim();
+		if (flag == false) {
+			this.currentEvent="STOP";
+			setChanged();
+			notifyObservers();
+		}
+		return flag;
+	}
 
 	/**
 	 * 
@@ -133,12 +144,8 @@ public class StoreState extends SimState {
 	@Override
 	public void setTime(double time){
 		double timePassed = time - super.getTime();
-		if ((this.storeIsOpen) || (fifo.getRegisterWhithCoustomers()!=0)) {
-			this.emptyRegisters = this.REGISTERS-this.fifo.getRegisterWhithCoustomers();
-			this.timeRegistersNotUsed = timePassed*this.emptyRegisters;
-		}else{
-			this.timeRegistersNotUsed = 0;
-		}
+		this.emptyRegisters = this.REGISTERS-this.fifo.getRegisterWhithCoustomers();
+		this.timeRegistersNotUsed = timePassed*this.emptyRegisters;
 		this.queuedTime=timePassed*fifo.getSize();
 		super.setTime(time);
 	}
