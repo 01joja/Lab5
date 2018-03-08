@@ -20,7 +20,15 @@ public class RunSim {
 		// Antalet kassor,
 		StoreState storeState = new StoreState(5, 2, 10.0, 1234);
 		new StoreView(storeState);
-		Simulator StorSimulator = new Simulator(storeState);
-		StorSimulator.mainLoop();
+		Simulator storSimulator = new Simulator(storeState);
+		storSimulator.mainLoop();
+	}
+	
+	private StoreState metod1(){
+		StoreState storeState = new StoreState(5, 2, 10.0, 1234);
+		new StoreView(storeState);
+		Simulator storSimulator = new Simulator(storeState);
+		storSimulator.mainLoop();
+		return storeState;
 	}
 }
