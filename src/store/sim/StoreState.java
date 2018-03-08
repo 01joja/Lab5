@@ -96,6 +96,7 @@ public class StoreState extends SimState {
 		super.eventQueue = new EventQueue();
 		fifo = new FIFORegistersAndQueue(this);
 		new Open(this.START, timeStoreIsOpen, 999, this);
+		this.OpenTime = timeStoreIsOpen;
 		this.emptyRegisters = registers;
 		new Arrivals(this, arrivalRandom);
 	}
