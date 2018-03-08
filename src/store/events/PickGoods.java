@@ -16,11 +16,6 @@ public class PickGoods extends Event {
 	 * @param storeState Skickar med ändringar till StoreState.
 	 * Lägger till Eventet i eventQueue, sätter namnet på eventet till PickGoods, skickar med tiden kunden vart i affären.
 	 */
-	//Skapar ett pickgood objects ger objected en tid slumpmässigt
-	//läggs till i EvenQueue,döps till PickGoods och lägger till 
-	
-	//Skapar ett pickgood objects ger objected en tid slumpmässigt
-	//läggs till i EvenQueue,döps till PickGoods och lägger till 
 	PickGoods(Customer customer, StoreState storeState) {
 		this.storeState = storeState;
 		this.customer = customer;
@@ -34,9 +29,6 @@ public class PickGoods extends Event {
 	/**
 	 * Uppdaterar i storestate och sätter sluttid på eventet.
 	 */
-	//Uppdaterar storestate, sätter en tid och planerar en 
-	// ny Ett nytt pay event  //när exprandomstream 
-	//tycker att det är dags.
 	public void perform () {
 		storeState.setTime(getEventFinishTime());
 		storeState.updateStore(this, customer);

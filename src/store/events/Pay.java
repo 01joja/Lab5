@@ -8,7 +8,6 @@ import store.sim.StoreState;
 
 public class Pay extends Event {
 	
-	private Pay nextPay;
 	private FIFORegistersAndQueue payQueue;
 	private EventQueue eventQueue;
 	private StoreState storeState;
@@ -24,30 +23,45 @@ public class Pay extends Event {
 	Pay(Customer customer, StoreState storeState) {
 		this.storeState = storeState;
 		this.eventQueue = this.storeState.getEventQueue();
-		this.timeTaken = this.storeState.getPayRandom().next();
+		timeTaken = ((double)this.storeState.getPayRandom().next());
 		this.setTime(timeTaken + this.storeState.getTime());
 		eventQueue.addEvent(this);
 		this.customer = customer;
 		super.setNameOfEvent("Pay      ");
 		this.payQueue = this.storeState.getFIFO();
-		if (this.payQueue.goAndPay(this, this.getEventFinishTime())){
+		if (payQueue.tryToPay(this)){
+//			System.out.println("               " + this.customer.getCustomerID());
 			this.eventQueue.addEvent(this);
 		}
 	}
 	
 	public void perform() {
 		
+		this.storeState.setTime(getEventFinishTime());
+		
 		this.storeState.updateStore(this, customer);
-		this.storeState.addPay();
-		if (this.payQueue.hasQueue()){
-			this.eventQueue.addEvent(this.payQueue.getNextInQueue());
+		if (payQueue.hasPaid()){
+			Pay tempPay = this.payQueue.getFirstQueue();
+			if (tempPay != this){ //Ibland lade ett event till sig självt.
+				tempPay.setNewPayTime(this.getEventFinishTime());
+				this.eventQueue.addEvent(tempPay);
+			}
+			this.storeState.removeCustomer();
 		}else{
-			this.payQueue.oneFreeRegister();
+			payQueue.removeOneInRegister();
+			this.storeState.removeCustomer();
 		}
+		this.storeState.addPay();
+		
+		
 	}
 	
-	public void setNewPayTime(double simTime){
-		this.setTime(simTime + this.timeTaken);
+	public void setNewPayTime(double time){
+		this.setTime(time + this.timeTaken);
+	}
+	
+	public int getCustomer(){
+		return this.customer.getCustomerID();
 	}
 }
 

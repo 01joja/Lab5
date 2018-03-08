@@ -22,10 +22,10 @@ public class StoreView extends SimView {
 		System.out.println("Ankomsthastighet, lambda..:" + theStateStore.getLAMBDA());
 		System.out.println("Plocktider, [P_min..Pmax]: " + "[" + theStateStore.getP_MIN() +".." +  theStateStore.getP_MAX() + "]");
 		System.out.println("Betaltider, [K_min..Kmax]: " + "[" + theStateStore.getK_MIN() +".." +  theStateStore.getK_MAX() + "]");
-		System.out.println("Fr�t, f..................: " + this.theStateStore.getSeed());
-		System.out.println("F�RLOPP");
+		System.out.println("Frot, f..................: " + this.theStateStore.getSeed());
+		System.out.println("FORLOPP");
 		System.out.println("=======");
-		System.out.println("Tid\tH�ndelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tk�at\tk�T\tk�ar\t[Kassak�..]\n");
+		System.out.println("Tid\tHandelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tkoat\tkoT\tkoar\t[Kassako..]\n");
 
 	}
 
@@ -57,17 +57,23 @@ public class StoreView extends SimView {
 		
 		System.out.printf("%3.2f", starttid);
 		System.out.print("\t" + event + "\t" + customerID + "\t"+ openOrNot + "\t" + led + "\t" + ledT + "\t" + i + "\t"
+<<<<<<< HEAD
 				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + +queuedTime + "\t" + currentlyQueueing
+=======
+				+ customersPayed + "\t" + sad + "\t" + customerQueued + "\t" + queuedTime + "\t" + currentlyQueueing
+>>>>>>> 8f11cd903859c7f64df0902f86c8ece9ae31092c
 				+ " \t " + Arrays.toString(currentlyInQueue) + "\n");
 
 	}
 
 	public void results() {
+		System.out.printf("%3.2f", theStateStore.getTime());
+		System.out.print("\tSTOP \n");
 		double averageCashiertime = ledT / 2;
 		double averageQueueTime = queuedTime / theStateStore.getCustumersQueued();
 		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
 		System.out.print("\nRESULTAT\n========\n\n");
-		System.out.print("1) Av "+ theStateStore.getMaxCustomers() + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missades.\n\n");
+		System.out.print("1) Av "+ (theStateStore.getPaid()+theStateStore.getSad()) + " kunder handlade " + theStateStore.getPaid() +" medan " + theStateStore.getSad() + " missades.\n\n");
 		System.out.print("2) Total tid 2 kassor har varit lediga: " );
 		System.out.printf("%3.2f", ledT);
 		System.out.print(" te.\n   Genomsnittlig ledig kassatid: " + averageCashiertime + " te (dvs ");

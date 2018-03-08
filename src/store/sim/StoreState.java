@@ -12,11 +12,11 @@ public class StoreState extends SimState {
 	/*
 	 * Olika typer av variabler som används under körningen.
 	 */
-	private final double LAMBDA = 2;
-	private final double P_MIN = 0.6;
-	private final double P_MAX = 0.9;
-	private final double K_MIN = 0.35;
-	private final double K_MAX = 0.6;
+	private final double LAMBDA = 1.0;
+	private final double P_MIN = 0.5;
+	private final double P_MAX = 1.0;
+	private final double K_MIN = 2.0;
+	private final double K_MAX = 3.0;
 	private final double START = 0;
 	private final boolean HASSEED;
 	private final long SEED;
@@ -29,8 +29,7 @@ public class StoreState extends SimState {
 	private int sad = 0;
 	private int currentlyQueuing = 0;
 	private int customersQueued = 0;
-	private int registerQueue = 0;
-	private int emptyRegisters = 0;
+	int emptyRegisters = 0;
 	private int customersInStore = 0;
 	private ArrayList<Integer> queue = new ArrayList<Integer>();
 	private String currentEvent;
@@ -98,6 +97,7 @@ public class StoreState extends SimState {
 		fifo = new FIFORegistersAndQueue(this);
 		new Open(this.START, timeStoreIsOpen, 99, this);
 		this.storeView = new StoreView(this);
+		this.emptyRegisters = registers;
 		new Arrivals(this, arrivalRandom);
 	}
 
@@ -124,6 +124,10 @@ public class StoreState extends SimState {
 		this.currentCustomer = c.getCustomerID();
 		setChanged();
 		notifyObservers();
+	}
+	
+	public void removeCustomer(){
+		this.customersInStore--;
 	}
 
 	public UniformRandomStream getPayRandom() {
@@ -186,17 +190,21 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public int getCustumersQueued() {
-		return this.customersQueued;
+		return this.fifo.totalQueued;
 	}
 
 	// Skickar tillbaka det som specificeras.
 	public int getCurrentlyQueuing() {
-		return this.currentlyQueuing;
+		return this.fifo.getSize();
 	}
 
 	// Skickar tillbaka det som specificeras.
 	public int[] getQueue() {
-		int[] temp = new int[0];
+		Pay[] pay = fifo.getQueue();
+		int[] temp = new int[pay.length];
+		for (int i = 0; i < pay.length; i++){
+			temp[i] = pay[i].getCustomer();
+		}
 		return temp;
 	}
 

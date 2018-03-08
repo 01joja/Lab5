@@ -13,55 +13,70 @@ public class FIFORegistersAndQueue {
 	private int registerWhithCustomers = 0;
 	private double totalTimeInQueue = 0;
 	
+	int totalQueued = 0;
+	
 	FIFORegistersAndQueue(StoreState storeState){
 		this.storeState = storeState;
 		this.REGISTERS = this.storeState.getRegisters();
 	}
 	
-	public boolean goAndPay(Pay pay, double time){
-		
-		if (this.registerWhithCustomers == this.REGISTERS){
+	public boolean tryToPay(Pay pay){
+		if (hasQueue()){
 			this.addToQueue(pay);
 			return false;
-		}else{
-			this.registerWhithCustomers++;
+		} else if (isRegisterFull()){
+			this.addToQueue(pay);
+			return false;
+		}
+		this.registerWhithCustomers++;
+		return true;
+	}
+	
+	public boolean hasPaid(){
+		if (hasQueue()){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isRegisterFull(){
+		if (this.REGISTERS <= this.registerWhithCustomers){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean hasQueue(){
+		if (queue.size() == 0){
+			return false;
 		}
 		return true;
 	}
 	
-	public void addToQueue(Pay newPay){
-		if (queue.size() == 0){
-			queue.add(newPay);
-			this.hasQueue = true;
-		}else{
-			queue.add(queue.size()-1, newPay);
-		}
+	public void addToQueue(Pay pay){
+		this.totalQueued++;
+		queue.add(pay);
 	}
 	
-	public Pay[] getQueue(){
-		Pay[] temp = (Pay[]) queue.toArray();
+	public Pay getFirstQueue(){
+		Pay temp = queue.get(0);
+		queue.remove(0);
 		return temp;
 	}
-	
-	public int getSize(){
-		return queue.size();
-	}
-	
-	public boolean hasQueue(){
-		return this.hasQueue;
-	}
-	
-	public Pay getNextInQueue(){
-		Pay pay = queue.get(0);
-		queue.remove(0);
-		pay.setNewPayTime(this.storeState.getTime());
-		if (queue.size() == 0){
-			this.hasQueue = false;
+
+	public Pay[] getQueue() {
+		Pay[] temp = new Pay[queue.size()];
+		for (int i = 0; i < this.queue.size(); i++){
+			temp[i] = queue.get(i);
 		}
-		return pay;
+		return temp;
 	}
 
-	public void oneFreeRegister() {
+	public int getSize() {
+		return queue.size();
+	}
+
+	public void removeOneInRegister() {
 		this.registerWhithCustomers--;
 	}
 }
