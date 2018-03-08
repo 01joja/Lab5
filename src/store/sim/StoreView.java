@@ -47,11 +47,12 @@ public class StoreView extends SimView {
 		if (event.equals("Close   ")) {
 			customerID = "-";
 		}
-		if (theStateStore.getTime() <= 999) {
-			lastStretch = theStateStore.getTime();
-		}
+//		if (theStateStore.getTime() <= 999) {
+			if (theStateStore.getTime() <= )
+//			lastStretch = theStateStore.getTime();
+//		}
 		int led = theStateStore.emptyRegisters();
-		ledT = theStateStore.getTimeRegistersNotUsed() + ledT + lastStretch;
+		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
 		int i = theStateStore.customersInStore();
 		String openOrNot = theStateStore.isStoreOpenString();
 		int customersPayed = theStateStore.getPaid();
