@@ -15,7 +15,6 @@ public class StoreView extends SimView {
 	/**
 	 * printar ut mallen f�r simulationen
 	 * 
-	 * @param theStateStore
 	 */
 	public StoreView(StoreState theStateStore) {
 		super(theStateStore);
@@ -40,7 +39,10 @@ public class StoreView extends SimView {
 	public void stateOfStore(StoreState theStateStore) {
 		this.theStateStore = theStateStore;
 	}
-
+	
+	/**
+	 * Printar ut alla händelser varje gång StoreState uppdateras.
+	 */
 	public void update(Observable o, Object arg) {
 		double starttid = theStateStore.getTime();
 
@@ -49,10 +51,6 @@ public class StoreView extends SimView {
 		if (event.equals("Close   ")) {
 			customerID = "-";
 		}
-//		if (theStateStore.getTime() <= 999) {
-//			if (theStateStore.getTime() <= )
-//			lastStretch = theStateStore.getTime();
-//		}
 		int led = theStateStore.emptyRegisters();
 		double ledT = theStateStore.getTimeRegistersNotUsed();
 		int i = theStateStore.customersInStore();
@@ -81,7 +79,10 @@ public class StoreView extends SimView {
 		}
 
 	}
-
+	
+	/**
+	 * När Stop körs så skriver den ut en sammanfattning av körningen.
+	 */
 	public void results() {
 		System.out.printf("%3.2f", theStateStore.getTime());
 		System.out.print("\tSTOP \n");

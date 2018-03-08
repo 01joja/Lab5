@@ -18,6 +18,9 @@ public class Customer {
 		return this.customerID;
 	}
 	
+	/*
+	 * Om kunden inte har betalat så sätts det till true.
+	 */
 	public boolean hasPayed(){
 		if (!hasPayed){
 			hasPayed = true;

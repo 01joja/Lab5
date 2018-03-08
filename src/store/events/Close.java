@@ -23,6 +23,9 @@ public class Close extends Event {
 		this.eventQueue.addEvent(this);
 	}
 	
+	/*
+	 *Den sätter en tid, uppdaterar lget i affären och stänger affären. 
+	 */
 	public void perform(){
 		this.storeState.setTime(this.getEventFinishTime());
 		this.storeState.updateStore(this);

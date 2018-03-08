@@ -25,7 +25,12 @@ public class Arrivals extends Event{
 	 */
 	
 	
-	
+	/**
+	 * 
+	 * @param s Skickar med StoreState som paramter.
+	 * @param getTime Hämtar tiden för eventet.
+	 * Tiden bestäms av exponentialrandomstream, lägger till eventet i eventqueue och sätter namnet Event på eventet.
+	 */
 	public Arrivals(StoreState s, ExponentialRandomStream getTime) {
 		this.storeState=s;
 		this.exponentialRandomStream = getTime;

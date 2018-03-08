@@ -5,6 +5,9 @@ public class SimView implements Observer  {
 	//Klassen implenterar en observer som används för att
 	//kunna observera klassen StorView
 	
+	/*
+	 *Lägger till en obervatör. 
+	 */
 	public SimView(SimState simState){
 		simState.addObserver(this);
 	}

@@ -6,7 +6,7 @@ import store.sim.StoreView;
 /**
  * @author's 
  * Jonas Jacobsson jonjac-6
- * Marcus Carlsson 
+ * Marcus Carlsson marcap-7
  * Tommy Andersson anetom-6
  * Marcus Erisson amueri-6
  */

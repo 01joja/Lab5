@@ -11,7 +11,7 @@ public class EventStart extends Event {
 	 * 
 	 * @param simStopTime Tiden som stoppar hela simulationen.
 	 * @param simState Skickar med en tid för att slutföra simulationen.
-	 * STartar igång hela simulationen.
+	 * Startar igång hela simulationen.
 	 */
 	//Classen innehåller en constructor som startar ett event
 	public EventStart(double simStopTime, SimState simState){

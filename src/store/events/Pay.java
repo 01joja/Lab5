@@ -35,6 +35,11 @@ public class Pay extends Event {
 		}
 	}
 	
+	/**
+	 * Sätter en sluttid, kund som skapades i arrival följer med hit, om det är kö så ställs den i kö genom fifo
+	 * när det är kundens tid så tas den bort från kön och flyttas till kassorna där den skannar varor.
+	 * När det har betalt så blir en kassa ledig och personen lämnar affären.
+	 */
 	public void perform() {
 		
 			this.storeState.setTime(getEventFinishTime());

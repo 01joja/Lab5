@@ -35,6 +35,9 @@ public class Open extends EventStart {
 		this.eventQueue.addEvent(this);
 	}
 	
+	/**
+	 * Öppnar affären, uppdaterar läget i affären och sätter en stängningstid för affären.
+	 */
 	public void perform(){
 		this.storeState.openStore();
 		this.storeState.updateStore(this);

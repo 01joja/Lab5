@@ -14,8 +14,6 @@ public class EventQueue {
 	void addStopEvent(Event e){
 		eventQueue.add(e);
 	}
-	
-	
 
 	/*
 	 * Adds event to queue
@@ -50,6 +48,9 @@ public class EventQueue {
 		return FirstElement;
 	}
 	
+	/*
+	 * Felsökningsmetod.
+	 */
 	private void errorFunktion(){
 		System.out.println("---------------");
 		for (int j = 0; j < eventQueue.size(); j++){
