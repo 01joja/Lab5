@@ -8,6 +8,7 @@ public class StoreView extends SimView {
 	private StoreState theStateStore;
 	private double ledT = 0;
 	private double queuedTime = 0;
+	private double lastStretch = 0;
 
 	/**
 	 * printar ut mallen f�r simulationen
@@ -45,8 +46,11 @@ public class StoreView extends SimView {
 		if (event.equals("Close   ")) {
 			customerID = "-";
 		}
+		if (theStateStore.getTime() <= 999) {
+			lastStretch = theStateStore.getTime();
+		}
 		int led = theStateStore.emptyRegisters();
-		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
+		ledT = theStateStore.getTimeRegistersNotUsed() + ledT + lastStretch;
 		int i = theStateStore.customersInStore();
 		String openOrNot = theStateStore.isStoreOpenString();
 		int customersPayed = theStateStore.getPaid();
