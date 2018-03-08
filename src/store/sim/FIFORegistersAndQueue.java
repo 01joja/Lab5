@@ -2,12 +2,13 @@ package store.sim;
 
 import java.util.ArrayList;
 import store.events.Pay;
+import store.sim.*;
 import store.sim.StoreState;
 
 public class FIFORegistersAndQueue {
 	
 	private boolean hasQueue = false;
-	private ArrayList<Pay> queue = new ArrayList<Pay>();
+	private ArrayList<Customer> queue = new ArrayList<Customer>();
 	private StoreState storeState;
 	private final int REGISTERS;
 	private int registerWhithCustomers = 0;
@@ -20,6 +21,7 @@ public class FIFORegistersAndQueue {
 		this.REGISTERS = this.storeState.getRegisters();
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * 
 	 * @param pay Skickar med typen Pay med namnet pay.
@@ -28,11 +30,14 @@ public class FIFORegistersAndQueue {
 	 * false. Om det inte finns en kö och kassa är ledig så ökas antalet kassor med kunder med 1. 
 	 */
 	public boolean tryToPay(Pay pay){
+=======
+	public boolean tryToPay(Customer customer){
+>>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		if (hasQueue()){
-			this.addToQueue(pay);
+			this.addToQueue(customer);
 			return false;
 		} else if (isRegisterFull()){
-			this.addToQueue(pay);
+			this.addToQueue(customer);
 			return false;
 		}
 		this.registerWhithCustomers++;
@@ -67,16 +72,21 @@ public class FIFORegistersAndQueue {
 		return true;
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * 
 	 * @param pay Skickar med pay som parameter och lägger till
 	 * en kund som köat.
 	 */
 	public void addToQueue(Pay pay){
+=======
+	public void addToQueue(Customer customer){
+>>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		this.totalQueued++;
-		queue.add(pay);
+		queue.add(customer);
 	}
 	
+<<<<<<< HEAD
 	
 	/**
 	 * 
@@ -84,16 +94,25 @@ public class FIFORegistersAndQueue {
 	 */
 	public Pay getFirstQueue(){
 		Pay temp = queue.get(0);
+=======
+	public Customer getFirstQueue(){
+		Customer temp = queue.get(0);
+>>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		queue.remove(0);
 		return temp;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * 
 	 * @return 
 	 */
 	public Pay[] getQueue() {
 		Pay[] temp = new Pay[queue.size()];
+=======
+	public Customer[] getQueue() {
+		Customer[] temp = new Customer[queue.size()];
+>>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		for (int i = 0; i < this.queue.size(); i++){
 			temp[i] = queue.get(i);
 		}
