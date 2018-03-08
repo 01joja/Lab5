@@ -45,7 +45,6 @@ public class StoreView extends SimView {
 		if (event.equals("Close   ")) {
 			customerID = "-";
 		}
-
 		int led = theStateStore.emptyRegisters();
 		ledT = theStateStore.getTimeRegistersNotUsed() + ledT;
 		int i = theStateStore.customersInStore();
@@ -60,8 +59,8 @@ public class StoreView extends SimView {
 		System.out.printf("%3.2f", starttid);
 		System.out.print("\t" + event + "\t" + customerID + "\t" + openOrNot + "\t" + led + "\t");
 		System.out.printf("%3.2f", ledT);
-		System.out.print("\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t"); 
-		System.out.printf("%3.2f",queuedTime );
+		System.out.print("\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t");
+		System.out.printf("%3.2f", queuedTime);
 		System.out.print("\t" + currentlyQueueing + " \t " + Arrays.toString(currentlyInQueue) + "\n");
 
 	}
@@ -77,11 +76,14 @@ public class StoreView extends SimView {
 				+ theStateStore.getPaid() + " medan " + theStateStore.getSad() + " missades.\n\n");
 		System.out.print("2) Total tid 2 kassor har varit lediga: ");
 		System.out.printf("%3.2f", ledT);
-		System.out.print(" te.\n   Genomsnittlig ledig kassatid: " + averageCashiertime + " te (dvs ");
+		System.out.print(" te.\n   Genomsnittlig ledig kassatid: ");
+		System.out.printf("%3.2f",averageCashiertime);
+		System.out.print(" te (dvs ");
 		System.out.printf("%3.2f", percentOpenTime);
 		System.out.print(" % av tiden fr�n �ppning tills sista kunden betalat\n\n");
-		System.out.print("3) Total tid " + theStateStore.getCustumersQueued() + " kunder tvingats k�a: " + queuedTime
-				+ " te.\n   Genomsnittlig k�tid: ");
+		System.out.print("3) Total tid " + theStateStore.getCustumersQueued() + " kunder tvingats k�a: ");
+		System.out.printf("%3.2f", queuedTime);
+		System.out.print(" te.\n   Genomsnittlig k�tid: ");
 
 		System.out.printf("%3.2f", averageQueueTime);
 		System.out.print(" te.");
