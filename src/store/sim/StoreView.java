@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class StoreView extends SimView {
 	private StoreState theStateStore;
 	EventQueue eventQueue;
+	private double whenLastRealEventHappend;
 	
 
 	/**
@@ -74,6 +75,9 @@ public class StoreView extends SimView {
 			System.out.print("\t" + i + "\t" + customersPayed + "\t" + sad + "\t" + customerQueued + "\t");
 			System.out.printf("%3.2f", queuedTime);
 			System.out.print("\t" + currentlyQueueing + " \t " + Arrays.toString(currentlyInQueue) + "\n");
+			if (theStateStore.getCurrentEvent().equals("Pay      ")) {
+				this.whenLastRealEventHappend = this.theStateStore.getTime();
+			}
 		}
 
 	}
@@ -81,9 +85,9 @@ public class StoreView extends SimView {
 	public void results() {
 		System.out.printf("%3.2f", theStateStore.getTime());
 		System.out.print("\tSTOP \n");
-		double averageCashiertime = theStateStore.getTimeRegistersNotUsed() / 2;
+		double averageCashiertime = theStateStore.getTimeRegistersNotUsed() / this.theStateStore.getRegisters();
 		double averageQueueTime = theStateStore.getQueueTime() / theStateStore.getCustumersQueued();
-		double percentOpenTime = theStateStore.getOpenTime() / averageQueueTime;
+		double percentOpenTime = averageCashiertime / this.whenLastRealEventHappend;
 		System.out.print("\nRESULTAT\n========\n\n");
 		System.out.print("1) Av " + (theStateStore.getPaid() + theStateStore.getSad()) + " kunder handlade "
 				+ theStateStore.getPaid() + " medan " + theStateStore.getSad() + " missades.\n\n");
@@ -92,7 +96,7 @@ public class StoreView extends SimView {
 		System.out.print(" te.\n   Genomsnittlig ledig kassatid: ");
 		System.out.printf("%3.2f", averageCashiertime);
 		System.out.print(" te (dvs ");
-		System.out.printf("%3.2f", percentOpenTime);
+		System.out.printf("%3.2f", percentOpenTime*100);
 		System.out.print(" % av tiden fr�n �ppning tills sista kunden betalat\n\n");
 		System.out.print("3) Total tid " + theStateStore.getCustumersQueued() + " kunder tvingats k�a: ");
 		System.out.printf("%3.2f", theStateStore.getQueueTime());
