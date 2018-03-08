@@ -29,7 +29,7 @@ public class StoreState extends SimState {
 	private int sad = 0;
 	private int currentlyQueuing = 0;
 	private int customersQueued = 0;
-	int emptyRegisters = 0;
+	private int emptyRegisters = 0;
 	private int customersInStore = 0;
 	private ArrayList<Integer> queue = new ArrayList<Integer>();
 	private String currentEvent;
