@@ -25,10 +25,11 @@ public class optimiser {
 	static double k_max = 0.3; 
 	static double start = 0.0; 
 	static long seed = 42;
+	static int stopTime = 999;
 	
 	/**
      * 
-     * @param args
+     * @param args skicka inte med något!
      */
 	public static void main(String[] args) {
 		//Ger Storestate 4 parametrar med värden för Antalet kunder som ryms
@@ -44,7 +45,7 @@ public class optimiser {
 	}
 
 	private static StoreState metod1(){
-		StoreState storeState = new StoreState(maxCustomers, registers, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, seed);
+		StoreState storeState = new StoreState(maxCustomers, registers, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, seed, stopTime);
 		Simulator storSimulator = new Simulator(storeState);
 		storSimulator.mainLoop();
 		return storeState;
@@ -52,7 +53,7 @@ public class optimiser {
 	
 	private static StoreState metod1(int antalKassor){
 		
-		StoreState storeState = new StoreState(maxCustomers, antalKassor, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, seed);
+		StoreState storeState = new StoreState(maxCustomers, antalKassor, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, seed, stopTime);
 		Simulator storSimulator = new Simulator(storeState);
 		storSimulator.mainLoop();
 		return storeState;
@@ -61,7 +62,7 @@ public class optimiser {
 	
 	private static StoreState metod1(int antalKassor, long random){
 		
-		StoreState storeState = new StoreState(maxCustomers, antalKassor, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, random);
+		StoreState storeState = new StoreState(maxCustomers, antalKassor, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, random, stopTime);
 		Simulator storSimulator = new Simulator(storeState);
 		storSimulator.mainLoop();
 		return storeState;
@@ -117,21 +118,21 @@ public class optimiser {
 		return kassor;
 	}
 	
-//	public static int metod3(long seed){
-//		Random random = new Random(seed);
-//		long nextSeed = random.nextLong();
-//		int optimeradeKassor = 0;
-//		int kassor = 0;
-//		
-//		for (int i = 0; i < 100; i++){
-//			kassor = metod2(nextSeed);
-//			if ( optimeradeKassor < kassor){
-//				optimeradeKassor = kassor;
-//				i = 0;
-//				System.out.println("Antalet det stannade på: " + i + " Optimala nu: " + kassor);
-//			}
-//			nextSeed = random.nextLong();
-//		}
-//		return optimeradeKassor;
-//	}
+	public static int metod3(long seed){
+		Random random = new Random(seed);
+		long nextSeed = random.nextLong();
+		int optimeradeKassor = 0;
+		int kassor = 0;
+		
+		for (int i = 0; i < 100; i++){
+			kassor = metod2(nextSeed);
+			if ( optimeradeKassor < kassor){
+				optimeradeKassor = kassor;
+				i = 0;
+				System.out.println("Antalet det stannade på: " + i + " Optimala nu: " + kassor);
+			}
+			nextSeed = random.nextLong();
+		}
+		return optimeradeKassor;
+	}
 }

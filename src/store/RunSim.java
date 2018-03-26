@@ -26,15 +26,16 @@ public class RunSim {
 	static double k_max = 3.0; 
 	static double start = 0.0; 
 	static long seed = 1234;
+	static int stopTime = 999;
 	
     /**
      * 
-     * @param args
+     * @param args skicka inte med något!
      */
 	public static void main(String[] args) {
 		//Ger Storestate 4 parametrar med värden för Antalet kunder som ryms
 		// Antalet kassor
-		StoreState storeState = new StoreState(maxCustomers, registers, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, seed);
+		StoreState storeState = new StoreState(maxCustomers, registers, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, seed, stopTime);
 		new StoreView(storeState);
 		Simulator StorSimulator = new Simulator(storeState);
 		StorSimulator.mainLoop();

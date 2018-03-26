@@ -39,7 +39,7 @@ public class EventQueue {
 
 	/**
 	 * 
-	 * @returns returnerar storleken på listan.
+	 * @return returnerar storleken på listan.
 	 */
 	public int queueSize() {
 		return eventQueue.size();
@@ -47,7 +47,7 @@ public class EventQueue {
 	
 	
 	/**
-	 * @returns returnerar första elementet i listan och tar bort det.
+	 * @return returnerar första elementet i listan och tar bort det.
 	 */
 	public Event getFirst() {
 		Event FirstElement = eventQueue.get(0);

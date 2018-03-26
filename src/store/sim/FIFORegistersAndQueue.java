@@ -31,7 +31,7 @@ public class FIFORegistersAndQueue {
 	
 	/**
 	 * 
-	 * @param pay Skickar med typen Pay med namnet pay.
+	 * @param customer den kund som ska försöka att betala.
 	 * @return Om det finns en kö så läggs kunde dit och returnerar false
 	 * och om ingen kassa är ledig så ställer sig kunden i kö och returnerar
 	 * false. Om det inte finns en kö och kassa är ledig så ökas antalet kassor med kunder med 1. 
@@ -79,8 +79,7 @@ public class FIFORegistersAndQueue {
 
 	/**
 	 * 
-	 * @param pay Skickar med pay som parameter och lägger till
-	 * en kund som köat.
+	 * @param customer den kund som ska läggas till i kön
 	 */
 
 	public void addToQueue(Customer customer){
@@ -104,7 +103,7 @@ public class FIFORegistersAndQueue {
 
 	/**
 	 * 
-	 * @return 
+	 * @return en array utav kön
 	 */
 	public Customer[] getQueue() {
 		Customer[] temp = new Customer[queue.size()];

@@ -13,11 +13,14 @@ public class Customer {
 	private int customerID = 0;
 	private boolean hasPayed = false; 
 	
+	
 	/**
 	 * När en ny kund skapas får den ett kundnummer.
+	 * @param ID ID för kunden
+	 * @param StoreState den StoreState som ska ändras
 	 */
-	public Customer(int numberOfCustomers, StoreState StoreState) {
-		this.customerID = numberOfCustomers;
+	public Customer(int ID, StoreState StoreState) {
+		this.customerID = ID;
 		StoreState.addCustomerID();
 	}
 	

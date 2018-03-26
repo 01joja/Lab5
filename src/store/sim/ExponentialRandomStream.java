@@ -17,8 +17,8 @@ public class ExponentialRandomStream {
 	
 	/**
 	 *   
-	 * @param lambda
-	 * @param seed
+	 * @param lambda lambda
+	 * @param seed seeden
 	 */
 	public ExponentialRandomStream(double lambda, long seed) {
 	  	rand = new Random(seed);

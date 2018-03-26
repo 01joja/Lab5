@@ -62,9 +62,10 @@ public class StoreState extends SimState {
 	 * @param k_max längsta tiden det tar att betala i kassan
 	 * @param start bestämmer vilken tid programmet startar
 	 * @param seed bestämmer vilken seed som SimState ska utgå ifrån
+	 * @param stopTime den absoluta slut tiden
 	 */
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min,
-			double p_max, double k_min, double k_max, double start, long seed) {
+			double p_max, double k_min, double k_max, double start, long seed, int stopTime) {
 		this.LAMBDA = lambda;
 		this.P_MIN = p_min;
 		this.P_MAX = p_max;
@@ -80,7 +81,7 @@ public class StoreState extends SimState {
 		this.MAXCOSTUMER = maxCustomers;
 		super.setEventQueue(new EventQueue());
 		fifo = new FIFORegistersAndQueue(this);
-		new Open(this.START, timeStoreIsOpen, 999, this);
+		new Open(this.START, timeStoreIsOpen, stopTime, this);
 		this.OpenTime = timeStoreIsOpen;
 		this.emptyRegisters = registers;
 		new Arrivals(this, arrivalRandom);
@@ -215,7 +216,7 @@ public class StoreState extends SimState {
 	 *
 	 * rerurnerar det som specificeras.
 	 * 
-	 * @returnerar nästa event i eventQueue
+	 * @return nästa event i eventQueue
 	 */
 	public EventQueue getEventQueue() {
 		return super.getEventQueue();
