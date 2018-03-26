@@ -24,7 +24,7 @@ public class Close extends Event {
 	}
 	
 	/*
-	 *Den sätter en tid, uppdaterar lget i affären och stänger affären. 
+	 *Den sätter en tid, uppdaterar läget i affären och stänger affären. 
 	 */
 	public void perform(){
 		this.storeState.setTime(this.getEventFinishTime());

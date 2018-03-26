@@ -1,10 +1,3 @@
-package store;
-import java.util.Random;
-
-import deds.Simulator;
-import store.sim.StoreState;
-import store.sim.StoreView;
-
 /**
  * @author's 
  * Jonas Jacobsson jonjac-6
@@ -12,6 +5,15 @@ import store.sim.StoreView;
  * Tommy Andersson anetom-6
  * Marcus Erisson amueri-6
  */
+
+package store;
+
+import java.util.Random;
+
+import deds.Simulator;
+import store.sim.StoreState;
+import store.sim.StoreView;
+
 public class RunSim {
 	
 	static int maxCustomers = 5; 

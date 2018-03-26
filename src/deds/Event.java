@@ -1,9 +1,14 @@
+/**
+ * @author's 
+ * Jonas Jacobsson jonjac-6
+ * Marcus Carlsson marcap-7
+ * Tommy Andersson anetom-6
+ * Marcus Erisson amueri-6
+ */
+
 package deds;
 
 import deds.SimState;
-// Classen Event sätter ger värden på variablerna finishTime och
-// nameOfEvent finishTIme ger tiden det tar på ett event
-//och nameOfEvent ger varje event ett namn
 
 public class Event {
 	
@@ -14,6 +19,7 @@ public class Event {
 	 * Ärvs av andra eventklasser.
 	 */
 	public void perform() {	
+		
 	}
 	
 	/**

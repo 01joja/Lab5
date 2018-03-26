@@ -1,4 +1,13 @@
+/**
+ * @author's 
+ * Jonas Jacobsson jonjac-6
+ * Marcus Carlsson marcap-7
+ * Tommy Andersson anetom-6
+ * Marcus Erisson amueri-6
+ */
+
 package deds;
+
 import java.util.Observable;
 import deds.*;
 import store.sim.StoreView;

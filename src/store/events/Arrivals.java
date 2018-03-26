@@ -43,9 +43,10 @@ public class Arrivals extends Event{
 	}
 	
 	/**
-	 * 
+	 * Uppdaterar storestate, tittar om affären är full, 
+	 * sätter en tid och planerar en ny Arrival när exprandomstream 
+	 * tycker att det är dags.
 	 */
-	//Uppdaterar storestate, tittar om affären är full, sätter en tid och planerar en ny Arrival när exprandomstream tycker att det är dags.
 	public void perform () {
 		storeState.setTime(this.getEventFinishTime());
 		storeState.updateStore(this, customer);

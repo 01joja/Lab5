@@ -11,7 +11,6 @@ package store.sim;
 public class Customer {
 	
 	private int customerID = 0;
-//	private int numberOfCustomers;
 	private boolean hasPayed = false; 
 	
 	/**
@@ -21,7 +20,11 @@ public class Customer {
 		this.customerID = numberOfCustomers;
 		StoreState.addCustomerID();
 	}
-	//ger varje kund ett ID
+	
+	/**
+	 * 
+	 * @return returnerar ID på kunden.
+	 */
 	public int getCustomerID() {
 		return this.customerID;
 	}
