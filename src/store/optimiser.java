@@ -10,7 +10,7 @@ public class optimiser {
 	static int maxCustomers = 1400; 
 	static int registers = 2; 
 	static double timeStoreIsOpen = 20.0; 
-	static double lambda = 700.0; 
+	static double lambda = 2000.0; 
 	static double p_min = 0.45; 
 	static double p_max = 0.65; 
 	static double k_min = 0.2; 
@@ -32,7 +32,7 @@ public class optimiser {
 //		StorSimulator.mainLoop();
 //		System.out.print("hej");
 //		System.out.print("Minsta antal kassor " + metod2());
-		System.out.print("Optimala antalet kassor " + metod3(42));
+		System.out.print("Optimala antalet kassor " + metod2());
 	}
 
 	private static StoreState metod1(){
@@ -109,21 +109,21 @@ public class optimiser {
 		return kassor;
 	}
 	
-	public static int metod3(long seed){
-		Random random = new Random(seed);
-		long nextSeed = random.nextLong();
-		int optimeradeKassor = 0;
-		int kassor = 0;
-		
-		for (int i = 0; i < 100; i++){
-			kassor = metod2(nextSeed);
-			if ( optimeradeKassor < kassor){
-				optimeradeKassor = kassor;
-				i = 0;
-				System.out.println("Antalet det stannade på: " + i + " Optimala nu: " + kassor);
-			}
-			nextSeed = random.nextLong();
-		}
-		return optimeradeKassor;
-	}
+//	public static int metod3(long seed){
+//		Random random = new Random(seed);
+//		long nextSeed = random.nextLong();
+//		int optimeradeKassor = 0;
+//		int kassor = 0;
+//		
+//		for (int i = 0; i < 100; i++){
+//			kassor = metod2(nextSeed);
+//			if ( optimeradeKassor < kassor){
+//				optimeradeKassor = kassor;
+//				i = 0;
+//				System.out.println("Antalet det stannade på: " + i + " Optimala nu: " + kassor);
+//			}
+//			nextSeed = random.nextLong();
+//		}
+//		return optimeradeKassor;
+//	}
 }
