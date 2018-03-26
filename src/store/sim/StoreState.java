@@ -201,12 +201,20 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public int getCustumersQueued() {
-		return this.fifo.totalQueued;
+		return this.customersQueued;
+	}
+	
+	public void addCustumersQueued(){
+		this.customersQueued++;
 	}
 
 	// Skickar tillbaka det som specificeras.
 	public int getCurrentlyQueuing() {
-		return this.fifo.getSize();
+		return this.currentlyQueuing;
+	}
+	
+	public void setCurrentlyQueuing(int c){
+		this.currentlyQueuing = c;
 	}
 
 	// Skickar tillbaka det som specificeras.

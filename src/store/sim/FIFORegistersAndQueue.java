@@ -76,7 +76,8 @@ public class FIFORegistersAndQueue {
 	 */
 
 	public void addToQueue(Customer customer){
-		this.totalQueued++;
+		storeState.addCustumersQueued();
+		storeState.setCurrentlyQueuing(queue.size());
 		queue.add(customer);
 	}
 	
@@ -89,6 +90,7 @@ public class FIFORegistersAndQueue {
 	public Customer getFirstQueue(){
 		Customer temp = queue.get(0);
 		queue.remove(0);
+		storeState.setCurrentlyQueuing(queue.size());
 		return temp;
 	}
 
