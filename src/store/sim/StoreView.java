@@ -21,12 +21,13 @@ public class StoreView extends SimView {
 	
 
 	/**
-	 * printar ut mallen f�r simulationen
+	 * Skriver ut vilka värden som har använts vid körningen och sätter en klass att observera.
 	 * 
+	 * @param theStateStore är av klassen StoreState som denna klass kommer att observera.
 	 */
 	public StoreView(StoreState theStateStore) {
 		super(theStateStore);
-		stateOfStore(theStateStore);
+		this.theStateStore = theStateStore;
 		this.theStateStore.addObserver(this);
 		System.out.println("PARAMETRAR");
 		System.out.println("==========");
@@ -43,13 +44,10 @@ public class StoreView extends SimView {
 		System.out.println("Tid\tHandelse\tKund\t?\tled\tledT\tKunder\t$\t:-(\tkoat\tkoT\tkoar\t[Kassako..]\n");
 
 	}
-
-	public void stateOfStore(StoreState theStateStore) {
-		this.theStateStore = theStateStore;
-	}
+	
 	
 	/**
-	 * Printar ut alla händelser varje gång StoreState uppdateras.
+	 * Körs vid update och skriver ut vad som hänt sedan senaset event.
 	 */
 	public void update(Observable o, Object arg) {
 		double starttid = theStateStore.getTime();

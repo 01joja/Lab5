@@ -17,9 +17,6 @@ import java.util.ArrayList;
 
 public class StoreState extends SimState {
 
-	/*
-	 * Olika typer av variabler som används under körningen.
-	 */
 	private final double LAMBDA;
 	private final double P_MIN;
 	private final double P_MAX;
@@ -53,14 +50,18 @@ public class StoreState extends SimState {
 
 	/**
 	 * 
-	 * @param maxCustomers
-	 *            Antalet kunder som max får vara i butiken samtidigt.
-	 * @param registers
-	 *            Antalet öppna kassor.
-	 * @param timeStoreIsOpen
-	 *            Tiden affären är öppen.
-	 * @param seed
-	 *            Är tiden hur ofta kunder kommer till affären.
+	 * Sätter alla variabler och pekar rätt alla pointer.
+	 * 
+	 * @param maxCustomers Max antal kunder som får vara i butiken
+	 * @param registers antal kassor som används i butiken
+	 * @param timeStoreIsOpen tiden butiken är öppen
+	 * @param lambda intervallet som det anländer kunder i
+	 * @param p_min minsta tiden det får ta att plocka varor
+	 * @param p_max längsta tiden det får ta att plocka varor
+	 * @param k_min minsta tiden det tar att betala i kassan
+	 * @param k_max längsta tiden det tar att betala i kassan
+	 * @param start bestämmer vilken tid programmet startar
+	 * @param seed bestämmer vilken seed som SimState ska utgå ifrån
 	 */
 	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min,
 			double p_max, double k_min, double k_max, double start, long seed) {
@@ -85,7 +86,13 @@ public class StoreState extends SimState {
 		new Arrivals(this, arrivalRandom);
 	}
 	
-	@Override
+	
+	/**
+	 * 
+	 * Om detta är sista eventet med andra ord eventet stopp så ändras namnet på currentEvent till "STOP".
+	 * 
+	 * @return stopflaggan.
+	 */
 	public boolean getRunSim(){
 		boolean flag = super.getRunSim();
 		if (flag == false) {
@@ -98,8 +105,9 @@ public class StoreState extends SimState {
 
 	/**
 	 * 
-	 * @param e
-	 *            Skickar med Event klassen för att uppdatera affären.
+	 * Uppdaterar alla som observerar detta event och ändrar vilket event som är currentEvent
+	 * 
+	 * @param e hämtar namnet på Event e och sätter currentEvent till det.
 	 */
 	public void updateStore(Event e) {
 		this.currentEvent = e.getNameOfEvent();
@@ -109,10 +117,10 @@ public class StoreState extends SimState {
 
 	/**
 	 * 
-	 * @param e
-	 *            Skickar med Event klassen för att uppdatera affären.
-	 * @param c
-	 *            Skickar med Customer klassen för att uppdatera affären.
+	 * Denna ska köras om eventet har en Customer. Uppdaterar alla som observerar detta event och ändrar vilket event som är currentEvent.
+	 * 
+	 * @param e hämtar namnet på Event e och sätter currentEvent till det.
+	 * @param c hämtar CustomerID från c och currentCustomer till det.
 	 */
 	public void updateStore(Event e, Customer c) {
 		this.currentEvent = e.getNameOfEvent();
@@ -122,10 +130,13 @@ public class StoreState extends SimState {
 	}
 	
 	
-	/**
-	 * Overrides SimState settime to make sure that the time for time queued and time registers not used are correct
-	 */
+	
 	@Override
+	/**
+	 * Override setTime för kunna spara tiden från allt köande och all tid som kassorna är tomma.
+	 * 
+	 * @param tar imot den tid då eventet händer
+	 */
 	public void setTime(double time){
 		double timePassed = time - super.getTime();
 		if ((this.storeIsOpen) || (fifo.getRegisterWhithCoustomers()!=0)) {
@@ -136,96 +147,174 @@ public class StoreState extends SimState {
 		super.setTime(time);
 	}
 	
-	//Tar bort antalet kunder i affären just nu.
+	/**
+	 * tar bort en costumer i butiken
+	 */
 	public void removeCustomer(){
 		this.customersInStore--;
 	}
 	
+	/**
+	 * lägger till en Costumer i butiken.
+	 */
 	public void addCustomerID() {
 		totalNumberOfCustomers ++;
 	}
 	
+	/**
+	 * 
+	 * returnerar totala antalet Customer som har varit i affären
+	 * 
+	 * @return totalNumberOfCustomer
+	 */
 	public int getNumberOfCustomers() {
 		return totalNumberOfCustomers;
 	}
 
+	/**
+	 * 
+	 * returnarar en tid som det ska ta att betala
+	 * 
+	 * @return en random tid
+	 */
 	public UniformRandomStream getPayRandom() {
 		return this.payRandom;
 	}
 
+	/**
+	 * 
+	 * returnarar en tid som det ska ta att plocka varor
+	 * 
+	 * @return en random tid
+	 */
 	public UniformRandomStream getPickGoodsRandom() {
 		return this.pickGoodsRandom;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * rerurnerar det som specificeras.
+	 * 
+	 * @return currentEvent
+	 */
 	public String getCurrentEvent() {
 		return this.currentEvent;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * rerurnerar det som specificeras.
+	 * 
+	 * @return currentCustomer
+	 */
 	public int getCurrentCustomer() {
 		return this.currentCustomer;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 *
+	 * rerurnerar det som specificeras.
+	 * 
+	 * @returnerar nästa event i eventQueue
+	 */
 	public EventQueue getEventQueue() {
 		return super.getEventQueue();
 	}
 
-	// Ökar kunder som betalt med 1.
+	/**
+	 * Ökar antalet som har betalt med 1
+	 */
 	public void addPay() {
 		paid++;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * returnerar hur många som har betalt
+	 * 
+	 * @return int paid
+	 */
 	public int getPaid() {
 		return paid;
 	}
 
-	// Retunerar hur många kunder som är i affären.
+	/**
+	 * 
+	 * @return antalet kunder i affären
+	 */
 	public int customersInStore() {
 		return this.customersInStore;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return Max antal kunder
+	 */
 	public int getMaxCustomers() {
 		return this.MAXCOSTUMER;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return Max antal kassor som kan användas
+	 */
 	public int getRegisters() {
 		return this.REGISTERS;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return tiden som kassorna inte har används
+	 */
 	public double getTimeRegistersNotUsed() {
 		return this.timeRegistersNotUsed;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return antal kunder som inte fick gå in i butiken
+	 */
 	public int getSad() {
 		return this.sad;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return antalet kunder som har köat
+	 */
 	public int getCustumersQueued() {
 		return this.customersQueued;
 	}
 	
+	/**
+	 * ökar antalet som har köat med 1
+	 */
 	public void addCustumersQueued(){
 		this.customersQueued++;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return antalet som köar
+	 */
 	public int getCurrentlyQueuing() {
 		return this.currentlyQueuing;
 	}
 	
+	/**
+	 * 
+	 * bestämmer längden på kön
+	 * 
+	 * @param c längden på kön
+	 */
 	public void setCurrentlyQueuing(int c){
 		this.currentlyQueuing = c;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return en array med vilka cutomers som står i kön
+	 */
 	public int[] getQueue() {
 		Customer[] customer = fifo.getQueue();
 		int[] temp = new int[customer.length];
@@ -235,17 +324,27 @@ public class StoreState extends SimState {
 		return temp;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return starttiden
+	 */
 	public double getStart() {
 		return this.START;
 	}
 
-	// Returnerar hur många kassor som är lediga.
+	/**
+	 * 
+	 * @return antalet lediga kassor
+	 */
 	public int emptyRegisters() {
 		return this.emptyRegisters;
 	}
-
-	// Om det inte finns någon ledig kassa returnerar den false, annars true.
+	
+	/**
+	 * kollar om det finns lediga kassor. gör det det så minskas antalet lediga kassor med en eftersom en kund ska ta den.
+	 * 
+	 * @return true om det finns lediga kassor annars blir det false
+	 */
 	public boolean isRegisterEmpty() {
 		if (this.emptyRegisters == 0) {
 			return false;
@@ -256,11 +355,18 @@ public class StoreState extends SimState {
 
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return den tid som custumers har stått i kön sammanlagt
+	 */
 	public double getQueueTime() {
 		return this.queuedTime;
 	}
 
+	/**
+	 * 
+	 * @return kollar om fifo har en kö
+	 */
 	public boolean isFIFOempty() {
 		if (fifo.hasQueue()){
 			return false;
@@ -269,8 +375,11 @@ public class StoreState extends SimState {
 		}
 	}
 
-	// Om affären är full så ökar antalet ledsna kunder, annars läggs det till
-	// en kund i affären.
+	/**
+	 * Om affären är full så ökar antalet ledsna kunder, annars läggs det till en kund i affären.
+	 * 
+	 * @return true om affären är full annars returnaras false
+	 */
 	public boolean isStoreFull() {
 		if (this.customersInStore == this.MAXCOSTUMER) {
 			if (this.storeIsOpen) {
@@ -283,22 +392,32 @@ public class StoreState extends SimState {
 		}
 	}
 
-	// Öppnar affären.
+	/**
+	 * sätter storeIsOpen till true
+	 */
 	public void openStore() {
 		storeIsOpen = true;
 	}
 
-	// Stänger affären.
+	/**
+	 * sätter storeIsOpen till false
+	 */
 	public void closeStore() {
 		storeIsOpen = false;
 	}
 
-	// Tittar om affären är öppen.
+	/**
+	 * 
+	 * @return storeIsOpen
+	 */
 	public boolean getOpenState() {
 		return this.storeIsOpen;
 	}
 
-	// Om affären är öppen returnerar den Ö annars S.
+	/**
+	 * 
+	 * @return Ö om affären är öppen annars S
+	 */
 	public String isStoreOpenString() {
 		if (this.storeIsOpen) {
 			return "Ö";
@@ -306,49 +425,75 @@ public class StoreState extends SimState {
 		return "S";
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return fifon
+	 */
 	public FIFORegistersAndQueue getFIFO() {
 		return fifo;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	
+	/**
+	 * 
+	 * @return P_MIN
+	 */
 	public double getP_MIN() {
 		return this.P_MIN;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return P_MAX
+	 */
 	public double getP_MAX() {
 		return this.P_MAX;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return K_MIN
+	 */
 	public double getK_MIN() {
 		return this.K_MIN;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return K_MAX
+	 */
 	public double getK_MAX() {
 		return this.K_MAX;
 	}
 
-	// Skickar tillbaka det som specificeras.
+	/**
+	 * 
+	 * @return SEEDEN som har använts
+	 */
 	public long getSeed() {
 		return this.SEED;
 	}
 
 	/**
-	 * Returnerar aff�rens �ppningstid
 	 * 
-	 * @return
+	 * @return Affärens öppettid
 	 */
 	public double getOpenTime() {
 		return this.OpenTime;
 	}
 
+	/**
+	 * 
+	 * @param time sätter tiden affären är öppen
+	 */
 	public void setOpenTime(double time) {
 		this.OpenTime = time;
 	}
 
+	/**
+	 * 
+	 * @return LAMBDA värdet
+	 */
 	public double getLAMBDA() {
 		return this.LAMBDA;
 	}
