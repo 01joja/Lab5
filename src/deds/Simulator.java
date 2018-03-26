@@ -5,14 +5,21 @@ import store.sim.StoreView;
 public class Simulator {
 	
 	SimState theSimulator;
+	EventQueue eventQueue;
+	
 	//ger objected ett värde
 	public Simulator(SimState theSimulator){
 		this.theSimulator = theSimulator;
+		this.eventQueue = theSimulator.getEventQueue();
 	}
 	//loopar medans funktionen getRunSim returnerar true.
 	public void mainLoop(){
-		while(this.theSimulator.getRunSim())
+		boolean run = this.theSimulator.getRunSim();
+		while(run)
 		{
+			Event event = eventQueue.getFirst();
+			event.perform();
+			run = this.theSimulator.getRunSim();
 		}
 	}
 }
