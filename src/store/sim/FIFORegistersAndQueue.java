@@ -21,7 +21,6 @@ public class FIFORegistersAndQueue {
 		this.REGISTERS = this.storeState.getRegisters();
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * 
 	 * @param pay Skickar med typen Pay med namnet pay.
@@ -29,10 +28,7 @@ public class FIFORegistersAndQueue {
 	 * och om ingen kassa är ledig så ställer sig kunden i kö och returnerar
 	 * false. Om det inte finns en kö och kassa är ledig så ökas antalet kassor med kunder med 1. 
 	 */
-	public boolean tryToPay(Pay pay){
-=======
 	public boolean tryToPay(Customer customer){
->>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		if (hasQueue()){
 			this.addToQueue(customer);
 			return false;
@@ -72,47 +68,36 @@ public class FIFORegistersAndQueue {
 		return true;
 	}
 	
-<<<<<<< HEAD
+
 	/**
 	 * 
 	 * @param pay Skickar med pay som parameter och lägger till
 	 * en kund som köat.
 	 */
-	public void addToQueue(Pay pay){
-=======
+
 	public void addToQueue(Customer customer){
->>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		this.totalQueued++;
 		queue.add(customer);
 	}
 	
-<<<<<<< HEAD
+
 	
 	/**
 	 * 
 	 * @return returnerar första kunden i kön och tar bort den.
 	 */
-	public Pay getFirstQueue(){
-		Pay temp = queue.get(0);
-=======
 	public Customer getFirstQueue(){
 		Customer temp = queue.get(0);
->>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		queue.remove(0);
 		return temp;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * 
 	 * @return 
 	 */
-	public Pay[] getQueue() {
-		Pay[] temp = new Pay[queue.size()];
-=======
 	public Customer[] getQueue() {
 		Customer[] temp = new Customer[queue.size()];
->>>>>>> 514ff482d58c128e18c199c0a98506fec1d8917c
 		for (int i = 0; i < this.queue.size(); i++){
 			temp[i] = queue.get(i);
 		}

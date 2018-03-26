@@ -31,7 +31,7 @@ public class RunSim {
      */
 	public static void main(String[] args) {
 		//Ger Storestate 4 parametrar med värden för Antalet kunder som ryms
-		// Antalet kassor,
+		// Antalet kassor
 		StoreState storeState = new StoreState(maxCustomers, registers, timeStoreIsOpen, lambda, p_min, p_max, k_min, k_max, start, seed);
 		new StoreView(storeState);
 		Simulator StorSimulator = new Simulator(storeState);
