@@ -21,7 +21,7 @@ public class EventStop extends Event {
 		//sätter värdet på objectet simstate
 		this.simState = simState;
 		//Stoppar in det stoppade eventet längst back i eventQueue
-		simState.eventQueue.addStopEvent(this);
+		simState.getEventQueue().addStopEvent(this);
 	}
     
 	public void perform() {

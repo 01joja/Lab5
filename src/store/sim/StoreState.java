@@ -43,31 +43,6 @@ public class StoreState extends SimState {
 	private UniformRandomStream payRandom;
 
 	/**
-	 * @param maxCustomers
-	 *            Antalet kunder som max får vara i butiken samtidigt.
-	 * @param registers
-	 *            Antalet öppna kassor
-	 * @param timeStoreIsOpen
-	 *            Tiden affären är öppen.
-	 */
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min, double p_max, double k_min, double k_max, double start) {
-		this.LAMBDA = lambda;
-		this.P_MIN = p_min;
-		this.P_MAX = p_max;
-		this.K_MIN = k_min;
-		this.K_MAX = k_max;
-		this.START = start;
-		this.HASSEED = false;
-		this.SEED = 0;
-		arrivalRandom = new ExponentialRandomStream(LAMBDA);
-		this.pickGoodsRandom = new UniformRandomStream(P_MIN, P_MAX);
-		this.payRandom = new UniformRandomStream(K_MIN, K_MAX);
-		this.REGISTERS = registers;
-		this.MAXCOSTUMER = maxCustomers;
-		startSequens(maxCustomers, registers, timeStoreIsOpen);
-	}
-
-	/**
 	 * 
 	 * @param maxCustomers
 	 *            Antalet kunder som max får vara i butiken samtidigt.
@@ -78,7 +53,8 @@ public class StoreState extends SimState {
 	 * @param seed
 	 *            Är tiden hur ofta kunder kommer till affären.
 	 */
-	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min, double p_max, double k_min, double k_max, double start, long seed) {
+	public StoreState(int maxCustomers, int registers, double timeStoreIsOpen, double lambda, double p_min,
+			double p_max, double k_min, double k_max, double start, long seed) {
 		this.LAMBDA = lambda;
 		this.P_MIN = p_min;
 		this.P_MAX = p_max;
@@ -92,20 +68,7 @@ public class StoreState extends SimState {
 		this.payRandom = new UniformRandomStream(K_MIN, K_MAX, this.SEED);
 		this.REGISTERS = registers;
 		this.MAXCOSTUMER = maxCustomers;
-		startSequens(maxCustomers, registers, timeStoreIsOpen);
-	}
-
-	/**
-	 * 
-	 * @param maxCustomers
-	 *            Antalet kunder som max får vara i butiken samtidigt.
-	 * @param registers
-	 *            Antalet öppna kassor.
-	 * @param timeStoreIsOpen
-	 *            Hur länge affären är öppen.
-	 */
-	private void startSequens(int maxCustomers, int registers, double timeStoreIsOpen) {
-		super.eventQueue = new EventQueue();
+		super.setEventQueue(new EventQueue());
 		fifo = new FIFORegistersAndQueue(this);
 		new Open(this.START, timeStoreIsOpen, 999, this);
 		this.OpenTime = timeStoreIsOpen;
@@ -188,7 +151,7 @@ public class StoreState extends SimState {
 
 	// Skickar tillbaka det som specificeras.
 	public EventQueue getEventQueue() {
-		return super.eventQueue;
+		return super.getEventQueue();
 	}
 
 	// Ökar kunder som betalt med 1.
