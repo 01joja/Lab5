@@ -3,15 +3,15 @@ package store.sim;
 public class Customer {
 	
 	private int customerID = 0;
-	private static int numberOfCustomers;
+//	private int numberOfCustomers;
 	private boolean hasPayed = false; 
 	
 	/**
 	 * När en ny kund skapas får den ett kundnummer.
 	 */
-	public Customer() {
-		customerID = numberOfCustomers;
-		numberOfCustomers += 1;
+	public Customer(int numberOfCustomers) {
+		this.customerID = numberOfCustomers;
+		numberOfCustomers ++;
 	}
 	//ger varje kund ett ID
 	public int getCustomerID() {
