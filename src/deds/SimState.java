@@ -9,32 +9,51 @@ public class SimState extends Observable{
 	private boolean stopSim = false;
 	private EventQueue eventQueue;
 	
-	//stänger av simulator när det har gått en viss tid
+	/**
+	 * När metoden körs så ändras flaggan till true och simulationen stängs av.
+	 */
 	void simEnd() {
 		this.stopSim = true;
 	}
-	//kollar ifall simulatorn är igång 
-	//är simulatorn igång så tar den den första instansen från
-	//en kö ifrån klassen  EventQueue.
+	
+	/**
+	 * @return Tittar ifall simulatorn är igång.
+	 */
 	public boolean getRunSim(){
 		if (this.stopSim == true){
 			return false;
 		}
 		return true;
 	}
-	//sätter simulations tid
+	
+	/**
+	 * 
+	 * @param time Sätter en tid på eventet.
+	 */
 	public void setTime(double time){
 		this.simTime = time;
 	}
-	// returnerar simTime 
+	
+	/**
+	 *  
+	 * @return returnerar tiden på simulationen.
+	 */
 	public double getTime(){
 		return this.simTime;
 	}
 	
+	/**
+	 * 
+	 * @param eventQueue Bestämmer vad EventQueue ska vara.
+	 */
 	public void setEventQueue(EventQueue eventQueue){
 		this.eventQueue = eventQueue;
 	}
 	
+	/**
+	 * 
+	 * @return returnerar eventqueuen.
+	 */
 	public EventQueue getEventQueue(){
 		return this.eventQueue;
 	}

@@ -14,18 +14,16 @@ public class EventStop extends Event {
 	 * Klassen som stoppar hela simulationen.
 	 */
 	public EventStop(double stopSim, SimState simState){
-		//sätter namnet på eventet till stop
 		this.setNameOfEvent("STOP");
-		//Sätter hur länge det tog att utföra eventet
 		setTime(stopSim);
-		//sätter värdet på objectet simstate
 		this.simState = simState;
-		//Stoppar in det stoppade eventet längst back i eventQueue
 		simState.getEventQueue().addStopEvent(this);
 	}
     
+	/**
+	 * Stoppar hela simulationen.
+	 */
 	public void perform() {
-		//gör så att simulatorn avslutas
 		this.simState.setTime(getEventFinishTime());
 		this.simState.simEnd();
 	}

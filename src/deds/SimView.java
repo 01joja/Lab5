@@ -1,17 +1,21 @@
 package deds;
+
 import java.util.Observable;
 import java.util.Observer;
+
 public class SimView implements Observer  {
-	//Klassen implenterar en observer som används för att
-	//kunna observera klassen StorView
-	
-	/*
-	 *Lägger till en obervatör. 
+
+	/**
+	 * 
+	 * @param simState Lägger till en observer.
 	 */
 	public SimView(SimState simState){
 		simState.addObserver(this);
 	}
 	
+	/**
+	 * Update metod som ärvs till klassen under.
+	 */
 	public void update(Observable arg0, Object arg1) {
 		
 	}

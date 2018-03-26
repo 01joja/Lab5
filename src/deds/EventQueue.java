@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import deds.Event;
 
 /*
- * This class keeps track of the queue for the events
+ * Den här klassen håller reda på i vilken ordning eventen händer.
  */
 public class EventQueue {
 	
@@ -15,10 +15,9 @@ public class EventQueue {
 		eventQueue.add(e);
 	}
 
-	/*
-	 * Adds event to queue
-	 * 
-	 * @param event
+	/**
+	 * Lägger till eventen till listan.
+	 * @param event hämtar events från event.
 	 */
 	public void addEvent(Event event) {
 		for (int i = 0; i < eventQueue.size(); i++){
@@ -30,17 +29,17 @@ public class EventQueue {
 		}
 	}
 
-	/*
-	 * Size of queue
-	 * @returns the size of the queue
+	/**
+	 * 
+	 * @returns returnerar storleken på listan.
 	 */
 	public int queueSize() {
 		return eventQueue.size();
 	}
 	
 	
-	/*
-	 * Return the first event in the queue
+	/**
+	 * @returns returnerar första elementet i listan och tar bort det.
 	 */
 	public Event getFirst() {
 		Event FirstElement = eventQueue.get(0);
@@ -48,7 +47,7 @@ public class EventQueue {
 		return FirstElement;
 	}
 	
-	/*
+	/**
 	 * Felsökningsmetod.
 	 */
 	private void errorFunktion(){

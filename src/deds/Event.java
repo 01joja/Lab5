@@ -10,23 +10,41 @@ public class Event {
 	private double finishTime;
 	private String nameOfEvent;
 	
-	
+	/**
+	 * Ärvs av andra eventklasser.
+	 */
 	public void perform() {	
 	}
-	//returnerar finishTime
+	
+	/**
+	 * 
+	 * @return returnerar finishTIme
+	 */
 	public double getEventFinishTime(){
 		return finishTime;
 	}
-	//ger finishTime ett värde
+	
+	/**
+	 * 
+	 * @param finishTime ger finishTime ett värde
+	 */
 	protected void setTime(double finishTime) {
 		this.finishTime = finishTime;
 		
 	}
-	//ger eventet ett namn
+	
+	/**
+	 * 
+	 * @param name ger eventet ett namn, t.ex arrival.
+	 */
 	protected void setNameOfEvent(String name){
 		this.nameOfEvent = name;
 	}
-	//returnerar nameOfEvent.
+	
+	/**
+	 * 
+	 * @return returnerar namnet på eventet.
+	 */
 	public String getNameOfEvent(){
 		return nameOfEvent;
 	}
