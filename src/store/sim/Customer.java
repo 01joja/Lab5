@@ -9,9 +9,9 @@ public class Customer {
 	/**
 	 * När en ny kund skapas får den ett kundnummer.
 	 */
-	public Customer(int numberOfCustomers) {
+	public Customer(int numberOfCustomers, StoreState StoreState) {
 		this.customerID = numberOfCustomers;
-		numberOfCustomers ++;
+		StoreState.addCustomerID();
 	}
 	//ger varje kund ett ID
 	public int getCustomerID() {

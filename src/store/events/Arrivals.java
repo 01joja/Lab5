@@ -15,7 +15,6 @@ public class Arrivals extends Event{
 	private Customer customer;
 	private StoreState storeState;
 	private EventQueue eventQueue;
-	private int numberOfCustomers;
 
 	/**
 	 * 
@@ -38,8 +37,7 @@ public class Arrivals extends Event{
 		this.setTime(this.exponentialRandomStream.next() + storeState.getTime());
 		this.eventQueue = s.getEventQueue();
 		super.setNameOfEvent("Arrivals");
-		this.customer = new Customer(numberOfCustomers);
-		numberOfCustomers ++;
+		this.customer = new Customer(s.getNumberOfCustomers(), s);
 		eventQueue.addEvent(this);
 		
 	}
@@ -49,7 +47,6 @@ public class Arrivals extends Event{
 	 */
 	//Uppdaterar storestate, tittar om affären är full, sätter en tid och planerar en ny Arrival när exprandomstream tycker att det är dags.
 	public void perform () {
-		numberOfCustomers ++;
 		storeState.setTime(this.getEventFinishTime());
 		storeState.updateStore(this, customer);
 		if (this.storeState.getOpenState()){

@@ -31,6 +31,7 @@ public class StoreState extends SimState {
 	private int customersQueued = 0;
 	private int emptyRegisters = 0;
 	private int customersInStore = 0;
+	private int totalNumberOfCustomers = 0;
 	private ArrayList<Integer> queue = new ArrayList<Integer>();
 	private String currentEvent;
 	private int currentCustomer;
@@ -127,8 +128,17 @@ public class StoreState extends SimState {
 		super.setTime(time);
 	}
 	
+	//Tar bort antalet kunder i affären just nu.
 	public void removeCustomer(){
 		this.customersInStore--;
+	}
+	
+	public void addCustomerID() {
+		totalNumberOfCustomers ++;
+	}
+	
+	public int getNumberOfCustomers() {
+		return totalNumberOfCustomers;
 	}
 
 	public UniformRandomStream getPayRandom() {
