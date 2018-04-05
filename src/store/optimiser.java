@@ -15,16 +15,16 @@ import store.sim.StoreState;
 
 public class optimiser {
 	
-	static int maxCustomers = 1400; 
+	static int maxCustomers = 7; 
 	static int registers = 2; 
-	static double timeStoreIsOpen = 20.0; 
-	static double lambda = 2000.0; 
-	static double p_min = 0.45; 
-	static double p_max = 0.65; 
-	static double k_min = 0.2; 
-	static double k_max = 0.3; 
+	static double timeStoreIsOpen = 10.0; 
+	static double lambda = 2.0; 
+	static double p_min = 0.5; 
+	static double p_max = 1.0; 
+	static double k_min = 2.0; 
+	static double k_max = 3.0; 
 	static double start = 0.0; 
-	static long seed = 42;
+	static long seed = 1234;
 	static int stopTime = 999;
 	
 	/**
@@ -40,8 +40,8 @@ public class optimiser {
 //		Simulator StorSimulator = new Simulator(storeState);
 //		StorSimulator.mainLoop();
 //		System.out.print("hej");
-//		System.out.print("Minsta antal kassor " + metod2());
-		System.out.print("Optimala antalet kassor " + metod2());
+		System.out.print("Minsta antal kassor " + metod2());
+//		System.out.print("Optimala antalet kassor " + metod2());
 	}
 
 	private static StoreState metod1(){

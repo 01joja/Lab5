@@ -16,16 +16,16 @@ import store.sim.StoreView;
 
 public class RunSim {
 	
-	static int maxCustomers = 5; 
+	static int maxCustomers = 7; 
 	static int registers = 2; 
-	static double timeStoreIsOpen = 10.0; 
-	static double lambda = 1.0; 
-	static double p_min = 0.5; 
-	static double p_max = 1.0; 
-	static double k_min = 2.0; 
-	static double k_max = 3.0; 
+	static double timeStoreIsOpen = 8.0; 
+	static double lambda = 3.0; 
+	static double p_min = 0.6; 
+	static double p_max = 0.9; 
+	static double k_min = 0.35; 
+	static double k_max = 0.6; 
 	static double start = 0.0; 
-	static long seed = 1234;
+	static long seed = 13;
 	static int stopTime = 999;
 	
     /**
